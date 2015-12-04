@@ -4,7 +4,22 @@ if (Meteor.isClient) {
   // This code only runs on the client
   Template.body.helpers({
     tasks: function () {
-      return Tasks.find({}, {sort: {createdAt: -1}});
+      // this function depends on Session value for hideCompleted
+      if(Session.get("hideCompleted")) {
+        // If hide completed is checked, filter tasks
+        return Tasks.find({checked: {$ne: true}}, {sort: {createdAt: -1}});
+      } else { // Return all tasks
+        return Tasks.find({}, {sort: {createdAt: -1}});
+      }
+    },
+    hideCompleted: function () {
+      return Session.get('hideCompleted');
+    }
+  });
+
+  Template.header.events({
+    "change .hide-completed input": function(event){
+      Session.set('hideCompleted', 'event.target.checked')
     }
   });
 
