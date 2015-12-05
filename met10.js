@@ -7,7 +7,11 @@ if (Meteor.isClient) {
   });
 
   Template.body.events({
-
+    "click #startbutton": function () {
+      // I should start building model 
+      start_modelbuild()
+      'done'
+    },
   });
 
   Accounts.ui.config({

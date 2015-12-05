@@ -4,8 +4,11 @@ This is a simple demo,
 but it takes a L O O O N G time to run.
 */
 
-// I should get prices I want to learn from:
-d3.csv("/csv/GSPC.csv", cb1)
+// This function should start model build
+function start_modelbuild() {
+  // I should get prices I want to learn from:
+  d3.csv("/csv/GSPC.csv", cb1)
+}
 
 // I should create a callback for d3.csv():
 function cb1(err, csv_a) {
