@@ -1,9 +1,10 @@
 Mmodels = new Mongo.Collection("mmodels");
 
 if (Meteor.isClient) {
-
+  Session.set("building", false);
   // This code only runs on the client
   Template.body.helpers({
+    building: function(){return Session.get("building")}
 
   });
 
@@ -12,6 +13,7 @@ if (Meteor.isClient) {
       // I should hide the button
       d3.select('#a_waiter').remove()
       // I should start building model 
+      Session.set("building", true);
       start_modelbuild()
       'done'
     },
@@ -20,9 +22,7 @@ if (Meteor.isClient) {
   Accounts.ui.config({
     passwordSignupFields: "USERNAME_ONLY"
   });
-// debug
-//Meteor.call("addmmodel","hiThere")
-// debug
+
 }
 
 // This code runs both on client and server
