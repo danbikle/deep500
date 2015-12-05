@@ -33,19 +33,23 @@
       {{> loginButtons}}
     </header>
     This page builds a Deep Learning model to help me predict the S&amp;P 500.
-    <button id="startbutton">Start Build</button>
+
+    <div id='a_waiter'>
+      <h2>I am waiting for you to press the start button</h2>
+      <button id="startbutton">Start Build</button>
+      <br />
+      <img src='/spinner.gif' />
+    </div>
+
+<!--
     <div id='a_spinner'>
-      <style>
-        #xa_spinner {color: #00D; animation: blinker 1s linear infinite;}
-        @keyframes xblinker {50% { opacity: 0.0; }}
-      </style>
       <h2>Busy...Learning...</h2>
       I Need an hour or 4. Be patient.
       <br />
-<!--
+
       <img src='/spinner.gif' />
--->
     </div>
+-->
 
     <div class='width600wwbw'>
       <pre><code class='myjson' id='json1'></code></pre>

@@ -1,6 +1,7 @@
 Mmodels = new Mongo.Collection("mmodels");
 
 if (Meteor.isClient) {
+
   // This code only runs on the client
   Template.body.helpers({
 
@@ -8,6 +9,8 @@ if (Meteor.isClient) {
 
   Template.body.events({
     "click #startbutton": function () {
+      // I should hide the button
+      d3.select('#a_waiter').remove()
       // I should start building model 
       start_modelbuild()
       'done'
