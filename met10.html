@@ -17,47 +17,23 @@
     <script src="/src/convnet_magicnet.js"></script>
     <script src="/src/convnet_export.js"></script>
 
-    <script src="/cnet10.js"></script>
+    <script src="/d3.v3.min.js"></script>
+    <script src="/app31.js"></script>
+<!--
+    <script src="/demo12.js"></script>
+-->
+
 </head>
 
 <body>
 
   <div class="container">
     <header>
-      <h1>Todo List ({{incompleteCount}})</h1>
-      Hello {{currentUser.username}}
-      <label class="hide-completed">
-        <input type="checkbox" checked="{{hideCompleted}}" />
-        Hide Completed Tasks
-      </label>
+      <h1>Deep500.meteor.com</h1>
 
-{{> loginButtons}}
+      {{> loginButtons}}
 
-      {{#if currentUser}}
-        <form class="new-task">
-          <input type="text" name="text" placeholder="Type to add new tasks" />
-        </form>
-      {{/if}}
     </header>
 
-    <ul>
-      <!-- this is handle bar syntax -->
-      {{#each tasks}}
-        {{> task}}
-      {{/each}}
-    </ul>
   </div>
 </body>
-
-<template name="task">
-  <li class="{{#if checked}}checked{{/if}}">
-    <button class="delete">&times;</button>
-    <input type="checkbox" checked="{{checked}}" class="toggle-checked" />
-    <span class="text">
-      <strong>
-        {{#if username}}{{username}}{{else}}Dano{{/if}}
-      </strong>
-      - {{text}}
-    </span>
-  </li>
-</template>
