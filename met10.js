@@ -1,4 +1,4 @@
-Tasks = new Mongo.Collection("tasks");
+Mmodels = new Mongo.Collection("mmodels");
 
 if (Meteor.isClient) {
   // This code only runs on the client
@@ -15,6 +15,10 @@ if (Meteor.isClient) {
   });
 }
 
+// This code runs both on client and server
 Meteor.methods({
-
+  addmmodel: function(mm){
+    // Demo: Meteor.call('addmmodel','hiThere')
+    Mmodels.insert({createdAt: new Date(), hello: 'world'});
+  }
 });
