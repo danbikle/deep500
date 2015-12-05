@@ -33,14 +33,14 @@
       {{> loginButtons}}
     </header>
     This page builds a Deep Learning model to help me predict the S&amp;P 500.
-
+{{#if stopped}}
     <div id='a_waiter'>
       <h2>I am waiting for you to press the start button</h2>
       <button id="startbutton">Start Build</button>
       <br />
       <img src='/spinner.gif' />
     </div>
-
+{{/if}}
 {{#if building}}
     <div id='a_spinner'>
       <h2>Busy...Learning...</h2>

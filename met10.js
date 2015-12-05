@@ -1,19 +1,23 @@
 Mmodels = new Mongo.Collection("mmodels");
 
 if (Meteor.isClient) {
-  Session.set("building", false);
   // This code only runs on the client
-  Template.body.helpers({
-    building: function(){return Session.get("building")}
 
+  Session.set("building", false);
+  Session.set("stopped",  true);
+
+  Template.body.helpers({
+    building: function(){return Session.get("building")},
+    stopped: function(){return  Session.get("stopped" )}
   });
 
   Template.body.events({
     "click #startbutton": function () {
       // I should hide the button
-      d3.select('#a_waiter').remove()
+      // d3.select('#a_waiter').remove()
       // I should start building model 
       Session.set("building", true);
+      Session.set("stopped",  false);
       start_modelbuild()
       'done'
     },
