@@ -23,6 +23,8 @@
     <script src="/demo12.js"></script>
 -->
 
+    <link href="/site.css" media="all" rel="stylesheet" />
+
 </head>
 
 <body>
@@ -30,10 +32,19 @@
   <div class="container">
     <header>
       <h1>Deep500.meteor.com</h1>
-
       {{> loginButtons}}
-
     </header>
+    This page builds a Deep Learning model to help me predict the S&amp;P 500.
+    <div id='a_spinner'>
+      <style>
+        #xa_spinner {color: #00D; animation: blinker 1s linear infinite;}
+        @keyframes xblinker {50% { opacity: 0.0; }}
+      </style>
+      <h2>Busy...Learning...</h2>
+      I Need an hour or 4. Be patient.
+      <br />
+      <img src='/spinner.gif' />
+    </div>
 
   </div>
 </body>
