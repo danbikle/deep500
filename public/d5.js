@@ -12,9 +12,6 @@ function start_modelbuild() {
 
 // I should create a callback for d3.csv():
 function cb1(err, csv_a) {
-  // I should remove the button
-  //  d3.select('#startbutton').remove()
-
   if (err) throw err
   // Yahoo gives the data by date descending.
   // I should order it    by date ascending.
@@ -120,7 +117,8 @@ function cr_mn(train_o) {
     var putjson_here = d3.select('#json1')
     putjson_here.html(mnjson_s)
 //debug
-Meteor.call("addmmodel", mnjson)
+var mopts = opts;
+Meteor.call("addmmodel", mopts, mnjson)
 //debug
 'finishedBatch'
 

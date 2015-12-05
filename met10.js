@@ -24,9 +24,10 @@ if (Meteor.isClient) {
 
 // This code runs both on client and server
 Meteor.methods({
-  addmmodel: function(mm){
-    // Demo: Meteor.call("addmmodel","hiThere")
+  addmmodel: function(moptions,mopts,mm){
+    // Demo: Meteor.call("addmmodel",{m1: 'yay'},"hiThere")
     Mmodels.insert({
+      mopts:     mopts,
       mmodel:    mm,
       createdAt: new Date(),
       owner:     Meteor.userId(),
