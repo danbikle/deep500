@@ -26,13 +26,16 @@ if (Meteor.isClient) {
 Meteor.methods({
   addmmodel: function(mopts,mm){
     // Demo: Meteor.call("addmmodel",{m1: 'yay'},"hiThere")
-    Mmodels.insert({
-      mopts:     mopts,
-      mmodel:    mm,
-      createdAt: new Date(),
-      owner:     Meteor.userId(),
-      username:  Meteor.user().username
+    if (Session.get("addmmodel_state") == undefined) {
+      Mmodels.insert({
+        mopts:     mopts,
+        mmodel:    mm,
+        createdAt: new Date(),
+        owner:     Meteor.userId(),
+        username:  Meteor.user().username
     });
+    Session.set("addmmodel_state", 'done')
     'Insert should be done now.'
+    }
   }
 });

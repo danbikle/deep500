@@ -74,9 +74,9 @@ function cr_mn(train_o) {
   opts.ensemble_size = 9
 
 //debug
-  opts.num_folds     = 3
-  opts.num_epochs    = 3
-  opts.ensemble_size = 3
+  opts.num_folds     = 1
+  opts.num_epochs    = 1
+  opts.ensemble_size = 1
 //debug
 
   // I should start work on obsv_v which is a volume of observations
@@ -122,11 +122,7 @@ function cr_mn(train_o) {
 var mopts = opts;
 var mopts = {'fakemopts': ' I am fake 2'}
 var mnjson = {'fakejson': 'I am not really the model.'}
-var meteor_notcalled_yet = true
-if (meteor_notcalled_yet){
-  Meteor.call("addmmodel", mopts, mnjson)
-  meteor_notcalled_yet = false
-}
+Meteor.call("addmmodel", mopts, mnjson)
 
 //debug
 'finishedBatch'
