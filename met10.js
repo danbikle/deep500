@@ -1,5 +1,5 @@
-Mmodels = new Mongo.Collection("mmodels");
-
+Mmodels   = new Mongo.Collection("mmodels");
+Needmodel = new Mongo.Collection("needmodel");
 if (Meteor.isClient) {
   // This code only runs on the client
 
@@ -12,6 +12,7 @@ if (Meteor.isClient) {
   Template.body.events({
     "click #startbutton": function () {
       Session.set("stopped", false) // building now.
+      Meteor.call("needmodel",{need: true})
       start_modelbuild()
     },
   });
@@ -26,16 +27,15 @@ if (Meteor.isClient) {
 Meteor.methods({
   addmmodel: function(mopts,mm){
     // Demo: Meteor.call("addmmodel",{m1: 'yay'},"hiThere")
-    if (Session.get("addmmodel_state") == undefined) {
-      Mmodels.insert({
-        mopts:     mopts,
-        mmodel:    mm,
-        createdAt: new Date(),
-        owner:     Meteor.userId(),
-        username:  Meteor.user().username
-    });
-    Session.set("addmmodel_state", 'done')
+    Mmodels.insert({
+      mopts:     mopts,
+      mmodel:    mm,
+      createdAt: new Date(),
+      owner:     Meteor.userId(),
+      username:  Meteor.user().username
+    })
     'Insert should be done now.'
-    }
-  }
+    Meteor.call("needmodel",{need: false})
+  },
+  needmodel: function(){Needmodel.insert({need:false })}
 });
