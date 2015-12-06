@@ -1,8 +1,8 @@
-Mmodels   = new Mongo.Collection("mmodels");
-Needmodel = new Mongo.Collection("needmodel");
+
 if (Meteor.isClient) {
   // This code only runs on the client
 
+  // I should tell the UI that convnet is stopped.
   Session.set("stopped",  true);
 
   Template.body.helpers({
@@ -12,7 +12,6 @@ if (Meteor.isClient) {
   Template.body.events({
     "click #startbutton": function () {
       Session.set("stopped", false) // building now.
-      Meteor.call("needmodel",{need: true})
       start_modelbuild()
     },
   });
@@ -24,6 +23,7 @@ if (Meteor.isClient) {
 } // if (Meteor.isClient)
 
 // This code runs both on client and server
+Mmodels = new Mongo.Collection("mmodels");
 Meteor.methods({
   addmmodel: function(mopts,mm){
     // Demo: Meteor.call("addmmodel",{m1: 'yay'},"hiThere")
@@ -34,8 +34,5 @@ Meteor.methods({
       owner:     Meteor.userId(),
       username:  Meteor.user().username
     })
-    'Insert should be done now.'
-    Meteor.call("needmodel",{need: false})
-  },
-  needmodel: function(){Needmodel.insert({need:false })}
+  }
 });

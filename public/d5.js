@@ -118,6 +118,7 @@ function cr_mn(train_o) {
       json_state   = 'have json'
       var mopts    = opts;
       Meteor.call("addmmodel", mopts, mnjson)
+      window.location = '/'
     }
     'finishedBatch'
   }
