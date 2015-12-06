@@ -112,13 +112,22 @@ function cr_mn(train_o) {
   function finishedBatch() {
     // Now that I am done, I should remove spinner:
     d3.select('#a_spinner').remove()
+/*
     mnjson = magicNet.toJSON()
     var mnjson_s = 'var magicNet11json = '+JSON.stringify(mnjson)
     var putjson_here = d3.select('#json1')
     putjson_here.html(mnjson_s)
+*/
 //debug
 var mopts = opts;
-Meteor.call("addmmodel", mopts, mnjson)
+var mopts = {'fakemopts': ' I am fake 2'}
+var mnjson = {'fakejson': 'I am not really the model.'}
+var meteor_notcalled_yet = true
+if (meteor_notcalled_yet){
+  Meteor.call("addmmodel", mopts, mnjson)
+  meteor_notcalled_yet = false
+}
+
 //debug
 'finishedBatch'
 

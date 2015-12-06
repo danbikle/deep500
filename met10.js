@@ -24,7 +24,7 @@ if (Meteor.isClient) {
 
 // This code runs both on client and server
 Meteor.methods({
-  addmmodel: function(moptions,mopts,mm){
+  addmmodel: function(mopts,mm){
     // Demo: Meteor.call("addmmodel",{m1: 'yay'},"hiThere")
     Mmodels.insert({
       mopts:     mopts,
@@ -33,5 +33,6 @@ Meteor.methods({
       owner:     Meteor.userId(),
       username:  Meteor.user().username
     });
+    'Insert should be done now.'
   }
 });
