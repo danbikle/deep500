@@ -109,24 +109,17 @@ function cr_mn(train_o) {
   /* start training MagicNet. 
   Every call trains all candidates in current batch on one example: */
   setInterval(function(){ magicNet.step() })
+  var json_state = 'need json'
   function finishedBatch() {
     // Now that I am done, I should remove spinner:
     d3.select('#a_spinner').remove()
-/*
-    mnjson = magicNet.toJSON()
-    var mnjson_s = 'var magicNet11json = '+JSON.stringify(mnjson)
-    var putjson_here = d3.select('#json1')
-    putjson_here.html(mnjson_s)
-*/
-//debug
-var mopts = opts;
-var mopts = {'fakemopts': ' I am fake 2'}
-var mnjson = {'fakejson': 'I am not really the model.'}
-Meteor.call("addmmodel", mopts, mnjson)
-
-//debug
-'finishedBatch'
-
+    if (json_state == 'need json'){
+      var mnjson   = magicNet.toJSON()
+      json_state   = 'have json'
+      var mopts    = opts;
+      Meteor.call("addmmodel", mopts, mnjson)
+    }
+    'finishedBatch'
   }
 }
 
