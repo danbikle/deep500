@@ -5,8 +5,14 @@ if (Meteor.isClient) {
   // I should tell the UI that convnet is stopped.
   Session.set("stopped",  true);
 
+  Template.mmodel.helpers({
+//    mmodel: function(){return 'mmodel sposed 2be here'}
+    mmodel: function(){return this} // I use 'this' to get elts
+  });
+
   Template.body.helpers({
-    stopped: function(){return Session.get("stopped" )}
+    stopped: function(){return Session.get("stopped" )},
+    mmodels: function(){return ['hello','world']},
   });
 
   Template.body.events({

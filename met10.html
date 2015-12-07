@@ -38,17 +38,26 @@
       <h2>I am waiting for you to press the start button</h2>
       <button id="startbutton">Start Build</button>
       <br />
-      <img src='/spinner.gif' />
     </div>
 {{else}}
     <div id='a_spinner'>
       <h2>Busy...Learning...</h2>
       I Need an hour or 4. Be patient.
       <br />
-
-      <img src='/spinner.gif' />
     </div>
 {{/if}}
+    <img src='/spinner.gif' />
+      <h2>List of Models</h2>
+      <ul>
+        <li>model1</li>
+        {{#each mmodels}}
+          {{> mmodel}}
+        {{/each}}
 
+      </ul>
   </div>
 </body>
+
+<template name="mmodel">
+  <li>{{mmodel}}</li>
+</template>
