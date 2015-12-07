@@ -7,12 +7,12 @@ if (Meteor.isClient) {
 
   Template.mmodel.helpers({
 //    mmodel: function(){return 'mmodel sposed 2be here'}
-    mmodel: function(){return this} // I use 'this' to get elts
+    // mmodel: function(){return mmodel} // I use 'this' to get elts
   });
 
   Template.body.helpers({
     stopped: function(){return Session.get("stopped" )},
-    mmodels: function(){return ['hello','world']},
+    mmodels: [{'mmodel':'hello'},{'mmodel':'world'}]
   });
 
   Template.body.events({
