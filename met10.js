@@ -20,19 +20,10 @@ if (Meteor.isClient) {
 
   Template.body.helpers({
     mmodels: function () {
-      if (Session.get("hideCompleted")) {
-        // If hide completed is checked, filter mmodels
-        return Mmodels.find({checked: {$ne: true}}, {sort: {createdAt: -1}});
-      } else {
-        // Otherwise, return all of the mmodels
-        return Mmodels.find({}, {sort: {createdAt: -1}});
-      }
+      return Mmodels.find({}, {sort: {createdAt: -1}});
     },
-    hideCompleted: function () {
-      return Session.get("hideCompleted");
-    },
-    incompleteCount: function () {
-      return Mmodels.find({checked: {$ne: true}}).count();
+    mmodelCount: function () {
+      return Mmodels.find({}).count();
     }
   });
 
@@ -49,9 +40,6 @@ if (Meteor.isClient) {
 
       // Clear form
       event.target.text.value = "";
-    },
-    "change .hide-completed input": function (event) {
-      Session.set("hideCompleted", event.target.checked);
     }
   });
 
