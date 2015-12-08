@@ -34,9 +34,10 @@ if (Meteor.isClient) {
 
       // Get value from form element
       var model_name = event.target.model_name.value;
+      var num_folds  = event.target.num_folds.value;
 
       // Insert a mmodel into the collection
-      Meteor.call("addMmodel", model_name);
+      Meteor.call("addMmodel", model_name,num_folds);
 
       // Clear form
       event.target.model_name.value = "";
@@ -68,7 +69,7 @@ if (Meteor.isClient) {
 }
 
 Meteor.methods({
-  addMmodel: function (model_name) {
+  addMmodel: function (model_name,num_folds) {
     // Make sure the user is logged in before inserting a mmodel
     if (! Meteor.userId()) {
       throw new Meteor.Error("not-authorized");
@@ -76,9 +77,10 @@ Meteor.methods({
 
     Mmodels.insert({
       model_name: model_name,
-      createdAt: new Date(),
-      owner: Meteor.userId(),
-      username: Meteor.user().username
+      num_folds:  num_folds,
+      createdAt:  new Date(),
+      owner:      Meteor.userId(),
+      username:   Meteor.user().username
     });
   },
   deleteMmodel: function (mmodelId) {
