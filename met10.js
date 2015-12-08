@@ -33,13 +33,13 @@ if (Meteor.isClient) {
       event.preventDefault();
 
       // Get value from form element
-      var text = event.target.text.value;
+      var model_name = event.target.model_name.value;
 
       // Insert a mmodel into the collection
-      Meteor.call("addMmodel", text);
+      Meteor.call("addMmodel", model_name);
 
       // Clear form
-      event.target.text.value = "";
+      event.target.model_name.value = "";
     }
   });
 
@@ -68,14 +68,14 @@ if (Meteor.isClient) {
 }
 
 Meteor.methods({
-  addMmodel: function (text) {
+  addMmodel: function (model_name) {
     // Make sure the user is logged in before inserting a mmodel
     if (! Meteor.userId()) {
       throw new Meteor.Error("not-authorized");
     }
 
     Mmodels.insert({
-      text: text,
+      model_name: model_name,
       createdAt: new Date(),
       owner: Meteor.userId(),
       username: Meteor.user().username
