@@ -28,19 +28,21 @@ if (Meteor.isClient) {
   });
 
   Template.body.events({
-    "submit .new-mmodel": function (event) {
+    "click #button_newmodel": function (event) {
       // Prevent default browser form submit
       event.preventDefault();
 
       // Get value from form element
-      var model_name = event.target.model_name.value;
-      var num_folds  = event.target.num_folds.value;
+      var model_name = event.target.form.children.model_name.value;
+      var num_folds  = event.target.form.children.num_folds.value;
 
       // Insert a mmodel into the collection
       Meteor.call("addMmodel", model_name,num_folds);
 
       // Clear form
-      event.target.model_name.value = "";
+      event.target.form.children.model_name.value = "";
+      event.target.form.children.num_folds.value  = "";
+
     }
   });
 
