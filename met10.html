@@ -1,5 +1,5 @@
 <head>
-  <title>Todo List</title>
+  <title>Deep500</title>
 
     <script src="/src/convnet_init.js"></script>
     <script src="/src/convnet_util.js"></script>
@@ -20,44 +20,53 @@
     <script src="/d3.v3.min.js"></script>
     <script src="/app31.js"></script>
     <script src="/d5.js"></script>
-
-    <link href="/site.css" media="all" rel="stylesheet" />
+    <link   href="/site.css"></link>
 
 </head>
 
 <body>
-
   <div class="container">
     <header>
-      <h1>Deep500.meteor.com</h1>
-      {{> loginButtons}}
-    </header>
-    This page builds a Deep Learning model to help me predict the S&amp;P 500.
-{{#if stopped}}
-    <div id='a_waiter'>
-      <h2>I am waiting for you to press the start button</h2>
-      <button id="startbutton">Start Build</button>
-      <br />
-    </div>
-{{else}}
-    <div id='a_spinner'>
-      <h2>Busy...Learning...</h2>
-      I Need an hour or 4. Be patient.
-      <br />
-    </div>
-{{/if}}
-    <img src='/spinner.gif' />
-      <h2>List of Models</h2>
-      <ul>
-        <li>model1</li>
-        {{#each mmodels}}
-          {{> mmodel}}
-        {{/each}}
+      <h1>Todo List ({{incompleteCount}})</h1>
 
-      </ul>
+      <label class="hide-completed">
+        <input type="checkbox" checked="{{hideCompleted}}" />
+        Hide Completed Tasks
+      </label>
+
+      {{> loginButtons}}
+
+      {{#if currentUser}}
+        <form class="new-task">
+          <input type="text" name="text" placeholder="Type to add new tasks" />
+        </form>
+      {{/if}}
+    </header>
+
+    <ul>
+      {{#each tasks}}
+        {{> task}}
+      {{/each}}
+    </ul>
   </div>
 </body>
 
-<template name="mmodel">
-  <li>{{mmodel}}</li>
+<template name="task">
+  <li class="{{#if checked}}checked{{/if}} {{#if private}}private{{/if}}">
+    <button class="delete">&times;</button>
+
+    <input type="checkbox" checked="{{checked}}" class="toggle-checked" />
+
+    {{#if isOwner}}
+      <button class="toggle-private">
+        {{#if private}}
+          Private
+        {{else}}
+          Public
+        {{/if}}
+      </button>
+    {{/if}}
+
+    <span class="text"><strong>{{username}}</strong> - {{text}}</span>
+  </li>
 </template>
