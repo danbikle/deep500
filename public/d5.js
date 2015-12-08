@@ -5,7 +5,7 @@ but it takes a L O O O N G time to run.
 */
 
 // This function should start model build
-function start_modelbuild() {
+function start_modelbuild(model_name,num_days,num_folds,num_epochs,num_ensembles) {
   // I should get prices I want to learn from:
   d3.csv("/csv/GSPC.csv", cb1)
 }
@@ -116,8 +116,7 @@ function cr_mn(train_o) {
     if (json_state == 'need json'){
       var mnjson   = magicNet.toJSON()
       json_state   = 'have json'
-      var mopts    = opts;
-      Meteor.call("addmmodel", model_name,num_days,num_folds,num_epochs,num_ensembles);
+      Meteor.call("addmmodel", model_name,num_days,num_folds,num_epochs,num_ensembles,mnjson);
       window.location = '/'
     }
     'finishedBatch'
