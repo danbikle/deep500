@@ -40,7 +40,8 @@ if (Meteor.isClient) {
       var num_ensembles  = event.target.form.children.num_ensembles.value;
 
       // Insert a mmodel into the collection
-      Meteor.call("addMmodel", model_name,num_days,num_folds,num_epochs,num_ensembles,);
+      // Meteor.call("addMmodel", model_name,num_days,num_folds,num_epochs,num_ensembles);
+      start_modelbuild();
 
       // Clear form
       event.target.form.children.model_name.value = "";
@@ -77,12 +78,11 @@ if (Meteor.isClient) {
 }
 
 Meteor.methods({
-  addMmodel: function (model_name,num_days,num_folds,num_epochs,num_ensembles) {
+  addMmodel: function (model_name,num_days,num_folds,num_epochs,num_ensembles,mnjson) {
     // Make sure the user is logged in before inserting a mmodel
     if (! Meteor.userId()) {
       throw new Meteor.Error("not-authorized");
     }
-
     Mmodels.insert({
       model_name:     model_name
       ,num_days:      num_days
@@ -92,6 +92,7 @@ Meteor.methods({
       ,createdAt:     new Date()
       ,owner:         Meteor.userId()
       ,username:      Meteor.user().username
+      ,mnjson:        mnjson
     });
   },
   deleteMmodel: function (mmodelId) {

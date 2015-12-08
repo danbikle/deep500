@@ -117,7 +117,7 @@ function cr_mn(train_o) {
       var mnjson   = magicNet.toJSON()
       json_state   = 'have json'
       var mopts    = opts;
-      Meteor.call("addmmodel", mopts, mnjson)
+      Meteor.call("addmmodel", model_name,num_days,num_folds,num_epochs,num_ensembles);
       window.location = '/'
     }
     'finishedBatch'
