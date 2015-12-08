@@ -48,8 +48,10 @@
 
 <template name="mmodel">
   <li class="{{#if private}}private{{/if}}">
-    <button class="delete">&times;</button>
 
+    <div class="div_username">Username: {{username}}</div>
+    <div class="div_model_name">Model Name: {{model_name}}</div>
+    <div class="div_num_folds">Number of Folds: {{num_folds}}</div>
     {{#if isOwner}}
       <button class="toggle-private">
         {{#if private}}
@@ -60,6 +62,7 @@
       </button>
     {{/if}}
 
-    <span class="text"><strong>{{username}}</strong> - {{model_name}}</span>
+    <button class="delete">Delete</button>
+    <hr />
   </li>
 </template>
