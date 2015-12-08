@@ -32,7 +32,14 @@
       {{#if currentUser}}
         <form class="new-mmodel">
           Model Name: <input type="text" name="model_name" />
+          <br />
+          Number of Training Days: <input type="text" name="num_days" />
+          <br />
           Number of Folds: <input type="text" name="num_folds" />
+          <br />
+          Number of Epochs: <input type="text" name="num_epochs" />
+          <br />
+          Number of Ensembles: <input type="text" name="num_ensembles" />
           <button id='button_newmodel'>Save New Model</button>
         </form>
       {{/if}}
@@ -51,7 +58,10 @@
 
     <div class="div_username">Username: {{username}}</div>
     <div class="div_model_name">Model Name: {{model_name}}</div>
+    <div class="div_num_days">Number of Training Days: {{num_days}}</div>
     <div class="div_num_folds">Number of Folds: {{num_folds}}</div>
+    <div class="div_num_epochs">Number of Epochs: {{num_epochs}}</div>
+    <div class="div_num_ensembles">Number of Ensembles: {{num_ensembles}}</div>
     {{#if isOwner}}
       <button class="toggle-private">
         {{#if private}}
