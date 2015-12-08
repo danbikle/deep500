@@ -31,30 +31,27 @@
 
       <label class="hide-completed">
         <input type="checkbox" checked="{{hideCompleted}}" />
-        Hide Completed Tasks
+        Hide Completed Mmodels
       </label>
 
       {{> loginButtons}}
 
       {{#if currentUser}}
-        <form class="new-task">
-          <input type="text" name="text" placeholder="Type to add new tasks" />
-        </form>
         <form class="new-mmodel">
-          <input type="text" name="mmodel" placeholder="Name of new model" />
+          <input type="text" name="text" placeholder="Type to add new mmodels" />
         </form>
       {{/if}}
     </header>
 
     <ul>
-      {{#each tasks}}
-        {{> task}}
+      {{#each mmodels}}
+        {{> mmodel}}
       {{/each}}
     </ul>
   </div>
 </body>
 
-<template name="task">
+<template name="mmodel">
   <li class="{{#if checked}}checked{{/if}} {{#if private}}private{{/if}}">
     <button class="delete">&times;</button>
 
