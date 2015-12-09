@@ -115,8 +115,7 @@ function cr_mn(train_o) {
     'finishedBatch done'
   }
   function predict_oos(){
-    cp_a
-    train_end
+    train_o
     'predict_oos done'
   }
 }
