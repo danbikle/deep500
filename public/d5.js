@@ -107,7 +107,7 @@ function cr_mn(train_o) {
     if (json_state  == 'need json'){
       model_o.mnjson = magicNet.toJSON()
       json_state     = 'have json'
-      model_o.build_duration = (Date.now()-mn_start)/60.0/1000.0
+      model_o.build_duration = Math.round(100.0*(Date.now()-mn_start)/60.0/1000.0)/100.0
       Meteor.call("addMmodel", model_o)
       window.location = '/'
     }
