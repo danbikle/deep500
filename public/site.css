@@ -21,3 +21,6 @@ table.results_o tr:nth-child(odd) {background-color: #DDDDDD;}
   border-style: solid;
   border-width: 2px; }
 @keyframes blinker {50% { opacity: 0.0; }}
+
+.div_mnjson {width: 600px; height: 150px; overflow: auto; color: #040; 
+             background-color: #EEE; word-wrap: break-word;}

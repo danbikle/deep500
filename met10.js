@@ -9,7 +9,7 @@ if (Meteor.isServer) {
         { private: {$ne: true} },
         { owner: this.userId }
       ]
-    });
+    })
   });
 }
 
@@ -19,7 +19,7 @@ if (Meteor.isClient) {
 
   Template.body.helpers({
     mmodels: function () {
-      return Mmodels.find({}, {sort: {createdAt: -1}});
+      return Mmodels.find({})
     },
     mmodelCount: function () {
       return Mmodels.find({}).count();
@@ -59,7 +59,8 @@ if (Meteor.isClient) {
   Template.mmodel.helpers({
     isOwner: function () {
       return this.owner === Meteor.userId();
-    }
+    },
+    mnjson: function(){return 'var mnjson = '+JSON.stringify(this.mnjson)}
   });
 
   Template.mmodel.events({
