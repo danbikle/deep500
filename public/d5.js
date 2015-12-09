@@ -33,8 +33,9 @@ function cb1(err, csv_a) {
   var labels_a     = cp2label(train_median,cp_a)
   var train_o      = cr_train_o(train_start,train_end,features_o,labels_a)
   // I should collect data for later predictions.
-  predict_o.cp_a      = cp_a
-  predict_o.train_end = train_end
+  predict_o.cp_a        = cp_a
+  predict_o.train_start = train_start
+  predict_o.train_end   = train_end
   // I should use train_o to create and train a new magicNet
   cr_mn(train_o)
 }
@@ -116,8 +117,9 @@ function cr_mn(train_o) {
   }
   // This function should predict out-of-sample data
   function predict_oos(predict_o){
-    var cp_a      = predict_o.cp_a
-    var train_end = predict_o.train_end
+    var cp_a        = predict_o.cp_a
+    var train_end   = predict_o.train_end
+    var train_start = predict_o.train_start
     // I should ensure train data and out-of-sample data do not mix:
     var oos_start = train_end +   1
     var oos_end   = cp_a.length - 1
