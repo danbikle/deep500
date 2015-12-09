@@ -44,10 +44,6 @@
         </form>
       {{/if}}
 
-      <div id='myresults' class='zebra_it'>
-        <table class='results_o'></table>
-      </div>
-
     </header>
 
     <ul>
@@ -69,6 +65,7 @@
     <div class="div_num_ensembles">Number of Ensembles: {{num_ensembles}}</div>
     <div class="div_build_duration">Build Duration: {{build_duration}} Minutes</div>
     MN json: <div class="div_mnjson"> <pre><code>{{mnjson}}</code></pre></div>
+    <div class="div_opinion">Opinion: {{opinion}}</div>
     {{#if isOwner}}
       <button class="toggle-private">
         {{#if private}}

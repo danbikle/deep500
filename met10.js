@@ -57,10 +57,11 @@ if (Meteor.isClient) {
   })
 
   Template.mmodel.helpers({
-    isOwner: function () {
-      return this.owner === Meteor.userId()
+    mnjson:    function(){return 'var mnjson = '+JSON.stringify(this.mnjson)},
+    isOwner:   function(){return this.owner === Meteor.userId()             },
+    results_o: function(){
+      return 'hello results_o'
     },
-    mnjson: function(){return 'var mnjson = '+JSON.stringify(this.mnjson)}
   })
 
   Template.mmodel.events({
@@ -98,6 +99,7 @@ Meteor.methods({
       ,username:       Meteor.user().username
       ,build_duration: m_o.build_duration
       ,mnjson:         m_o.mnjson
+      ,results_o:      m_o.results_o
     })
   },
   deleteMmodel: function (mmodelId) {
