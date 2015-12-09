@@ -20,7 +20,9 @@ function cb1(err, csv_a) {
   // Yahoo gives the data by date descending.
   // I should order it    by date ascending.
   csv_a.reverse()
-  var cp_a = csv_a.map(function(row){return +row['Close']})
+  var cp_a        = csv_a.map(function(row){return +row['Close']})
+  // I should get dates for charting:
+  model_o.ydate_a = csv_a.map(function(row){return row['Date']})
   // I should define boundries of out-of-sample, train data
   var train_end     = csv_a.length - 253  // 1 yr ago
   var train_size    = model_o.num_days

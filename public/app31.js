@@ -50,6 +50,8 @@ function cp2label(bndry,cp_a){
   return labels_a
 }
 function calc_results(predictions_a,labels_oos_a,pctlead_oos_a){
+  // I should chart_results.
+  chart_results(predictions_a,pctlead_oos_a)
   // I should fill confusion matrix.
   var chk = (predictions_a.length == labels_oos_a.length) 
   //  chk should be true
@@ -156,4 +158,16 @@ function cr_oos_o(oos_start,oos_end,features_o){
   }
   return oos_o
 }
-// This function should round to 3rd decimal place
+// This function should chart results:
+function chart_results(predictions_a,pctlead_oos_a){
+  predictions_a
+  pctlead_oos_a
+  var ydate_a   = model_o.ydate_a
+  var oos_end   = ydate_a.length - 1
+  var oos_size  = predictions_a.length
+  var oos_start = oos_end - oos_size
+  ydate_oos_a   = ydate_a.slice(oos_start,oos_end)
+  var chk = (ydate_oos_a.length == predictions_a.length) // should be true
+      chk = (ydate_oos_a.length == pctlead_oos_a.length) // should be true
+  'chart_results done'
+}
