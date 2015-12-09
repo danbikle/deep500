@@ -41,10 +41,10 @@ if (Meteor.isClient) {
 
       model_o = {}
       model_o.model_name    = model_name
-      model_o.num_days      = num_days
-      model_o.num_folds     = num_folds
-      model_o.num_epochs    = num_epochs
-      model_o.num_ensembles = num_ensembles
+      model_o.num_days      = +num_days
+      model_o.num_folds     = +num_folds
+      model_o.num_epochs    = +num_epochs
+      model_o.num_ensembles = +num_ensembles
       start_modelbuild()
 
       // Clear form
