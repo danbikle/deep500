@@ -110,10 +110,10 @@ function cr_mn(train_o) {
       model_o.mnjson = magicNet.toJSON()
       json_state     = 'have json'
       model_o.build_duration = Math.round(100.0*(Date.now()-mn_start)/60.0/1000.0)/100.0
+      predict_o.mymn    = magicNet
+      model_o.results_o = predict_oos(predict_o)
       Meteor.call("addMmodel", model_o)
-      predict_o.mymn  = magicNet
-      predict_oos(predict_o)
-      window.location = '/'
+      window.location   = '/'
     }
     'finishedBatch done'
   }
@@ -136,8 +136,7 @@ function cr_mn(train_o) {
     var pctlead_a     = pctlead1(cp_a)
     var pctlead_oos_a = pctlead_a.slice(oos_start,oos_end)
     var results_o     = calc_results(predictions_a,labels_oos_a,pctlead_oos_a)
-    // I should see results_o:
-    vwr(results_o)
+    return results_o
 
     'predict_oos done'
   }
