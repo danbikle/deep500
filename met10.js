@@ -60,7 +60,7 @@ if (Meteor.isClient) {
     mnjson:    function(){return 'var mnjson = '+JSON.stringify(this.mnjson)},
     isOwner:   function(){return this.owner === Meteor.userId()             },
     results_o: function(){
-      return results_o.opinion
+      return this.results_o.opinion
     },
   })
 
