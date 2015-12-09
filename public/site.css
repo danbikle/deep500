@@ -5,6 +5,12 @@ a:hover       {color: #BB0000;background-color: #EEEEEE; }
 #show_mycode  {color: #600; font-weight: bold; background-color: #EEE; border-radius: 25px;}
 .myjson       {color: #600; font-weight: bold; background-color: #EEE; border-radius: 25px;}
 .width600wwbw {width: 600px; word-wrap:break-word;}
+.table_model {
+  color: #500;
+  border-color: black;
+  border-style: solid;
+  border-width: 2px; }
+.table_model tr:nth-child(even) {background-color: #DDDDDD;}
 table.results_o {
   color: #005500;
   border-color: black;
