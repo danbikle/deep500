@@ -29,6 +29,8 @@ function cb1(err, csv_a) {
   var pctlead_train = pctlead.slice(train_start,train_end)
   // Now that I know pctlead_train, I can calculate train_median
   var train_median = d3.median(pctlead_train)
+  // I should capture train_median for the UI:
+  model_o.train_median = train_median
   var features_o   = cp2ftr(cp_a)
   var labels_a     = cp2label(train_median,cp_a)
   var train_o      = cr_train_o(train_start,train_end,features_o,labels_a)

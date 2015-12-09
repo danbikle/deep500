@@ -105,6 +105,7 @@ Meteor.methods({
       ,owner:          Meteor.userId()
       ,username:       Meteor.user().username
       ,build_duration: m_o.build_duration
+      ,train_median:   m_o.train_median
       ,mnjson:         m_o.mnjson
       ,results_o:      m_o.results_o
     })
