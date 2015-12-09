@@ -65,7 +65,13 @@
     <div class="div_num_ensembles">Number of Ensembles: {{num_ensembles}}</div>
     <div class="div_build_duration">Build Duration: {{build_duration}} Minutes</div>
     magicNet JSON: <div class="div_mnjson"> <pre><code>{{mnjson}}</code></pre></div>
-    <div class="div_opinion">results_o: {{results_o}}</div>
+    <div class="div_results_o">
+      <ul>
+        {{#each results_o}}
+          <li>results_o: hello</li>
+        {{/each}}
+      </ul>
+    </div>
     {{#if isOwner}}
       <button class="toggle-private">
         {{#if private}}

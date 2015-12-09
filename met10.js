@@ -61,7 +61,7 @@ if (Meteor.isClient) {
     isOwner:   function(){return this.owner === Meteor.userId()             },
     results_o: function(){
       var r_o = this.results_o
-      return    r_o.opinion
+      return    [r_o.opinion, r_o.opinion]
     },
   })
 
