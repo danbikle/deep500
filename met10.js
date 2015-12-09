@@ -57,12 +57,10 @@ if (Meteor.isClient) {
   })
 
   Template.mmodel.helpers({
-    mnjson:    function(){return 'var mnjson = '+JSON.stringify(this.mnjson)},
-    isOwner:   function(){return this.owner === Meteor.userId()             },
-    results_o: function(){
-      var r_o = this.results_o
-      return    [r_o.opinion, r_o.opinion]
-    },
+    mnjson:   function(){return 'var mnjson = '+JSON.stringify(this.mnjson)},
+    isOwner:  function(){return this.owner === Meteor.userId()             },
+    accuracy: function(){return this.results_o.accuracy                    },
+    opinion:  function(){return this.results_o.opinion                     },
   })
 
   Template.mmodel.events({

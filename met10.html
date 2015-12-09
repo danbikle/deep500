@@ -54,10 +54,6 @@
   </div>
 </body>
 
-<template name="aresult">
-  aresult
-</template>
-
 <template name="mmodel">
   <li class="{{#if private}}private{{/if}}">
 
@@ -69,13 +65,10 @@
     <div class="div_num_ensembles">Number of Ensembles: {{num_ensembles}}</div>
     <div class="div_build_duration">Build Duration: {{build_duration}} Minutes</div>
     magicNet JSON: <div class="div_mnjson"> <pre><code>{{mnjson}}</code></pre></div>
-    <div class="div_results_o">
-      <ul>
-        {{#each results_o}}
-          <li>{{> aresult}}</li>
-        {{/each}}
-      </ul>
-    </div>
+    <table class='results_o'>
+      <tr><td>Accuracy:</td><td>{{accuracy}}</td></tr>
+      <tr><td>Opinion:</td><td>{{opinion}}</td></tr>
+    </table>
     {{#if isOwner}}
       <button class="toggle-private">
         {{#if private}}
