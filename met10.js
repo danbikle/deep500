@@ -61,6 +61,14 @@ if (Meteor.isClient) {
     isOwner:  function(){return this.owner === Meteor.userId()             },
     accuracy: function(){return this.results_o.accuracy                    },
     opinion:  function(){return this.results_o.opinion                     },
+    true_avg: function(){return this.results_o.true_avg                    },
+    false_avg:function(){return this.results_o.false_avg                   },
+    pos_accuracy: function(){return this.results_o.pos_accuracy            },
+    neg_accuracy: function(){return this.results_o.neg_accuracy            },
+    truepos:  function(){return this.results_o.truepos                     },
+    falsepos: function(){return this.results_o.falsepos                    },
+    trueneg:  function(){return this.results_o.trueneg                     },
+    falseneg: function(){return this.results_o.falseneg                    },
   })
 
   Template.mmodel.events({
