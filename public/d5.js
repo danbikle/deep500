@@ -64,10 +64,10 @@ function cr_mn(train_o) {
   // number of folds to evaluate per candidate:
   opts.num_folds = model_o.num_folds
   // number of epochs to make through data per fold
-  opts.num_folds = model_o.num_epochs
+  opts.num_epochs = model_o.num_epochs
   /* how many nets to average in the end for prediction? 
   likely higher = better but slower: */
-  opts.ensemble_size = model_o.ensemble_size
+  opts.ensemble_size = model_o.num_ensembles
 
   // I should start work on obsv_v which is a volume of observations
   var fnum = -1
@@ -90,6 +90,11 @@ function cr_mn(train_o) {
   }
 
   var chk = (train_data.length == train_o.label.length) // should be true
+// debug
+opts.num_epochs    = 1
+opts.num_folds     = 1
+opts.ensemble_size = 1
+// debug
 
   var magicNet = new convnetjs.MagicNet(train_data, train_o.label, opts)
 
