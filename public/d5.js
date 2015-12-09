@@ -22,15 +22,10 @@ function cb1(err, csv_a) {
   csv_a.reverse()
   var cp_a = csv_a.map(function(row){return +row['Close']})
   // I should define boundries of out-of-sample, train data
-  var train_end   = csv_a.length - 253  // 1 yr ago
-  var train_size  = model_o.num_days
-
-  var train_start = train_end - train_size
-  // I should ensure train data and out-of-sample data do not mix:
-  var oos_start = train_end +    1
-  var oos_end   = csv_a.length - 1
-  var oos_size  = oos_end - oos_start
-  var pctlead   = pctlead1(cp_a)
+  var train_end     = csv_a.length - 253  // 1 yr ago
+  var train_size    = model_o.num_days
+  var train_start   = train_end - train_size
+  var pctlead       = pctlead1(cp_a)
   var pctlead_train = pctlead.slice(train_start,train_end)
   // Now that I know pctlead_train, I can calculate train_median
   var train_median = d3.median(pctlead_train)
@@ -119,9 +114,21 @@ function cr_mn(train_o) {
     }
     'finishedBatch done'
   }
+  // This function should predict out-of-sample data
   function predict_oos(predict_o){
-    predict_o.cp_a
-    predict_o.train_end
+    var cp_a      = predict_o.cp_a
+    var train_end = predict_o.train_end
+    // I should ensure train data and out-of-sample data do not mix:
+    var oos_start = train_end +   1
+    var oos_end   = cp_a.length - 1
+    var oos_size  = oos_end - oos_start
+    var pctlead       = pctlead1(cp_a)
+    var pctlead_train = pctlead.slice(train_start,train_end)
+    // Now that I know pctlead_train, I can calculate train_median
+    var train_median = d3.median(pctlead_train)
+    var features_o   = cp2ftr(cp_a)
+    var labels_a     = cp2label(train_median,cp_a)
+    
     'predict_oos done'
   }
 }
