@@ -13,6 +13,8 @@ table.results_o {
 table.results_o tr:nth-child(odd) {background-color: #DDDDDD;}
 
 #a_spinner {
+  position: absolute;
+  opacity: 1.0;
   padding: 10px;
   width: 800px;
   color: #00D; 
