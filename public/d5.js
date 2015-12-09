@@ -111,6 +111,7 @@ function cr_mn(train_o) {
       json_state     = 'have json'
       model_o.build_duration = Math.round(100.0*(Date.now()-mn_start)/60.0/1000.0)/100.0
       Meteor.call("addMmodel", model_o)
+      predict_o.mymn  = magicNet
       predict_oos(predict_o)
       window.location = '/'
     }
@@ -126,12 +127,17 @@ function cr_mn(train_o) {
     var oos_start = train_end +   1
     var oos_end   = cp_a.length - 1
     var oos_size  = oos_end - oos_start
-    var pctlead     = pctlead1(cp_a)
-    var pctlead_oos = pctlead.slice(oos_start,oos_end)
     var features_o  = cp2ftr(cp_a)
     var labels_a    = cp2label(train_median,cp_a)
     // I should get out-of-sample data ready:
-    var oos_o       = cr_oos_o(oos_start,oos_end,features_o)
+    var oos_o         = cr_oos_o(oos_start,oos_end,features_o)
+    var predictions_a = mn_predict(predict_o.mymn, oos_o)
+    var labels_oos_a  = labels_a.slice(oos_start,oos_end)
+    var pctlead_a     = pctlead1(cp_a)
+    var pctlead_oos_a = pctlead_a.slice(oos_start,oos_end)
+    var results_o     = calc_results(predictions_a,labels_oos_a,pctlead_oos_a)
+    // I should see results_o:
+    vwr(results_o)
 
     'predict_oos done'
   }
