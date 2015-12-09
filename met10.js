@@ -40,16 +40,14 @@ if (Meteor.isClient) {
       var num_epochs    = fields.num_epochs.value;
       var num_ensembles = fields.num_ensembles.value;
 
-      // Insert a mmodel into the collection
-      // Meteor.call("addMmodel", model_name,num_days,num_folds,num_epochs,num_ensembles);
-      //start_modelbuild(model_name,num_days,num_folds,num_epochs,num_ensembles);
-      var model_o = {}
+      model_o = {}
       model_o.model_name    = model_name
       model_o.num_days      = num_days
       model_o.num_folds     = num_folds
       model_o.num_epochs    = num_epochs
       model_o.num_ensembles = num_ensembles
-      start_modelbuild(model_o)
+
+      start_modelbuild()
 
       // Clear form
       fields.model_name.value     = "";

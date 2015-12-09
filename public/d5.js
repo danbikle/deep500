@@ -5,10 +5,7 @@ but it takes a L O O O N G time to run.
 */
 
 // This function should start model build
-//function start_modelbuild(model_name,num_days,num_folds,num_epochs,num_ensembles) {
-function start_modelbuild(model_o){
-  window.model_o = model_o
-  // I should get prices I want to learn from:
+function start_modelbuild(){
   d3.csv("/csv/GSPC.csv", cb1)
 }
 
