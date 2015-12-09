@@ -109,10 +109,15 @@ function cr_mn(train_o) {
       json_state     = 'have json'
       model_o.build_duration = Math.round(100.0*(Date.now()-mn_start)/60.0/1000.0)/100.0
       Meteor.call("addMmodel", model_o)
+      predict_oos()
       window.location = '/'
     }
-
-    'finishedBatch'
+    'finishedBatch done'
+  }
+  function predict_oos(){
+    cp_a
+    train_end
+    'predict_oos done'
   }
 }
 
