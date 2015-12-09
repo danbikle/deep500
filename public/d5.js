@@ -6,6 +6,7 @@ but it takes a L O O O N G time to run.
 
 // This function should start model build
 function start_modelbuild(){
+  d3.select('body div.container').remove()
   d3.select('#divspinner')
     .html('<div id="a_spinner"><h1>Busy... Learning... (Please Wait)</h1><img src="/spinner.gif"></img></div>')
   d3.csv("/csv/GSPC.csv", cb1)
