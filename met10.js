@@ -1,4 +1,3 @@
-Tasks = new Mongo.Collection("tasks");
 Mmodels = new Mongo.Collection("mmodels");
 
 if (Meteor.isServer) {
@@ -46,7 +45,6 @@ if (Meteor.isClient) {
       model_o.num_folds     = num_folds
       model_o.num_epochs    = num_epochs
       model_o.num_ensembles = num_ensembles
-
       start_modelbuild()
 
       // Clear form
@@ -55,7 +53,6 @@ if (Meteor.isClient) {
       fields.num_folds.value      = "";
       fields.num_epochs.value     = "";
       fields.num_ensembles.value  = "";
-
     }
   });
 

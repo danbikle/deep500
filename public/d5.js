@@ -115,7 +115,7 @@ function cr_mn(train_o) {
     if (json_state  == 'need json'){
       model_o.mnjson = magicNet.toJSON()
       json_state     = 'have json'
-      Meteor.call("addmmodel", model_o)
+      Meteor.call("addMmodel", model_o)
       window.location = '/'
     }
     'finishedBatch'
