@@ -26,9 +26,9 @@
 <body>
   <div class="container">
     <header>
+      <div id='divspinner' />
       {{> loginButtons}}
       <h1>Deep500.meteor.com Predictive Models ({{mmodelCount}})</h1>
-
       {{#if currentUser}}
         <form class="new-mmodel">
           Model Name: <input type="text" name="model_name" />

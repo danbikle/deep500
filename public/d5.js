@@ -6,6 +6,7 @@ but it takes a L O O O N G time to run.
 
 // This function should start model build
 function start_modelbuild(){
+  d3.select('#divspinner').html('<span id='a_spinner'>I am a spinner.</span>')
   d3.csv("/csv/GSPC.csv", cb1)
 }
 
@@ -112,12 +113,14 @@ function cr_mn(train_o) {
   function finishedBatch() {
     // Now that I am done, I should remove spinner:
     d3.select('#a_spinner').remove()
+    
     if (json_state  == 'need json'){
       model_o.mnjson = magicNet.toJSON()
       json_state     = 'have json'
       Meteor.call("addMmodel", model_o)
       window.location = '/'
     }
+
     'finishedBatch'
   }
 }
