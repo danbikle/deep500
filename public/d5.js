@@ -34,7 +34,7 @@ function cb1(err, csv_a) {
   var train_median = d3.median(pctlead_train)
   var features_o   = cp2ftr(cp_a)
   var labels_a     = cp2label(train_median,cp_a)
-  var train_o      = cr_train_o(train_start,train_end,features_o,labels_a);
+  var train_o      = cr_train_o(train_start,train_end,features_o,labels_a)
   // I should use train_o to create and train a new magicNet
   cr_mn(train_o)
 }
@@ -92,7 +92,7 @@ function cr_mn(train_o) {
   var chk = (train_data.length == train_o.label.length) // should be true
 
   var magicNet = new convnetjs.MagicNet(train_data, train_o.label, opts)
-
+  var mn_start = Date.now()
   // On finish, I should call finishedBatch()
   magicNet.onFinishBatch(finishedBatch)
    
@@ -107,6 +107,7 @@ function cr_mn(train_o) {
     if (json_state  == 'need json'){
       model_o.mnjson = magicNet.toJSON()
       json_state     = 'have json'
+      model_o.build_duration = (Date.now() - mn_start) / 60.0
       Meteor.call("addMmodel", model_o)
       window.location = '/'
     }
