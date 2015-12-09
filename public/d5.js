@@ -112,10 +112,10 @@ function cr_mn(train_o) {
   function finishedBatch() {
     // Now that I am done, I should remove spinner:
     d3.select('#a_spinner').remove()
-    if (json_state == 'need json'){
-      var mnjson   = magicNet.toJSON()
-      json_state   = 'have json'
-      Meteor.call("addmmodel", model_name,num_days,num_folds,num_epochs,num_ensembles,mnjson);
+    if (json_state  == 'need json'){
+      model_o.mnjson = magicNet.toJSON()
+      json_state     = 'have json'
+      Meteor.call("addmmodel", model_o)
       window.location = '/'
     }
     'finishedBatch'

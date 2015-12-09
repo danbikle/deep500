@@ -84,21 +84,21 @@ if (Meteor.isClient) {
 }
 
 Meteor.methods({
-  addMmodel: function (model_name,num_days,num_folds,num_epochs,num_ensembles,mnjson) {
+  addMmodel: function (m_o){
     // Make sure the user is logged in before inserting a mmodel
     if (! Meteor.userId()) {
       throw new Meteor.Error("not-authorized");
     }
     Mmodels.insert({
-      model_name:     model_name
-      ,num_days:      num_days
-      ,num_folds:     num_folds
-      ,num_epochs:    num_epochs
-      ,num_ensembles: num_ensembles
+      model_name:     m_o.model_name
+      ,num_days:      m_o.num_days
+      ,num_folds:     m_o.num_folds
+      ,num_epochs:    m_o.num_epochs
+      ,num_ensembles: m_o.num_ensembles
       ,createdAt:     new Date()
       ,owner:         Meteor.userId()
       ,username:      Meteor.user().username
-      ,mnjson:        mnjson
+      ,mnjson:        m_o.mnjson
     });
   },
   deleteMmodel: function (mmodelId) {
