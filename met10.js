@@ -112,12 +112,10 @@ Meteor.methods({
   },
   deleteMmodel: function (mmodelId) {
     var mmodel = Mmodels.findOne(mmodelId)
-    if (mmodel.private && mmodel.owner !== Meteor.userId()) {
-      // If the mmodel is private, make sure only the owner can delete it
-      throw new Meteor.Error("not-authorized")
-    }
-
-    Mmodels.remove(mmodelId)
+    // Only the owner should delete it
+    if (mmodel.owner == Meteor.userId()) {
+      Mmodels.remove(mmodelId)
+    } else {throw new Meteor.Error("not-authorized")}
   },
   setChecked: function (mmodelId, setChecked) {
     var mmodel = Mmodels.findOne(mmodelId)
@@ -125,7 +123,6 @@ Meteor.methods({
       // If the mmodel is private, make sure only the owner can check it off
       throw new Meteor.Error("not-authorized")
     }
-
     Mmodels.update(mmodelId, { $set: { checked: setChecked} })
   },
   setPrivate: function (mmodelId, setToPrivate) {
