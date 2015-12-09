@@ -130,7 +130,9 @@ function cr_mn(train_o) {
     var pctlead_oos = pctlead.slice(oos_start,oos_end)
     var features_o  = cp2ftr(cp_a)
     var labels_a    = cp2label(train_median,cp_a)
-    
+    // I should get out-of-sample data ready:
+    var oos_o       = cr_oos_o(oos_start,oos_end,features_o)
+
     'predict_oos done'
   }
 }
