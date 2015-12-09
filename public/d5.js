@@ -90,11 +90,6 @@ function cr_mn(train_o) {
   }
 
   var chk = (train_data.length == train_o.label.length) // should be true
-// debug
-opts.num_epochs    = 1
-opts.num_folds     = 1
-opts.ensemble_size = 1
-// debug
 
   var magicNet = new convnetjs.MagicNet(train_data, train_o.label, opts)
 
