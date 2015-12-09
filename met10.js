@@ -19,7 +19,7 @@ if (Meteor.isClient) {
 
   Template.body.helpers({
     mmodels: function () {
-      return Mmodels.find({})
+      return Mmodels.find({}, {sort: {createdAt: -1}})
     },
     mmodelCount: function () {
       return Mmodels.find({}).count();
