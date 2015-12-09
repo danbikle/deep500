@@ -33,9 +33,10 @@ function cb1(err, csv_a) {
   var labels_a     = cp2label(train_median,cp_a)
   var train_o      = cr_train_o(train_start,train_end,features_o,labels_a)
   // I should collect data for later predictions.
-  predict_o.cp_a        = cp_a
-  predict_o.train_start = train_start
-  predict_o.train_end   = train_end
+  predict_o.cp_a         = cp_a
+  predict_o.train_start  = train_start
+  predict_o.train_end    = train_end
+  predict_o.train_median = train_median
   // I should use train_o to create and train a new magicNet
   cr_mn(train_o)
 }
@@ -117,19 +118,18 @@ function cr_mn(train_o) {
   }
   // This function should predict out-of-sample data
   function predict_oos(predict_o){
-    var cp_a        = predict_o.cp_a
-    var train_end   = predict_o.train_end
-    var train_start = predict_o.train_start
+    var cp_a         = predict_o.cp_a
+    var train_end    = predict_o.train_end
+    var train_start  = predict_o.train_start
+    var train_median = predict_o.train_median
     // I should ensure train data and out-of-sample data do not mix:
     var oos_start = train_end +   1
     var oos_end   = cp_a.length - 1
     var oos_size  = oos_end - oos_start
-    var pctlead       = pctlead1(cp_a)
-    var pctlead_train = pctlead.slice(train_start,train_end)
-    // Now that I know pctlead_train, I can calculate train_median
-    var train_median = d3.median(pctlead_train)
-    var features_o   = cp2ftr(cp_a)
-    var labels_a     = cp2label(train_median,cp_a)
+    var pctlead     = pctlead1(cp_a)
+    var pctlead_oos = pctlead.slice(oos_start,oos_end)
+    var features_o  = cp2ftr(cp_a)
+    var labels_a    = cp2label(train_median,cp_a)
     
     'predict_oos done'
   }
