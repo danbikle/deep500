@@ -21,7 +21,6 @@ function cb1(err, csv_a) {
   // I should order it    by date ascending.
   csv_a.reverse()
   var cp_a = csv_a.map(function(row){return +row['Close']})
-  predict_o.cp_a = cp_a
   // I should define boundries of out-of-sample, train data
   var train_end   = csv_a.length - 253  // 1 yr ago
   var train_size  = model_o.num_days
@@ -38,6 +37,9 @@ function cb1(err, csv_a) {
   var features_o   = cp2ftr(cp_a)
   var labels_a     = cp2label(train_median,cp_a)
   var train_o      = cr_train_o(train_start,train_end,features_o,labels_a)
+  // I should collect data for later predictions.
+  predict_o.cp_a      = cp_a
+  predict_o.train_end = train_end
   // I should use train_o to create and train a new magicNet
   cr_mn(train_o)
 }
@@ -118,7 +120,8 @@ function cr_mn(train_o) {
     'finishedBatch done'
   }
   function predict_oos(predict_o){
-    predict_o
+    predict_o.cp_a
+    predict_o.train_end
     'predict_oos done'
   }
 }
