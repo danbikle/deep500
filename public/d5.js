@@ -30,7 +30,7 @@ function cb1(err, csv_a) {
   // Now that I know pctlead_train, I can calculate train_median
   var train_median = d3.median(pctlead_train)
   // I should capture train_median for the UI:
-  model_o.train_median = train_median
+  model_o.train_median = d3.round(train_median,4)
   var features_o   = cp2ftr(cp_a)
   var labels_a     = cp2label(train_median,cp_a)
   var train_o      = cr_train_o(train_start,train_end,features_o,labels_a)
@@ -111,7 +111,8 @@ function cr_mn(train_o) {
     if (json_state  == 'need json'){
       model_o.mnjson = magicNet.toJSON()
       json_state     = 'have json'
-      model_o.build_duration = Math.round(100.0*(Date.now()-mn_start)/60.0/1000.0)/100.0
+      //model_o.build_duration = Math.round(100.0*(Date.now()-mn_start)/60.0/1000.0)/100.0
+      model_o.build_duration = d3.round((Date.now()-mn_start)/60.0/1000.0,3)
       predict_o.mymn    = magicNet
       model_o.results_o = predict_oos(predict_o)
       Meteor.call("addMmodel", model_o)
