@@ -4,6 +4,8 @@ This is a simple demo,
 but it takes a L O O O N G time to run.
 */
 
+var predict_o = {}
+
 // This function should start model build
 function start_modelbuild(){
   d3.select('body div.container').remove()
@@ -19,6 +21,7 @@ function cb1(err, csv_a) {
   // I should order it    by date ascending.
   csv_a.reverse()
   var cp_a = csv_a.map(function(row){return +row['Close']})
+  predict_o.cp_a = cp_a
   // I should define boundries of out-of-sample, train data
   var train_end   = csv_a.length - 253  // 1 yr ago
   var train_size  = model_o.num_days
@@ -109,13 +112,13 @@ function cr_mn(train_o) {
       json_state     = 'have json'
       model_o.build_duration = Math.round(100.0*(Date.now()-mn_start)/60.0/1000.0)/100.0
       Meteor.call("addMmodel", model_o)
-      predict_oos()
+      predict_oos(predict_o)
       window.location = '/'
     }
     'finishedBatch done'
   }
-  function predict_oos(){
-    train_o
+  function predict_oos(predict_o){
+    predict_o
     'predict_oos done'
   }
 }
