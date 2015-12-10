@@ -32,7 +32,11 @@ if (Meteor.isClient) {
   Template.body.events({
     "click #chartem": function(event){
       event.preventDefault()
-      bgcharts_a
+      bgcharts_a.forEach(function(chrt){
+        var agraph = new Rickshaw.Graph({})
+        'graphing now'
+      })
+      
       'chartem done'
     },
     "click #button_newmodel": function(event){
