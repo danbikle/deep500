@@ -69,7 +69,6 @@ if (Meteor.isClient) {
     falsepos: function(){return this.results_o.falsepos                    },
     trueneg:  function(){return this.results_o.trueneg                     },
     falseneg: function(){return this.results_o.falseneg                    },
-    // bgchart_id: function(){return this.results_o.bgchart_id                },
   })
 
   Template.mmodel.events({
