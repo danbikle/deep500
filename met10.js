@@ -56,6 +56,9 @@ if (Meteor.isClient) {
     }
   })
 
+  // I should use bgcharts_a to pull data out of mongo and then feed it to D3 for bgcharts
+  bgcharts_a = []
+
   Template.mmodel.helpers({
     mnjson:   function(){return 'var mnjson = '+JSON.stringify(this.mnjson)},
     isOwner:  function(){return this.owner === Meteor.userId()             },
@@ -71,7 +74,10 @@ if (Meteor.isClient) {
     falseneg: function(){return this.results_o.falseneg                    },
     bgchart:  function(){
       // I should collect chart data for D3 here.
-      bgcharts_a.push({this.bgchartid: this.results_o.blue_a})
+      var mychartdata             = {}
+      mychartdata[this.bgchartid] = this.results_o.blue_a
+      bgcharts_a.push(mychartdata)
+      // bgcharts_a.push('hello')
       return this.bgchartid
     },
   })

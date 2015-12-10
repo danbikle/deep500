@@ -4,8 +4,6 @@ This is a simple demo,
 but it takes a L O O O N G time to run.
 */
 
-// I should use bgcharts_a to pull data out of mongo and then feed it to D3 for bgcharts
-bgcharts_a = []
 // I should use predict_o to carry data into predict_oos()
 var predict_o = {}
 
