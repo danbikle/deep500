@@ -21,14 +21,6 @@ if (Meteor.isClient) {
   bgcharts_a = []
 
   Template.body.helpers({
-    getcharts: function(){
-      // I want to use D3 hear to chart data in bgcharts_a
-      bgcharts_a.forEach(function(chrt){
-      chrt
-      'anthing here?'
-      })
-      return "" // I want nothing to show yet
-    },
     mmodels: function(){
       return Mmodels.find({}, {sort: {createdAt: -1}})
     },
