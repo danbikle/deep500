@@ -30,7 +30,12 @@ if (Meteor.isClient) {
   })
 
   Template.body.events({
-    "click #button_newmodel": function (event) {
+    "click #chartem": function(event){
+      event.preventDefault()
+      bgcharts_a
+      'chartem done'
+    },
+    "click #button_newmodel": function(event){
       // Prevent default browser form submit
       event.preventDefault()
 
