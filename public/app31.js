@@ -50,8 +50,6 @@ function cp2label(bndry,cp_a){
   return labels_a
 }
 function calc_results(predictions_a,labels_oos_a,pctlead_oos_a){
-  // I should chart_results.
-  chart_results(predictions_a,pctlead_oos_a)
   // I should fill confusion matrix.
   var chk = (predictions_a.length == labels_oos_a.length) 
   //  chk should be true
@@ -160,6 +158,7 @@ function cr_oos_o(oos_start,oos_end,features_o){
 }
 // This function should chart results:
 function chart_results(predictions_a,pctlead_oos_a){
+  // under construction
   var ydate_a   = model_o.ydate_a
   var oos_end   = ydate_a.length
   var oos_size  = predictions_a.length
