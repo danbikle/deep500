@@ -20,9 +20,10 @@ function cb1(err, csv_a) {
   // Yahoo gives the data by date descending.
   // I should order it    by date ascending.
   csv_a.reverse()
-  var cp_a        = csv_a.map(function(row){return +row['Close']})
   // I should get dates for charting:
   model_o.ydate_a = csv_a.map(function(row){return row['Date']})
+  model_o.cp_a    = csv_a.map(function(row){return +row['Close']})
+  var cp_a        = model_o.cp_a
   // I should define boundries of out-of-sample, train data
   var train_end     = csv_a.length - 253  // 1 yr ago
   var train_size    = model_o.num_days
@@ -129,9 +130,9 @@ function cr_mn(train_o) {
     var train_start  = predict_o.train_start
     var train_median = predict_o.train_median
     // I should ensure train data and out-of-sample data do not mix:
-    var oos_start = train_end +   1
-    var oos_end   = cp_a.length - 1
-    var oos_size  = oos_end - oos_start
+    var oos_start   = train_end +   1
+    var oos_end     = cp_a.length - 1
+    var oos_size    = oos_end - oos_start
     var features_o  = cp2ftr(cp_a)
     var labels_a    = cp2label(train_median,cp_a)
     // I should get out-of-sample data ready:

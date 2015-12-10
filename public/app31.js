@@ -160,8 +160,6 @@ function cr_oos_o(oos_start,oos_end,features_o){
 }
 // This function should chart results:
 function chart_results(predictions_a,pctlead_oos_a){
-  predictions_a
-  pctlead_oos_a
   var ydate_a   = model_o.ydate_a
   var oos_end   = ydate_a.length - 1
   var oos_size  = predictions_a.length
@@ -169,5 +167,10 @@ function chart_results(predictions_a,pctlead_oos_a){
   ydate_oos_a   = ydate_a.slice(oos_start,oos_end)
   var chk = (ydate_oos_a.length == predictions_a.length) // should be true
       chk = (ydate_oos_a.length == pctlead_oos_a.length) // should be true
+  var cp_oos_a = cp_a.slice(oos_start,oos_end)
+  var blue_a   = []
+  for(dy=0; dy<oos_size; d++){
+    blue_a.push({x:ydate_oos_a[dy], y:cp_oos_a[dy]})
+  }
   'chart_results done'
 }
