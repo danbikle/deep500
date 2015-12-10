@@ -36,7 +36,7 @@ if (Meteor.isClient) {
       bgcharts_a.forEach(function(chrt){
         for (ky in chrt){bgchartid = ky;bdata = chrt[ky]}
         var agraph = new Rickshaw.Graph({
-          element: document.querySelector(bgchartid)
+          element: document.getElementById(bgchartid)
           ,series:[{data: bdata}]
         })
         'graphing now'
