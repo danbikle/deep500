@@ -4,15 +4,6 @@ This is a simple demo,
 but it takes a L O O O N G time to run.
 */
 
-function iwantcharts(){
-  bgcharts_a.forEach(function(chrt){
-    chrt
-    'do stuff now'
-    return 'done'
-  })
-  return true
-}
-
 // I should use predict_o to carry data into predict_oos()
 var predict_o = {}
 
