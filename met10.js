@@ -19,8 +19,9 @@ if (Meteor.isClient) {
 
   // I should use bgcharts_a to pull data out of mongo and then feed it to D3 for bgcharts
   bgcharts_a = []
-
+  Session.set('needcharts', true)
   Template.body.helpers({
+    needcharts: Session.get('needcharts'), // does not work so use d3 remove()
     mmodels: function(){
       return Mmodels.find({}, {sort: {createdAt: -1}})
     },
@@ -45,6 +46,10 @@ if (Meteor.isClient) {
         }
       })
       'chartem done'
+      // This should remove button but fails:
+      Session.set('needcharts',false)
+      // This should remove button:
+      d3.select('#chartem').remove()
     },
     "click #button_newmodel": function(event){
       // Prevent default browser form submit
