@@ -131,7 +131,8 @@ function cr_mn(train_o) {
     var train_median = predict_o.train_median
     // I should ensure train data and out-of-sample data do not mix:
     var oos_start   = train_end +   1
-    var oos_end     = cp_a.length - 1
+//    var oos_end     = cp_a.length - 1
+    var oos_end     = cp_a.length
     var oos_size    = oos_end - oos_start
     var features_o  = cp2ftr(cp_a)
     var labels_a    = cp2label(train_median,cp_a)
