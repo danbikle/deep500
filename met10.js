@@ -29,7 +29,7 @@ if (Meteor.isClient) {
       })
       return "" // I want nothing to show yet
     },
-    mmodels: function(){{
+    mmodels: function(){
       return Mmodels.find({}, {sort: {createdAt: -1}})
     },
     mmodelCount: function(){
