@@ -17,11 +17,22 @@ if (Meteor.isClient) {
   // This code only runs on the client
   Meteor.subscribe("mmodels")
 
+  // I should use bgcharts_a to pull data out of mongo and then feed it to D3 for bgcharts
+  bgcharts_a = []
+
   Template.body.helpers({
-    mmodels: function () {
+    getcharts: function(){
+      // I want to use D3 hear to chart data in bgcharts_a
+      bgcharts_a.forEach(function(chrt){
+      chrt
+      'anthing here?'
+      })
+      return "" // I want nothing to show yet
+    },
+    mmodels: function(){{
       return Mmodels.find({}, {sort: {createdAt: -1}})
     },
-    mmodelCount: function () {
+    mmodelCount: function(){
       return Mmodels.find({}).count()
     }
   })
@@ -55,9 +66,6 @@ if (Meteor.isClient) {
       fields.num_ensembles.value  = ""
     }
   })
-
-  // I should use bgcharts_a to pull data out of mongo and then feed it to D3 for bgcharts
-  bgcharts_a = []
 
   Template.mmodel.helpers({
     mnjson:   function(){return 'var mnjson = '+JSON.stringify(this.mnjson)},
