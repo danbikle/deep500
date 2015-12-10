@@ -100,6 +100,7 @@ function cr_mn(train_o) {
 
   var magicNet = new convnetjs.MagicNet(train_data, train_o.label, opts)
   var mn_start = Date.now()
+  model_o.bgchartid = 'bg'+mn_start // Useful for charting
   // On finish, I should call finishedBatch()
   magicNet.onFinishBatch(finishedBatch)
    
@@ -110,11 +111,9 @@ function cr_mn(train_o) {
   function finishedBatch() {
     // Now that I am done, I should remove spinner:
     d3.select('#a_spinner').remove()
-    
-    if (json_state  == 'need json'){
-      model_o.mnjson = magicNet.toJSON()
-      json_state     = 'have json'
-      //model_o.build_duration = Math.round(100.0*(Date.now()-mn_start)/60.0/1000.0)/100.0
+    if (json_state == 'need json'){
+      model_o.mnjson    = magicNet.toJSON()
+      json_state        = 'have json'
       model_o.build_duration = d3.round((Date.now()-mn_start)/60.0/1000.0,3)
       predict_o.mymn    = magicNet
       model_o.results_o = predict_oos(predict_o)
@@ -130,12 +129,11 @@ function cr_mn(train_o) {
     var train_start  = predict_o.train_start
     var train_median = predict_o.train_median
     // I should ensure train data and out-of-sample data do not mix:
-    var oos_start   = train_end +   1
-//    var oos_end     = cp_a.length - 1
-    var oos_end     = cp_a.length
-    var oos_size    = oos_end - oos_start
-    var features_o  = cp2ftr(cp_a)
-    var labels_a    = cp2label(train_median,cp_a)
+    var oos_start    = train_end +   1
+    var oos_end      = cp_a.length
+    var oos_size     = oos_end - oos_start
+    var features_o   = cp2ftr(cp_a)
+    var labels_a     = cp2label(train_median,cp_a)
     // I should get out-of-sample data ready:
     var oos_o         = cr_oos_o(oos_start,oos_end,features_o)
     var predictions_a = mn_predict(predict_o.mymn, oos_o)

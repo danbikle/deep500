@@ -69,6 +69,7 @@ if (Meteor.isClient) {
     falsepos: function(){return this.results_o.falsepos                    },
     trueneg:  function(){return this.results_o.trueneg                     },
     falseneg: function(){return this.results_o.falseneg                    },
+    // bgchart_id: function(){return this.results_o.bgchart_id                },
   })
 
   Template.mmodel.events({
@@ -108,6 +109,7 @@ Meteor.methods({
       ,train_median:   m_o.train_median
       ,mnjson:         m_o.mnjson
       ,results_o:      m_o.results_o
+      ,bgchartid:      m_o.bgchartid
     })
   },
   deleteMmodel: function (mmodelId) {
