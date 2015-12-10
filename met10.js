@@ -98,6 +98,13 @@ if (Meteor.isClient) {
   Accounts.ui.config({
     passwordSignupFields: "USERNAME_ONLY"
   })
+
+  bgcharts_a.forEach(function(chrt){
+    chrt
+    'do stuff now'
+    return 'done'
+  }
+
 }
 
 Meteor.methods({
