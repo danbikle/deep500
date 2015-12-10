@@ -69,6 +69,11 @@ if (Meteor.isClient) {
     falsepos: function(){return this.results_o.falsepos                    },
     trueneg:  function(){return this.results_o.trueneg                     },
     falseneg: function(){return this.results_o.falseneg                    },
+    bgchart:  function(){
+      // I should collect chart data for D3 here.
+      bgcharts_a.push({this.bgchartid: this.results_o.blue_a})
+      return this.bgchartid
+    },
   })
 
   Template.mmodel.events({
@@ -90,6 +95,7 @@ if (Meteor.isClient) {
 }
 
 Meteor.methods({
+  getmodels: function (){return Mmodels.find({})},
   addMmodel: function (m_o){
     // Make sure the user is logged in before inserting a mmodel
     if (! Meteor.userId()) {
