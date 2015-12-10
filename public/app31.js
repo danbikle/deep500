@@ -161,7 +161,7 @@ function cr_oos_o(oos_start,oos_end,features_o){
 // This function should chart results:
 function chart_results(predictions_a,pctlead_oos_a){
   var ydate_a   = model_o.ydate_a
-  var oos_end   = ydate_a.length - 1
+  var oos_end   = ydate_a.length
   var oos_size  = predictions_a.length
   var oos_start = oos_end - oos_size
   ydate_oos_a   = ydate_a.slice(oos_start,oos_end)
