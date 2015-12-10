@@ -170,7 +170,7 @@ function chart_results(predictions_a,pctlead_oos_a){
       chk = (ydate_oos_a.length == pctlead_oos_a.length) // should be true
       chk = (ydate_oos_a.length == cp_oos_a.length)      // should be true
   var blue_a   = []
-  for(dy=0; dy<oos_size; d++){
+  for(dy=0; dy<oos_size; dy++){
     blue_a.push({x:ydate_oos_a[dy], y:cp_oos_a[dy]})
   }
   'chart_results done'
