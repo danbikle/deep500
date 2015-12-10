@@ -3,6 +3,12 @@
 This script should help me run app31 demos.
 */
 
+// This function should create green data from predictions_a and blue data
+cr_gdata(predictions_a, bdata){
+  predictions_a
+  bdata
+  var chk = (predictions_a.length == bdata.length) // should be true
+}
 // This function should return array which lags my_a by n.
 function lagn(n,my_a) {
   // I should get first n members:
@@ -143,18 +149,19 @@ function mn_predict(mymn, oos_o){
   // I need to know size of oos data:
   for (ky in oos_o){fnum +=1; oos_size = oos_o[ky].length}
   // I know its size now: fnum
-  var predictions_a = []
+  var p01_a         = []
   // Each observation should get a vol:
   for (i=0;i<oos_size;i++){
     var obsv_v = new convnetjs.Vol(1,1,fnum)
-    var widx = 0
+    var widx   = 0
     // I should match each vol to some features
     for (ky in oos_o){
       obsv_v.w[widx] = oos_o[ky][i]
       widx += 1
     }
-    predictions_a.push(mymn.predict(obsv_v))
+    p01_a.push(mymn.predict(obsv_v))
   }
+  var predictions_a = p01.map(function(prd){if prd == 1 return 1; else return -1})
   return  predictions_a
 }
 // This function should return a subset of data from features_o:

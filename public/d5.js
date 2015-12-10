@@ -142,6 +142,7 @@ function cr_mn(train_o) {
     var pctlead_a     = pctlead1(cp_a)
     var pctlead_oos_a = pctlead_a.slice(oos_start,oos_end)
     var results_o     = calc_results(predictions_a,labels_oos_a,pctlead_oos_a)
+    model_o.predictions_a = predictions_a
     return results_o
 
     'predict_oos done'
