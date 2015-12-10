@@ -35,11 +35,14 @@ if (Meteor.isClient) {
       var bgchartid, bdata
       bgcharts_a.forEach(function(chrt){
         for (ky in chrt){bgchartid = ky;bdata = chrt[ky]}
-        var agraph = new Rickshaw.Graph({
-          element: document.getElementById(bgchartid)
-          ,series:[{data: bdata}]
-        })
-        'graphing now'
+        if (d3.select('#'+bgchartid+ ' svg path')[0][0] == null){
+          new Rickshaw.Graph({
+            renderer: 'line'
+            ,element: document.getElementById(bgchartid)
+            ,series:[{color: 'black', data: bdata}]
+          }).render()
+          'graphing now'
+        }
       })
       'chartem done'
     },
