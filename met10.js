@@ -34,19 +34,17 @@ if (Meteor.isClient) {
     "click #chartem": function(event){
       event.preventDefault()
       var bgchartid, blue_a, green_a
+      // I should have charts data inside bgcharts_a by now.
+      // I should have used a helper to fill bgcharts_a.
       bgcharts_a.forEach(function(chrt){
-chrt
-// I should get bgchartid from chrt
-for (x_ao in chrt) {
-  for (ky in chrt[x_ao])
-    bgchartid = ky
-
-}
-
-// I should get blue_a    from chrt
-// I should get green_a   from chrt
-
-
+        // I should get bgchartid from chrt
+        for (x_ao in chrt) {
+          for (ky in chrt[x_ao])
+            bgchartid = ky
+            // I should get blue_a, green_a from chrt
+            blue_a  = chrt['blue_a_o' ][ky]
+            green_a = chrt['green_a_o'][ky]
+        }
         if (d3.select('#'+bgchartid+ ' svg path')[0][0] == null){
 
 /*
