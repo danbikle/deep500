@@ -4,7 +4,7 @@ This script should help me run app31 demos.
 */
 
 // This function should create green data from predictions_a and blue data
-cr_gdata(predictions_a, bdata){
+function cr_gdata(predictions_a, bdata){
   predictions_a
   bdata
   var pl  = predictions_a.length
