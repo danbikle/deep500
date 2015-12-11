@@ -48,7 +48,6 @@ if (Meteor.isClient) {
         var chartmin = 0.8 * d3.min(blue_a.concat(green_a).map(function(pt){return pt.y}))
         var chartmax = 1.2 * d3.max(blue_a.concat(green_a).map(function(pt){return pt.y}))
         if (d3.select('#'+bgchartid+ ' svg path')[0][0] == null){
-          Blue: Long Only
           var bggraph = new Rickshaw.Graph({
             renderer: 'line'
             ,min: chartmin, max: chartmax
