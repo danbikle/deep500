@@ -3,15 +3,15 @@
 This script should help me run app31 demos.
 */
 
-// This function should create green data from predictions_a and blue data
-function cr_gdata(predictions_a, bdata){
+// This function should create green_a from predictions_a and blue_a
+function cr_gdata(predictions_a, blue_a){
   predictions_a
-  bdata
+  blue_a
   var pl  = predictions_a.length
-  var chk = (pl == bdata.length) // should be true
+  var chk = (pl == blue_a.length) // should be true
   for(p=0; p<pl; p++){
     predictions_a[p]
-    bdata[p]
+    blue_a[p]
   }
 }
 // This function should return array which lags my_a by n.
@@ -116,7 +116,7 @@ function calc_results(predictions_a,labels_oos_a,pctlead_oos_a){
     results_o.blue_a.push({x:ydate_oos_a[dy], y:cp_oos_a[dy]})
   }
   // I should calculate green data for blue-green chart
-  var gdata = cr_gdata(predictions_a, bdata)
+  var gdata = cr_gdata(predictions_a, blue_a)
   results_o.gdata         = gdata
   results_o.predictions_a = predictions_a
   return results_o
