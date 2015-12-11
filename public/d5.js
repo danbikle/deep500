@@ -149,7 +149,7 @@ function cr_mn(train_o) {
     var pcsv = ''
     for (p=0; p<oos_size;p++){
       var pdate = model_o.ydate_s_a[oos_start+p]
-      var cp    = cp_a[oos_start+p]
+      var cp    = d3.round(cp_a[oos_start+p],2)
       var prd   = predictions_a[p]
       var row   = pdate+','+cp+','+prd+"\n"
       pcsv      = pcsv + row
