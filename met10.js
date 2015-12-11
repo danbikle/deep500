@@ -37,6 +37,12 @@ if (Meteor.isClient) {
       bgcharts_a.forEach(function(chrt){
 chrt
 // I should get bgchartid from chrt
+for (x_ao in chrt) {
+  for (ky in chrt[x_ao])
+    bgchartid = ky
+
+}
+
 // I should get blue_a    from chrt
 // I should get green_a   from chrt
 
