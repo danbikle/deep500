@@ -23,7 +23,8 @@ function cb1(err, csv_a) {
   csv_a.reverse()
   // I should get dates for charting:
   model_o.ydate_a = csv_a.map(function(row){return Date.parse(row['Date'])/1000})
-  model_o.cp_a    = csv_a.map(function(row){return +row['Close']               })
+  model_o.ydate_s_a = csv_a.map(function(row){return Date.parse(row['Date'])})
+  model_o.cp_a    = csv_a.map(function(row){return +row['Close']            })
   var cp_a        = model_o.cp_a
   // I should define boundries of out-of-sample, train data
   var train_end     = csv_a.length - 253  // 1 yr ago
@@ -140,10 +141,10 @@ function cr_mn(train_o) {
     var pctlead_a     = pctlead1(cp_a)
     var pctlead_oos_a = pctlead_a.slice(oos_start,oos_end)
     var results_o     = calc_results(predictions_a,labels_oos_a,pctlead_oos_a)
-    results_o.train_start_date = model_o.ydate_a[train_start]
-    results_o.train_end_date   = model_o.ydate_a[train_end]
-    results_o.oos_start_date   = model_o.ydate_a[oos_start]
-    results_o.oos_end_date     = model_o.ydate_a[oos_end]
+    results_o.train_start_date = model_o.ydate_s_a[train_start]
+    results_o.train_end_date   = model_o.ydate_s_a[train_end]
+    results_o.oos_start_date   = model_o.ydate_s_a[oos_start]
+    results_o.oos_end_date     = model_o.ydate_s_a[oos_end-1]
     results_o.oos_size         = oos_size
 
     return results_o
