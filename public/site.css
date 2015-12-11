@@ -32,3 +32,4 @@ table.results_o tr:nth-child(even) {background-color: #DDDDDD;}
 
 .div_mnjson {width: 600px; height: 150px; overflow: auto; color: #004;
              background-color: #EEE; word-wrap: break-word;}
+.bgchart {border-color: black;border-style: solid;border-width: 1px;}

@@ -48,12 +48,14 @@ if (Meteor.isClient) {
         var chartmin = 0.8 * d3.min(blue_a.concat(green_a).map(function(pt){return pt.y}))
         var chartmax = 1.2 * d3.max(blue_a.concat(green_a).map(function(pt){return pt.y}))
         if (d3.select('#'+bgchartid+ ' svg path')[0][0] == null){
-          new Rickshaw.Graph({
+          var bggraph = new Rickshaw.Graph({
             renderer: 'line'
             ,min: chartmin, max: chartmax
             ,element: document.getElementById(bgchartid)
             ,series:[{color: 'blue', data: blue_a},{color: 'green', data: green_a}]
-          }).render()
+          })
+          var xAxis1 = new Rickshaw.Graph.Axis.X({graph: bggraph})
+          bggraph.render()
           'graphing now'
         }
       })
