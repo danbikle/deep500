@@ -116,7 +116,7 @@ function calc_results(predictions_a,labels_oos_a,pctlead_oos_a){
     results_o.blue_a.push({x:ydate_oos_a[dy], y:cp_oos_a[dy]})
   }
   // I should calculate green data for blue-green chart
-  var gdata = cr_gdata(predictions_a, results.blue_a)
+  var gdata = cr_gdata(predictions_a, results_o.blue_a)
   results_o.gdata         = gdata
   results_o.predictions_a = predictions_a
   return results_o
