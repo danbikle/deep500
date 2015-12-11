@@ -54,7 +54,8 @@ if (Meteor.isClient) {
             ,element: document.getElementById(bgchartid)
             ,series:[{color: 'blue', data: blue_a},{color: 'green', data: green_a}]
           })
-          var xAxis1 = new Rickshaw.Graph.Axis.Time( { graph: bggraph } )
+          var xAxis1 = new Rickshaw.Graph.Axis.Time({graph: bggraph})
+          var yAxis1 = new Rickshaw.Graph.Axis.Y({graph:    bggraph})
           bggraph.render()
           'graphing now'
         }
