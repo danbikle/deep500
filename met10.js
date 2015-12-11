@@ -38,6 +38,9 @@ if (Meteor.isClient) {
       green_ch_o = bgcharts_a[1]
       for (ky in blue_ch_o){bgchartid  = ky;blue_a  =  blue_ch_o[ky]}
       for (ky in green_ch_o){bgchartid = ky;green_a = green_ch_o[ky]}
+
+//problem here
+
       bgcharts_a.forEach(function(chrt){
         if (d3.select('#'+bgchartid+ ' svg path')[0][0] == null){
           new Rickshaw.Graph({
@@ -102,7 +105,7 @@ if (Meteor.isClient) {
       var green_a_o             = {}
       blue_a_o[this.bgchartid]  = this.results_o.blue_a
       green_a_o[this.bgchartid] = this.results_o.green_a
-      bgcharts_a.push([blue_a_o,green_a_o])
+      bgcharts_a.push({'blue_a_o':blue_a_o,'green_a_o':green_a_o})
       return this.bgchartid
     },
   })
