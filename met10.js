@@ -46,14 +46,11 @@ if (Meteor.isClient) {
             green_a = chrt['green_a_o'][ky]
         }
         if (d3.select('#'+bgchartid+ ' svg path')[0][0] == null){
-
-/*
           new Rickshaw.Graph({
             renderer: 'line'
             ,element: document.getElementById(bgchartid)
             ,series:[{color: 'blue', data: blue_a},{color: 'green', data: green_a}]
           }).render()
-*/
           'graphing now'
         }
       })
