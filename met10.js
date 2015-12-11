@@ -45,8 +45,8 @@ if (Meteor.isClient) {
         blue_a  = chrt['blue_a_o' ][bgchartid]
         green_a = chrt['green_a_o'][bgchartid]
         // I should calculate chartmin
-        var chartmin = 0.8 * d3.min(blue_a.concat(green_a).map(function(pt){return pt.y}))
-        var chartmax = 1.2 * d3.max(blue_a.concat(green_a).map(function(pt){return pt.y}))
+        var chartmin = 0.9 * d3.min(blue_a.concat(green_a).map(function(pt){return pt.y}))
+        var chartmax = 1.1 * d3.max(blue_a.concat(green_a).map(function(pt){return pt.y}))
         if (d3.select('#'+bgchartid+ ' svg path')[0][0] == null){
           var bggraph = new Rickshaw.Graph({
             renderer: 'line'
