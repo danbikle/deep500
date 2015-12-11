@@ -33,14 +33,14 @@ if (Meteor.isClient) {
   Template.body.events({
     "click #chartem": function(event){
       event.preventDefault()
-      var bgchartid, bdata
+      var bgchartid, blue_a, green_a
       bgcharts_a.forEach(function(chrt){
-        for (ky in chrt){bgchartid = ky;bdata = chrt[ky]}
+        for (ky in chrt){bgchartid = ky;blue_a = chrt[ky][0];green_a = chrt[ky][1]}
         if (d3.select('#'+bgchartid+ ' svg path')[0][0] == null){
           new Rickshaw.Graph({
             renderer: 'line'
             ,element: document.getElementById(bgchartid)
-            ,series:[{color: 'blue', data: bdata}]
+            ,series:[{color: 'blue', data: blue_a}]
           }).render()
           'graphing now'
         }
@@ -95,10 +95,11 @@ if (Meteor.isClient) {
     falseneg: function(){return this.results_o.falseneg                    },
     bgchart:  function(){
       // I should collect chart data for D3 here.
-      var mychartdata             = {}
-      mychartdata[this.bgchartid] = this.results_o.blue_a
-      bgcharts_a.push(mychartdata)
-      // bgcharts_a.push('hello')
+      var blue_a_o              = {}
+      var green_a_o             = {}
+      blue_a_o[this.bgchartid]  = this.results_o.blue_a
+      green_a_o[this.bgchartid] = this.results_o.green_a
+      bgcharts_a.push([blue_a_o,green_a_o])
       return this.bgchartid
     },
   })
