@@ -15,10 +15,16 @@ function cr_green_a(predictions_a, blue_a){
   green_a[0]  = blue_a[0]
   // I should use blue_a and predictions_a to calculate green_a
   for(p=0; p<(pl-1); p++){
-    green_a[p+1] = green_a[p]+(blue_a[p+1]-blue_a[p])*predictions_a[p]
+    // I should get the date:
+    var g_o = {}
+    g_o.x   = blue_a[p].x
+    // I should get the new price
+    g_o.y   = green_a[p].y + (blue_a[p+1].y-blue_a[p].y)*predictions_a[p]
+    green_a[p+1] = g_o
   }
   // I dont know blue_a[pl] yet, so I should show very last prediction result as flat
-  green_a[pl-1] = green_a[pl-2]
+  green_a[pl-1].x =  blue_a[pl-1].x
+  green_a[pl-1].y = green_a[pl-2].y
   return green_a
 }
 // This function should return array which lags my_a by n.
