@@ -96,26 +96,24 @@ if (Meteor.isClient) {
   })
 
   Template.mmodel.helpers({
-    mnjson:   function(){return 'var mnjson = '+JSON.stringify(this.mnjson)},
-    isOwner:  function(){return this.owner === Meteor.userId()             },
-    accuracy: function(){return this.results_o.accuracy                    },
-    opinion:  function(){return this.results_o.opinion                     },
-    pos_avg:  function(){return this.results_o.pos_avg                     },
-    neg_avg:  function(){return this.results_o.neg_avg                     },
-    pos_accuracy: function(){return this.results_o.pos_accuracy            },
-    neg_accuracy: function(){return this.results_o.neg_accuracy            },
-    truepos:  function(){return this.results_o.truepos                     },
-    falsepos: function(){return this.results_o.falsepos                    },
-    trueneg:  function(){return this.results_o.trueneg                     },
-    falseneg: function(){return this.results_o.falseneg                    },
-
-    train_start_date: function(){return this.results_o.train_start_date    },
-    train_end_date:   function(){return this.results_o.train_end_date      },
-    oos_start_date:   function(){return this.results_o.oos_start_date      },
-    oos_end_date:     function(){return this.results_o.oos_end_date        },
-    oos_size:         function(){return this.results_o.oos_size            },
-
-    bgchart:  function(){
+    mnjson:   function(){return 'var mnjson = '+JSON.stringify(this.mnjson)}
+    ,isOwner:  function(){return this.owner === Meteor.userId()            }
+    ,accuracy: function(){return this.results_o.accuracy                   }
+    ,pos_avg:  function(){return this.results_o.pos_avg                    }
+    ,neg_avg:  function(){return this.results_o.neg_avg                    }
+    ,pos_accuracy: function(){return this.results_o.pos_accuracy           }
+    ,neg_accuracy: function(){return this.results_o.neg_accuracy           }
+    ,truepos:  function(){return this.results_o.truepos                    }
+    ,falsepos: function(){return this.results_o.falsepos                   }
+    ,trueneg:  function(){return this.results_o.trueneg                    }
+    ,falseneg: function(){return this.results_o.falseneg                   }
+    ,train_start_date: function(){return this.results_o.train_start_date   }
+    ,train_end_date:   function(){return this.results_o.train_end_date     }
+    ,oos_start_date:   function(){return this.results_o.oos_start_date     }
+    ,oos_end_date:     function(){return this.results_o.oos_end_date       }
+    ,oos_size:         function(){return this.results_o.oos_size           }
+    ,pcsv:             function(){return this.results_o.pcsv               }
+    ,bgchart:          function(){
       // I should collect chart data for D3 here.
       var blue_a_o              = {}
       var green_a_o             = {}
@@ -123,10 +121,14 @@ if (Meteor.isClient) {
       green_a_o[this.bgchartid] = this.results_o.green_a
       bgcharts_a.push({'blue_a_o':blue_a_o,'green_a_o':green_a_o})
       return this.bgchartid
-    },
-    pcsv: function(){return this.results_o.pcsv}
-
-  })
+    } // bgchart
+    ,opinion: function(){
+      if(this.results_o.opinion == 'good')
+        return 'Model is Good Because Pos Avg > Neg Avg'
+      else
+        return 'Model is Bad  Because Neg Avg > Pos Avg'
+    } // opinion
+  }) //Template.mmodel.helpers
 
   Template.mmodel.events({
     "click .toggle-checked": function () {
