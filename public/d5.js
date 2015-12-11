@@ -140,6 +140,12 @@ function cr_mn(train_o) {
     var pctlead_a     = pctlead1(cp_a)
     var pctlead_oos_a = pctlead_a.slice(oos_start,oos_end)
     var results_o     = calc_results(predictions_a,labels_oos_a,pctlead_oos_a)
+    results_o.train_start_date = model_o.ydate_a[train_start]
+    results_o.train_end_date   = model_o.ydate_a[train_end]
+    results_o.oos_start_date   = model_o.ydate_a[oos_start]
+    results_o.oos_end_date     = model_o.ydate_a[oos_end]
+    results_o.oos_size         = oos_size
+
     return results_o
     'predict_oos done'
   }
