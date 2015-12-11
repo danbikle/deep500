@@ -124,6 +124,8 @@ if (Meteor.isClient) {
       bgcharts_a.push({'blue_a_o':blue_a_o,'green_a_o':green_a_o})
       return this.bgchartid
     },
+    pcsv: function(){return 'pcsv'}
+
   })
 
   Template.mmodel.events({
