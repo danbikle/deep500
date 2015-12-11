@@ -34,8 +34,11 @@ if (Meteor.isClient) {
     "click #chartem": function(event){
       event.preventDefault()
       var bgchartid, blue_a, green_a
+      blue_ch_o  = bgcharts_a[0]
+      green_ch_o = bgcharts_a[1]
+      for (ky in blue_ch_o){bgchartid  = ky;blue_a  =  blue_ch_o[ky]}
+      for (ky in green_ch_o){bgchartid = ky;green_a = green_ch_o[ky]}
       bgcharts_a.forEach(function(chrt){
-        for (ky in chrt){bgchartid = ky;blue_a = chrt[ky][0];green_a = chrt[ky][1]}
         if (d3.select('#'+bgchartid+ ' svg path')[0][0] == null){
           new Rickshaw.Graph({
             renderer: 'line'
