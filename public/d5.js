@@ -23,8 +23,8 @@ function cb1(err, csv_a) {
   csv_a.reverse()
   // I should get dates for charting:
   model_o.ydate_a = csv_a.map(function(row){return Date.parse(row['Date'])/1000})
-  model_o.ydate_s_a = csv_a.map(function(row){return Date.parse(row['Date'])})
-  model_o.cp_a    = csv_a.map(function(row){return +row['Close']            })
+  model_o.ydate_s_a = csv_a.map(function(row){return  row['Date' ]             })
+  model_o.cp_a      = csv_a.map(function(row){return +row['Close']             })
   var cp_a        = model_o.cp_a
   // I should define boundries of out-of-sample, train data
   var train_end     = csv_a.length - 253  // 1 yr ago
