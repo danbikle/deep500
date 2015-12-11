@@ -35,8 +35,14 @@ if (Meteor.isClient) {
       event.preventDefault()
       var bgchartid, blue_a, green_a
       bgcharts_a.forEach(function(chrt){
-        if (d3.select('#'+bgchartid+ ' svg path')[0][0] == null){
 chrt
+// I should get bgchartid from chrt
+// I should get blue_a    from chrt
+// I should get green_a   from chrt
+
+
+        if (d3.select('#'+bgchartid+ ' svg path')[0][0] == null){
+
 /*
           new Rickshaw.Graph({
             renderer: 'line'
