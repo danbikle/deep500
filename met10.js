@@ -44,6 +44,8 @@ if (Meteor.isClient) {
         // I should get blue_a, green_a from chrt and bgchartid
         blue_a  = chrt['blue_a_o' ][bgchartid]
         green_a = chrt['green_a_o'][bgchartid]
+        // I should calculate chartmin
+        var bm_a = d3.min(blue_a.map(function(pt){return pt.x}))
         if (d3.select('#'+bgchartid+ ' svg path')[0][0] == null){
           new Rickshaw.Graph({
             renderer: 'line'
