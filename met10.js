@@ -40,7 +40,7 @@ if (Meteor.isClient) {
           new Rickshaw.Graph({
             renderer: 'line'
             ,element: document.getElementById(bgchartid)
-            ,series:[{color: 'blue', data: blue_a}]
+            ,series:[{color: 'blue', data: blue_a},{color: 'green', data: green_a}]
           }).render()
           'graphing now'
         }
