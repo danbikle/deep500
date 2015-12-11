@@ -7,7 +7,12 @@ This script should help me run app31 demos.
 cr_gdata(predictions_a, bdata){
   predictions_a
   bdata
-  var chk = (predictions_a.length == bdata.length) // should be true
+  var pl  = predictions_a.length
+  var chk = (pl == bdata.length) // should be true
+  for(p=0; p<pl; p++){
+    predictions_a[p]
+    bdata[p]
+  }
 }
 // This function should return array which lags my_a by n.
 function lagn(n,my_a) {
@@ -110,6 +115,10 @@ function calc_results(predictions_a,labels_oos_a,pctlead_oos_a){
   for(dy=0; dy<oos_size; dy++){
     results_o.blue_a.push({x:ydate_oos_a[dy], y:cp_oos_a[dy]})
   }
+  // I should calculate green data for blue-green chart
+  var gdata = cr_gdata(predictions_a, bdata)
+  results_o.gdata         = gdata
+  results_o.predictions_a = predictions_a
   return results_o
 }
 // This function should help me display results_o

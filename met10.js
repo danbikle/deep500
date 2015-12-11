@@ -37,7 +37,6 @@ if (Meteor.isClient) {
       bgcharts_a.forEach(function(chrt){
         for (ky in chrt){bgchartid = ky;bdata = chrt[ky]}
         if (d3.select('#'+bgchartid+ ' svg path')[0][0] == null){
-          var gdata = cr_gdata(predictions_a, bdata)
           new Rickshaw.Graph({
             renderer: 'line'
             ,element: document.getElementById(bgchartid)
