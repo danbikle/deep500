@@ -13,6 +13,14 @@ function cr_gdata(predictions_a, blue_a){
     predictions_a[p]
     blue_a[p]
   }
+
+  var cp_oos_a = blue_a.map(function(bo){return bo.y})
+  var ldcp_a   = lead1(cp_oos_a)
+  var gdelt_a  = []
+  for(p=0; p<pl; p++){
+    gdelt_a.push(ldcp_a[p]-blue_a[p])
+  }
+
 }
 // This function should return array which lags my_a by n.
 function lagn(n,my_a) {
