@@ -9,6 +9,8 @@ This repo depends on Meteor so I installed it:
 ```bash
 cd ~
 curl https://install.meteor.com/ | sh
+echo 'export PATH=${HOME}/.meteor:$PATH' >> ~/.bashrc
+bash
 ```
 
 Next I ensured that my Ubuntu host had both curl and git:
@@ -29,8 +31,11 @@ Then I started the Meteor server:
 ```bash
 cd ~/deep500
 git checkout -b mybranch
-./meteor
+~/.meteor/meteor
 ```
+I  browsed this page:
+
+http://localhost:3000/
 
 I saw a page which was mostly empty.
 
