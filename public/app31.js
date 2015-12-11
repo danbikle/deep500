@@ -5,8 +5,6 @@ This script should help me run app31 demos.
 
 // This function should create green_a from predictions_a and blue_a
 function cr_green_a(predictions_a, blue_a){
-  predictions_a
-  blue_a
   var pl  = predictions_a.length
   var chk = (pl == blue_a.length) // should be true
 
@@ -135,6 +133,7 @@ function calc_results(predictions_a,labels_oos_a,pctlead_oos_a){
   return results_o
 }
 // This function should help me display results_o
+// NOT USED YET
 function vwr(results_o){
   var cell00 = 'Opinion:';              cell01 = results_o.opinion
   var cell10 = 'True Positive Count:';  cell11 = results_o.truepos
@@ -171,7 +170,7 @@ function mn_predict(mymn, oos_o){
   // I need to know size of oos data:
   for (ky in oos_o){fnum +=1; oos_size = oos_o[ky].length}
   // I know its size now: fnum
-  var p01_a         = []
+  var p01_a    = []
   // Each observation should get a vol:
   for (i=0;i<oos_size;i++){
     var obsv_v = new convnetjs.Vol(1,1,fnum)
@@ -183,6 +182,7 @@ function mn_predict(mymn, oos_o){
     }
     p01_a.push(mymn.predict(obsv_v))
   }
+  // I should transform 0 predictions into -1 for visualizations:
   var predictions_a = p01_a.map(function(prd){if (prd==1) return 1; else return -1})
   return  predictions_a
 }
