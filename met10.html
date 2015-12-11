@@ -70,10 +70,15 @@
       <tr><td>Number of Ensembles: </td><td>{{num_ensembles}}</td></tr>
       <tr><td>Class Boundry (Median of Train Data): </td><td>{{train_median}} %</td></tr>
       <tr><td>Build Duration: </td><td>{{build_duration}} Minutes</td></tr>
+      <tr><td>Train_Start_Date: </td><td>{{train_start_date}}</td></tr>
+      <tr><td>Train_End_Date: </td><td>{{train_end_date}}</td></tr>
     </table>
     magicNet JSON: <div class="div_mnjson"> <pre><code>{{mnjson}}</code></pre></div>
-    Out of Sample Test of 252 observations:
+    Out of Sample (OOS) Test of {{oos_size}} observations:
     <table class='results_o'>
+      <tr><td>OOS_Start_Date: </td><td>{{oos_start_date}}</td></tr>
+      <tr><td>OOS_End_Date: </td><td>{{oos_end_date}}</td></tr>
+      <tr><td>OOS_Size: </td><td>{{oos_size}}</td></tr>
       <tr><td>Accuracy:</td><td>{{accuracy}}</td></tr>
       <tr><td>Opinion:</td><td>{{opinion}}</td></tr>
       <tr><td>true_avg:</td><td>{{true_avg}}</td></tr>

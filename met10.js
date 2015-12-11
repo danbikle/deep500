@@ -108,6 +108,13 @@ if (Meteor.isClient) {
     falsepos: function(){return this.results_o.falsepos                    },
     trueneg:  function(){return this.results_o.trueneg                     },
     falseneg: function(){return this.results_o.falseneg                    },
+
+    train_start_date: function(){return this.results_o.train_start_date    },
+    train_end_date:   function(){return this.results_o.train_end_date      },
+    oos_start_date:   function(){return this.results_o.oos_start_date      },
+    oos_end_date:     function(){return this.results_o.oos_end_date        },
+    oos_size:         function(){return this.results_o.oos_size            },
+
     bgchart:  function(){
       // I should collect chart data for D3 here.
       var blue_a_o              = {}
