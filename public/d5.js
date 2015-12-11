@@ -21,7 +21,7 @@ function cb1(err, csv_a) {
   // Yahoo gives the data by date descending.
   // I should order it    by date ascending.
   csv_a.reverse()
-  // I should get dates for charting:
+  // I should get dates for reporting and charting:
   model_o.ydate_a = csv_a.map(function(row){return Date.parse(row['Date'])/1000})
   model_o.ydate_s_a = csv_a.map(function(row){return  row['Date' ]             })
   model_o.cp_a      = csv_a.map(function(row){return +row['Close']             })
