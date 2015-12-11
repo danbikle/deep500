@@ -91,17 +91,16 @@ function calc_results(predictions_a,labels_oos_a,pctlead_oos_a){
   var neg_accuracy = 100.0 * trueneg / (trueneg + falseneg)
   var     accuracy = 100.0 * (truepos + trueneg) / oos_size
   // I should study pctlead dependence on predictions_a
-  var trueg_a = []; falseg_a = [];
+  var posg_a = []; negg_a = [];
   for (i=0;i<oos_size;i++){
     if (predictions_a[i] == 1)
-      trueg_a.push(pctlead_oos_a[i])
+      posg_a.push(pctlead_oos_a[i])
     else
-      falseg_a.push(pctlead_oos_a[i])
+      negg_a.push(pctlead_oos_a[i])
   }
-  chk = ((trueg_a.length + falseg_a.length) == oos_size) // should be true
-  var true_avg  = d3.mean(trueg_a)
-  var false_avg = d3.mean(falseg_a)
-  chk = (true_avg > false_avg) // should be true
+  chk = ((posg_a.length + negg_a.length) == oos_size) // should be true
+  var pos_avg  = d3.mean(posg_a)
+  var neg_avg  = d3.mean(negg_a)
   var results_o          = {}
   results_o.truepos      = truepos
   results_o.falsepos     = falsepos
@@ -110,9 +109,9 @@ function calc_results(predictions_a,labels_oos_a,pctlead_oos_a){
   results_o.pos_accuracy = pos_accuracy
   results_o.neg_accuracy = neg_accuracy
   results_o.accuracy     = accuracy
-  results_o.true_avg     = true_avg
-  results_o.false_avg    = false_avg
-  if (true_avg > false_avg)
+  results_o.pos_avg      = pos_avg
+  results_o.neg_avg      = neg_avg
+  if (pos_avg > neg_avg)
     results_o.opinion    = 'good'
   else
     results_o.opinion    = 'bad';
@@ -143,8 +142,8 @@ function vwr(results_o){
   var cell50 = 'Positive Accuracy:';    cell51 = results_o.pos_accuracy
   var cell60 = 'Negative Accuracy:';    cell61 = results_o.neg_accuracy
   var cell70 = 'Accuracy:';             cell71 = results_o.accuracy
-  var cell80 = 'Avg Gain of True Predictions:' ; cell81 = results_o.true_avg
-  var cell90 = 'Avg Gain of False Predictions:'; cell91 = results_o.false_avg
+  var cell80 = 'Avg Gain of Positive Predictions:'; cell81 = results_o.pos_avg
+  var cell90 = 'Avg Gain of Negative Predictions:'; cell91 = results_o.neg_avg
   var tr  = '<tr>'
   var td  = '<td>'
   var tdc = '</td>'
