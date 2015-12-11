@@ -4,23 +4,22 @@ This script should help me run app31 demos.
 */
 
 // This function should create green_a from predictions_a and blue_a
-function cr_gdata(predictions_a, blue_a){
+function cr_green_a(predictions_a, blue_a){
   predictions_a
   blue_a
   var pl  = predictions_a.length
   var chk = (pl == blue_a.length) // should be true
-  for(p=0; p<pl; p++){
-    predictions_a[p]
-    blue_a[p]
-  }
 
-  var cp_oos_a = blue_a.map(function(bo){return bo.y})
-  var ldcp_a   = lead1(cp_oos_a)
-  var gdelt_a  = []
-  for(p=0; p<pl; p++){
-    gdelt_a.push(ldcp_a[p]-blue_a[p])
+  // I should start with an initial value for green_a
+  var green_a = []
+  green_a[0]  = blue_a[0]
+  // I should use blue_a and predictions_a to calculate green_a
+  for(p=0; p<(pl-1); p++){
+    green_a[p+1] = green_a[p]+(blue_a[p+1]-blue_a[p])*predictions_a[p]
   }
-
+  // I dont know blue_a[pl] yet, so I should show very last prediction result as flat
+  green_a[pl-1] = green_a[pl-2]
+  return green_a
 }
 // This function should return array which lags my_a by n.
 function lagn(n,my_a) {
@@ -124,8 +123,8 @@ function calc_results(predictions_a,labels_oos_a,pctlead_oos_a){
     results_o.blue_a.push({x:ydate_oos_a[dy], y:cp_oos_a[dy]})
   }
   // I should calculate green data for blue-green chart
-  var gdata = cr_gdata(predictions_a, results_o.blue_a)
-  results_o.gdata         = gdata
+  var green_a = cr_green_a(predictions_a, results_o.blue_a)
+  results_o.green_a       = green_a
   results_o.predictions_a = predictions_a
   return results_o
 }
