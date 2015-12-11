@@ -170,7 +170,7 @@ function mn_predict(mymn, oos_o){
     }
     p01_a.push(mymn.predict(obsv_v))
   }
-  var predictions_a = p01.map(function(prd){if prd == 1 return 1; else return -1})
+  var predictions_a = p01_a.map(function(prd){if (prd==1) return 1; else return -1})
   return  predictions_a
 }
 // This function should return a subset of data from features_o:
@@ -180,23 +180,4 @@ function cr_oos_o(oos_start,oos_end,features_o){
     oos_o[ky] = features_o[ky].slice(oos_start,oos_end)
   }
   return oos_o
-}
-// This function should chart results:
-function chart_results(predictions_a,pctlead_oos_a){
-  // under construction
-  // NOT USED
-  var ydate_a   = model_o.ydate_a
-  var oos_end   = ydate_a.length
-  var oos_size  = predictions_a.length
-  var oos_start = oos_end - oos_size
-  var ydate_oos_a = ydate_a.slice(oos_start,oos_end)
-  var cp_oos_a = model_o.cp_a.slice(oos_start,oos_end)
-  var chk = (ydate_oos_a.length == predictions_a.length) // should be true
-      chk = (ydate_oos_a.length == pctlead_oos_a.length) // should be true
-      chk = (ydate_oos_a.length == cp_oos_a.length)      // should be true
-  var blue_a   = []
-  for(dy=0; dy<oos_size; dy++){
-    blue_a.push({x:ydate_oos_a[dy], y:cp_oos_a[dy]})
-  }
-  'chart_results done'
 }
