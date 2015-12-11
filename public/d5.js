@@ -146,7 +146,7 @@ function cr_mn(train_o) {
     results_o.oos_start_date   = model_o.ydate_s_a[oos_start]
     results_o.oos_end_date     = model_o.ydate_s_a[oos_end-1]
     results_o.oos_size         = oos_size
-    var pcsv = ''
+    var pcsv = "date,price,prediction\n"
     for (p=0; p<oos_size;p++){
       var pdate = model_o.ydate_s_a[oos_start+p]
       var cp    = d3.round(cp_a[oos_start+p],2)
