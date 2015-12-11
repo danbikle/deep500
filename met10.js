@@ -33,18 +33,17 @@ if (Meteor.isClient) {
   Template.body.events({
     "click #chartem": function(event){
       event.preventDefault()
+      // I should declare vars to be used by RickShaw:
       var bgchartid, blue_a, green_a
       // I should have charts data inside bgcharts_a by now.
-      // I should have used a helper to fill bgcharts_a.
+      // I should have used bgchart mmodel.helper() to fill bgcharts_a.
       bgcharts_a.forEach(function(chrt){
         // I should get bgchartid from chrt
-        for (x_ao in chrt) {
-          for (ky in chrt[x_ao])
-            bgchartid = ky
-            // I should get blue_a, green_a from chrt
-            blue_a  = chrt['blue_a_o' ][ky]
-            green_a = chrt['green_a_o'][ky]
-        }
+        for (ky in chrt['blue_a_o'])
+          bgchartid = ky
+        // I should get blue_a, green_a from chrt and bgchartid
+        blue_a  = chrt['blue_a_o' ][bgchartid]
+        green_a = chrt['green_a_o'][bgchartid]
         if (d3.select('#'+bgchartid+ ' svg path')[0][0] == null){
           new Rickshaw.Graph({
             renderer: 'line'
