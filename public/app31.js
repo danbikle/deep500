@@ -78,13 +78,13 @@ function calc_results(predictions_a,labels_oos_a,pctlead_oos_a){
   var truepos = 0; falsepos = 0; trueneg = 0; falseneg = 0;
   var oos_size = predictions_a.length
   for (i=0;i<oos_size;i++){
-    if ((predictions_a[i] == 1) && (labels_oos_a[i] == 1))
+    if ((predictions_a[i] == 1 ) && (labels_oos_a[i] == 1))
       truepos += 1;
-    if ((predictions_a[i] == 1) && (labels_oos_a[i] == 0))
+    if ((predictions_a[i] == 1 ) && (labels_oos_a[i] == 0))
       falsepos += 1;
-    if ((predictions_a[i] == 0) && (labels_oos_a[i] == 0))
+    if ((predictions_a[i] == -1) && (labels_oos_a[i] == 0))
       trueneg += 1;
-    if ((predictions_a[i] == 0) && (labels_oos_a[i] == 1))
+    if ((predictions_a[i] == -1) && (labels_oos_a[i] == 1))
       falseneg += 1;
   }
   // should be true:
