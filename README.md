@@ -1,6 +1,6 @@
 # Deep500
 
-This repo contains some demos which I wrote to connect my mind to the convnet.js API.
+This repo contains some demos which I wrote to connect my mind to the ConvNetJS API.
 
 To get started I logged into my Ubuntu virtualbox.
 
@@ -45,4 +45,11 @@ Then I logged in and created a model.
 
 Next, I clicked the 'chart em' button to see what I call the blue-green visualization.
 
-That, ends the demo of this repo.
+If you do not want to run this repo on your laptop,
+I should have a copy of it running at this URL:
+https://deep500.meteor.com
+
+If you have questions, e-me: bikle101 at gmail
+
+Developer: Dan Bikle
+
