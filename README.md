@@ -47,6 +47,7 @@ Next, I clicked the 'chart em' button to see what I call the blue-green visualiz
 
 If you do not want to run this repo on your laptop,
 I should have a copy of it running at this URL:
+
 https://deep500.meteor.com
 
 Currently, the JavaScript in this repo only runs on Chrome, not Firefox.
