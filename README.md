@@ -49,6 +49,10 @@ If you do not want to run this repo on your laptop,
 I should have a copy of it running at this URL:
 https://deep500.meteor.com
 
+Currently, the JavaScript in this repo only runs on Chrome, not Firefox.
+
+If you have ideas on how to fix that bug, please contact me.
+
 If you have questions, e-me: bikle101 at gmail
 
 Developer: Dan Bikle
