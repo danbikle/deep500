@@ -105,7 +105,7 @@ function cr_mn(train_o) {
    
   /* start training MagicNet. 
   Every call trains all candidates in current batch on one example: */
-  setInterval(function(){ magicNet.step() })
+  setInterval(function(){ magicNet.step() },0)
   var json_state = 'need json'
   function finishedBatch() {
     // Now that I am done, I should remove spinner:
@@ -117,7 +117,8 @@ function cr_mn(train_o) {
       predict_o.mymn    = magicNet
       model_o.results_o = predict_oos(predict_o)
       Meteor.call("addMmodel", model_o)
-      window.location   = '/'
+      // window.location   = '/'
+      document.location.reload(true);  // Better way?
     }
     'finishedBatch done'
   }
