@@ -37,15 +37,13 @@ if (Meteor.isClient) {
   })
 
   Template.body.events({
-"click #show_mymodels": function(event){
-event
-if(event.target.checked == true)
-  Session.set('show_mymodels', true)
-else
-  Session.set('show_mymodels', false)
-var show_mymodels_state = Session.get('show_mymodels')
-'show_mymodels handled'
-}
+    "click #show_mymodels": function(event){
+    if(event.target.checked == true)
+      Session.set('show_mymodels', true)
+    else
+      Session.set('show_mymodels', false)
+    var show_mymodels_state = Session.get('show_mymodels')
+    }
     ,"click #chartem": function(event){
       event.preventDefault()
       // I should declare vars to be used by RickShaw:

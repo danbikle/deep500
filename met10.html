@@ -41,7 +41,7 @@
       <br />
       {{> loginButtons}}
       <h1>Deep500.meteor.com</h1>
-      <h2>S&amp;P 500 Predictive Models (Model Count: {{mmodelCount}})</h2>
+      <h2>S&amp;P 500 Predictive Models</h2>
       {{#if currentUser}}
         <form class="new-mmodel">
           Model Name: <input type="text" name="model_name" />
@@ -54,7 +54,7 @@
           <br />
           Number of Ensembles: <input type="text" name="num_ensembles" />
           <br />
-          Show only my models: <input type="checkbox" name="show_mymodels" id="show_mymodels" />
+          Show only my models: <input type="checkbox" name="show_mymodels" id="show_mymodels" />(Model Count: {{mmodelCount}})
           <br />
           <button id='button_newmodel'>Save New Model</button>
         </form>
