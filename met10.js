@@ -31,7 +31,16 @@ if (Meteor.isClient) {
   })
 
   Template.body.events({
-    "click #chartem": function(event){
+"click #show_mymodels": function(event){
+event
+if(event.target.checked == true)
+  Session.set('show_mymodels', true)
+else
+  Session.set('show_mymodels', false)
+var show_mymodels_state = Session.get('show_mymodels')
+'show_mymodels handled'
+}
+    ,"click #chartem": function(event){
       event.preventDefault()
       // I should declare vars to be used by RickShaw:
       var bgchartid, blue_a, green_a
@@ -65,8 +74,8 @@ if (Meteor.isClient) {
       Session.set('needcharts',false)
       // This should remove button:
       d3.select('#chartem').remove()
-    },
-    "click #button_newmodel": function(event){
+    }
+    ,"click #button_newmodel": function(event){
       // Prevent default browser form submit
       event.preventDefault()
 
