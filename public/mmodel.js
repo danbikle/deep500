@@ -27,7 +27,7 @@ function cb1(err, csv_a) {
   var cp_a          = model_o.cp_a
   // I should define boundries of out-of-sample, train data
   var train_end     = csv_a.length - 253  // 1 yr ago
-  var train_size    = model_o.num_days
+  var train_size    = model_o.num_yrs * 252
   var train_start   = train_end - train_size
   var pctlead       = pctlead1(cp_a)
   var pctlead_train = pctlead.slice(train_start,train_end)

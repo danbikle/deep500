@@ -46,13 +46,16 @@
         <form class="new-mmodel">
           Model Name: <input type="text" name="model_name" />
           <br />
-          Number of Training Days (6000 is good): <input type="text" name="num_days" />
+          Number of Training Years (25 is good): <input type="text" name="num_yrs" />
           <br />
           Number of Folds: <input type="text" name="num_folds" />
           <br />
           Number of Epochs: <input type="text" name="num_epochs" />
           <br />
           Number of Ensembles: <input type="text" name="num_ensembles" />
+          <br />
+          Show only my models: <input type="checkbox" name="show_mymodels" />
+          <br />
           <button id='button_newmodel'>Save New Model</button>
         </form>
       {{/if}}
@@ -74,7 +77,7 @@
     <table class='table_model'>
       <tr><td>Username: </td><td>{{username}}</td></tr>
       <tr><td>Model Name: </td><td>{{model_name}}</td></tr>
-      <tr><td>Number of Training Days: </td><td>{{num_days}}</td></tr>
+      <tr><td>Number of Training Years: </td><td>{{num_yrs}}</td></tr>
       <tr><td>Number of Folds: </td><td>{{num_folds}}</td></tr>
       <tr><td>Number of Epochs: </td><td>{{num_epochs}}</td></tr>
       <tr><td>Number of Ensembles: </td><td>{{num_ensembles}}</td></tr>
