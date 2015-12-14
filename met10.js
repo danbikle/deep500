@@ -23,15 +23,16 @@ if (Meteor.isClient) {
   Template.body.helpers({
     needcharts: Session.get('needcharts'), // does not work so use d3 remove()
     mmodels: function(){
-      'mmodels'
       if(Session.get('show_mymodels') == true)
         return Mmodels.find({owner: Meteor.userId()}, {sort: {createdAt: -1}})
       else
         return Mmodels.find({}, {sort: {createdAt: -1}})
-
     },
     mmodelCount: function(){
-      return Mmodels.find({}).count()
+      if(Session.get('show_mymodels') == true)
+        return Mmodels.find({owner: Meteor.userId()}).count()
+      else
+        return Mmodels.find({}).count()
     }
   })
 
