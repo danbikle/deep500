@@ -85,21 +85,21 @@ if (Meteor.isClient) {
       // Get value from form element
       var fields = event.target.form.children
       var model_name     = fields.model_name.value
-var num_yrs = 25
-if(fields.fi05.checked == true)
-  num_yrs = 5
-if(fields.fi10.checked == true)
-  num_yrs = 10
-if(fields.fi15.checked == true)
-  num_yrs = 15
-if(fields.fi20.checked == true)
-  num_yrs = 20
-if(fields.fi25.checked == true)
-  num_yrs = 25
-if(fields.fi30.checked == true)
-  num_yrs = 30
-if(fields.fi35.checked == true)
-  num_yrs = 35
+      var num_yrs = 25
+      if(fields.ny05.checked == true)
+        num_yrs = 5
+      if(fields.ny10.checked == true)
+        num_yrs = 10
+      if(fields.ny15.checked == true)
+        num_yrs = 15
+      if(fields.ny20.checked == true)
+        num_yrs = 20
+      if(fields.ny25.checked == true)
+        num_yrs = 25
+      if(fields.ny30.checked == true)
+        num_yrs = 30
+      if(fields.ny35.checked == true)
+        num_yrs = 35
       var num_candidates = fields.num_candidates.value
       var num_folds      = fields.num_folds.value
       var num_epochs     = fields.num_epochs.value
