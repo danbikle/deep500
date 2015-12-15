@@ -114,17 +114,17 @@ if (Meteor.isClient) {
       if(fields.nc32.checked == true)
         num_candidates = 32
 
-      var num_folds    = 4 // fields.num_folds.value
+      var num_folds    = 3 // fields.num_folds.value
       if(fields.nf02.checked == true)
-        num_candidates = 2
+        num_folds = 2
       if(fields.nf04.checked == true)
-        num_candidates = 4
+        num_folds = 4
       if(fields.nf08.checked == true)
-        num_candidates = 8
+        num_folds = 8
       if(fields.nf16.checked == true)
-        num_candidates = 16
+        num_folds = 16
       if(fields.nf32.checked == true)
-        num_candidates = 32
+        num_folds = 32
 
       var num_epochs     = fields.num_epochs.value
       var num_ensembles  = fields.num_ensembles.value
