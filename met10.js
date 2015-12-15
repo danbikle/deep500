@@ -101,20 +101,31 @@ if (Meteor.isClient) {
       if(fields.ny35.checked == true)
         num_yrs = 35
       var num_candidates = 2 //fields.num_candidates.value
-if(fields.nc01.checked == true)
-  num_candidates = 1
-if(fields.nc02.checked == true)
-  num_candidates = 2
-if(fields.nc04.checked == true)
-  num_candidates = 4
-if(fields.nc08.checked == true)
-  num_candidates = 8
-if(fields.nc16.checked == true)
-  num_candidates = 16
-if(fields.nc32.checked == true)
-  num_candidates = 32
+      if(fields.nc01.checked == true)
+        num_candidates = 1
+      if(fields.nc02.checked == true)
+        num_candidates = 2
+      if(fields.nc04.checked == true)
+        num_candidates = 4
+      if(fields.nc08.checked == true)
+        num_candidates = 8
+      if(fields.nc16.checked == true)
+        num_candidates = 16
+      if(fields.nc32.checked == true)
+        num_candidates = 32
 
-      var num_folds      = fields.num_folds.value
+      var num_folds    = 4 // fields.num_folds.value
+      if(fields.nf02.checked == true)
+        num_candidates = 2
+      if(fields.nf04.checked == true)
+        num_candidates = 4
+      if(fields.nf08.checked == true)
+        num_candidates = 8
+      if(fields.nf16.checked == true)
+        num_candidates = 16
+      if(fields.nf32.checked == true)
+        num_candidates = 32
+
       var num_epochs     = fields.num_epochs.value
       var num_ensembles  = fields.num_ensembles.value
 
