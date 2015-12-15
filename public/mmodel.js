@@ -68,7 +68,7 @@ function cr_mn(train_o) {
   in train/validation fold splits. Here, 0.7 means 70% */
   opts.train_ratio = 0.7 
   // number of candidates to evaluate in parallel:
-  opts.num_candidates = 3
+  opts.num_candidates = model_o.num_candidates
   // number of folds to evaluate per candidate:
   opts.num_folds = model_o.num_folds
   // number of epochs to make through data per fold

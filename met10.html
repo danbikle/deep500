@@ -48,13 +48,15 @@
           <br />
           Number of Training Years (25 is good): <input type="text" name="num_yrs" />
           <br />
-          Number of Folds: <input type="text" name="num_folds" />
+          Number of Candidates: <input type="text" name="num_candidates" />
           <br />
-          Number of Epochs: <input type="text" name="num_epochs" />
+          Number of Folds:      <input type="text" name="num_folds" />
           <br />
-          Number of Ensembles: <input type="text" name="num_ensembles" />
+          Number of Epochs:     <input type="text" name="num_epochs" />
           <br />
-          Show only my models: <input type="checkbox" name="show_mymodels" id="show_mymodels" />(Model Count: {{mmodelCount}})
+          Number of Ensembles:  <input type="text" name="num_ensembles" />
+          <br />
+          Show only my models:  <input type="checkbox" name="show_mymodels" id="show_mymodels" />(Model Count: {{mmodelCount}})
           <br />
           <button id='button_newmodel'>Save New Model</button>
         </form>
@@ -78,6 +80,7 @@
       <tr><td>Username: </td>                            <td>{{username}}</td></tr>
       <tr><td>Model Name: </td>                          <td>{{model_name}}</td></tr>
       <tr><td>Number of Training Years: </td>            <td>{{num_yrs}}</td></tr>
+      <tr><td>Number of Candidates: </td>                <td>{{num_candidates}}</td></tr>
       <tr><td>Number of Folds: </td>                     <td>{{num_folds}}</td></tr>
       <tr><td>Number of Epochs: </td>                    <td>{{num_epochs}}</td></tr>
       <tr><td>Number of Ensembles: </td>                 <td>{{num_ensembles}}</td></tr>

@@ -85,23 +85,26 @@ if (Meteor.isClient) {
 
       // Get value from form element
       var fields = event.target.form.children
-      var model_name    = fields.model_name.value
-      var num_yrs       = fields.num_yrs.value
-      var num_folds     = fields.num_folds.value
-      var num_epochs    = fields.num_epochs.value
-      var num_ensembles = fields.num_ensembles.value
+      var model_name     = fields.model_name.value
+      var num_yrs        = fields.num_yrs.value
+      var num_candidates = fields.num_candidates.value
+      var num_folds      = fields.num_folds.value
+      var num_epochs     = fields.num_epochs.value
+      var num_ensembles  = fields.num_ensembles.value
 
       model_o = {}
-      model_o.model_name    = model_name
-      model_o.num_yrs       = +num_yrs
-      model_o.num_folds     = +num_folds
-      model_o.num_epochs    = +num_epochs
-      model_o.num_ensembles = +num_ensembles
+      model_o.model_name     = model_name
+      model_o.num_yrs        = +num_yrs
+      model_o.num_candidates = +num_candidates
+      model_o.num_folds      = +num_folds
+      model_o.num_epochs     = +num_epochs
+      model_o.num_ensembles  = +num_ensembles
       start_modelbuild()
 
       // Clear form
       fields.model_name.value     = ""
       fields.num_yrs.value        = ""
+      fields.num_candidates.value = ""
       fields.num_folds.value      = ""
       fields.num_epochs.value     = ""
       fields.num_ensembles.value  = ""
@@ -171,6 +174,7 @@ Meteor.methods({
     Mmodels.insert({
       model_name:      m_o.model_name
       ,num_yrs:        m_o.num_yrs
+      ,num_candidates: m_o.num_candidates
       ,num_folds:      m_o.num_folds
       ,num_epochs:     m_o.num_epochs
       ,num_ensembles:  m_o.num_ensembles
