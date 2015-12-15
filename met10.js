@@ -101,7 +101,6 @@ if (Meteor.isClient) {
       if(fields.ny35.checked == true)
         num_yrs = 35
       var num_candidates = 2 //fields.num_candidates.value
-      
 if(fields.nc01.checked == true)
   num_candidates = 1
 if(fields.nc02.checked == true)
