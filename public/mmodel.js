@@ -102,12 +102,26 @@ function cr_mn(train_o) {
   var magicNet = new convnetjs.MagicNet(train_data, train_o.label, opts)
   var mn_start = Date.now()
   model_o.bgchartid = 'bg'+mn_start // Useful for charting
+
+magicNet.onFinishFold(finishedFold)
+
   // On finish, I should call finishedBatch()
   magicNet.onFinishBatch(finishedBatch)
    
   /* start training MagicNet. 
   Every call trains all candidates in current batch on one example: */
-  setInterval(function(){ magicNet.step() },0)
+  var stepcntr = 0
+  var foldcntr = 0
+  setInterval(function(){ 
+    stepcntr++
+    magicNet.step()
+  },0)
+function finishedFold() {
+  foldcntr++
+  stepcntr
+  foldcntr
+  'finishedFold'
+}
   var json_state = 'need json'
   function finishedBatch() {
     // Now that I am done, I should remove spinner:
@@ -120,6 +134,7 @@ function cr_mn(train_o) {
       predict_o.mymn               = magicNet
       model_o.results_o            = predict_oos(predict_o)
       Meteor.call("addMmodel", model_o)
+stepcntr
       document.location.reload(true);  // Better way?
     }
     'finishedBatch done'
