@@ -76,7 +76,9 @@ function cr_mn(train_o) {
   /* how many nets to average in the end for prediction? 
   likely higher = better but slower: */
   opts.ensemble_size = model_o.num_ensembles
-
+  // Configure neurons_min, neurons_max
+  opts.neurons_min = 4
+  opts.neurons_max = 32
   // I should start work on obsv_v which is a volume of observations
   var fnum = -1
   // I need to know obsv_v size before I create it
