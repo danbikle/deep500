@@ -81,7 +81,7 @@ function cr_mn(train_o) {
   opts.neurons_max   = model_o.neurons_max
   // I should start work on obsv_v which is a volume of observations
   var fnum = -1
-  // I need to know obsv_v size before I create it
+  // I need to know obsv_v size (which is the number of features) before I create it
   for (ky in train_o) {fnum +=1}
   // I know its size now.
   // I should create train_data which eventually should be array of vols I feed to MN:
