@@ -66,7 +66,7 @@ function cr_mn(train_o) {
   var opts = {} 
   /* what portion of data goes to train, 
   in train/validation fold splits. Here, 0.7 means 70% */
-  opts.train_ratio = model_o.train_ratio / 10.0
+  opts.train_ratio = model_o.train_ratio / 100.0
   // number of candidates to evaluate in parallel:
   opts.num_candidates = model_o.num_candidates
   // number of folds to evaluate per candidate:
@@ -132,7 +132,7 @@ function cr_mn(train_o) {
     var oos_start    = train_end +   1
     var oos_end      = cp_a.length
     var oos_size     = oos_end - oos_start
-    var features_o   = cp2ftr(cp_a)
+    var features_o   = cp2ftr(cp_a,model_o.featnames_o)
     var labels_a     = cp2label(train_median,cp_a)
     // I should get out-of-sample data ready:
     var oos_o         = cr_oos_o(oos_start,oos_end,features_o)
