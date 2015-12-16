@@ -135,6 +135,7 @@ if (Meteor.isClient) {
         num_folds   = 16
       if(fields.nf32.checked == true)
         num_folds   = 32
+
       var num_epochs = 2
       if(fields.ne002.checked == true)
         num_epochs   = 2
@@ -152,8 +153,23 @@ if (Meteor.isClient) {
         num_epochs   = 128
       if(fields.ne256.checked == true)
         num_epochs   = 256
-
-      var num_ensembles  = fields.num_ensembles.value
+      var num_ensembles = 2
+      if(fields.nn002.checked == true)
+        num_ensembles   = 2
+      if(fields.nn004.checked == true)
+        num_ensembles   = 4
+      if(fields.nn008.checked == true)
+        num_ensembles   = 8
+      if(fields.nn016.checked == true)
+        num_ensembles   = 16
+      if(fields.nn032.checked == true)
+        num_ensembles   = 32
+      if(fields.nn064.checked == true)
+        num_ensembles   = 64
+      if(fields.nn128.checked == true)
+        num_ensembles   = 128
+      if(fields.nn256.checked == true)
+        num_ensembles   = 256
 
       model_o = {}
       model_o.model_name     = model_name
