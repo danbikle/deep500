@@ -223,8 +223,8 @@ if (Meteor.isClient) {
     ,oos_end_date:     function(){return this.results_o.oos_end_date       }
     ,oos_size:         function(){return this.results_o.oos_size           }
     ,pcsv:             function(){return this.results_o.pcsv               }
-    ,neurons_min:      function(){return this.results_o.neurons_min        }
-    ,neurons_max:      function(){return this.results_o.neurons_max        }
+//    ,neurons_min:      function(){return this.neurons_min        }
+//    ,neurons_max:      function(){return this.neurons_max        }
     ,build_date:function(){return new Date(this.build_date).toString().slice(0,24)}
     ,featnames: function(){
       var trf_o = this.results_o.featnames_o
@@ -285,6 +285,8 @@ Meteor.methods({
       ,num_folds:      m_o.num_folds
       ,num_epochs:     m_o.num_epochs
       ,num_ensembles:  m_o.num_ensembles
+      ,neurons_min:    m_o.neurons_min
+      ,neurons_max:    m_o.neurons_max
       ,createdAt:      new Date()
       ,owner:          Meteor.userId()
       ,username:       Meteor.user().username
