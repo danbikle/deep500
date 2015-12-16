@@ -208,6 +208,15 @@ if (Meteor.isClient) {
     ,oos_end_date:     function(){return this.results_o.oos_end_date       }
     ,oos_size:         function(){return this.results_o.oos_size           }
     ,pcsv:             function(){return this.results_o.pcsv               }
+    ,featnames: function(){
+      var trf_o = this.results_o.featnames_o
+      var featnames_a = []
+      for (ky in trf_o){
+        if(trf_o[ky] == true)
+          featnames_a.push(ky)
+      }
+      return featnames_a.toString()
+    }
     ,build_date:       function(){
       return new Date(this.build_date).toString().slice(0,24)              }
     ,bgchart:          function(){
