@@ -114,6 +114,18 @@ if (Meteor.isClient) {
       if(fields.nc32.checked == true)
         num_candidates = 32
 
+      var train_ratio = 70
+      if(fields.tr50.checked == true)
+        train_ratio = 50
+      if(fields.tr60.checked == true)
+        train_ratio = 60
+      if(fields.tr70.checked == true)
+        train_ratio = 70
+      if(fields.tr80.checked == true)
+        train_ratio = 80
+      if(fields.tr90.checked == true)
+        train_ratio = 90
+
       var num_folds    = 3 // fields.num_folds.value
       if(fields.nf02.checked == true)
         num_folds = 2
