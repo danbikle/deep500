@@ -66,7 +66,7 @@ function cr_mn(train_o) {
   var opts = {} 
   /* what portion of data goes to train, 
   in train/validation fold splits. Here, 0.7 means 70% */
-  opts.train_ratio = 0.7 
+  opts.train_ratio = model_o.train_ratio
   // number of candidates to evaluate in parallel:
   opts.num_candidates = model_o.num_candidates
   // number of folds to evaluate per candidate:
