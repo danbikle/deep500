@@ -183,8 +183,6 @@ if (Meteor.isClient) {
 
       // Clear form
       fields.model_name.value     = ""
-      fields.num_epochs.value     = ""
-      fields.num_ensembles.value  = ""
     }
   })
 
@@ -206,7 +204,8 @@ if (Meteor.isClient) {
     ,oos_end_date:     function(){return this.results_o.oos_end_date       }
     ,oos_size:         function(){return this.results_o.oos_size           }
     ,pcsv:             function(){return this.results_o.pcsv               }
-    ,build_date:       function(){return this.model_o.build_date               }
+    ,build_date:       function(){
+return this.build_date               }
     ,bgchart:          function(){
       // I should collect chart data for D3 here.
       var blue_a_o              = {}
@@ -265,6 +264,7 @@ Meteor.methods({
       ,mnjson:         m_o.mnjson
       ,results_o:      m_o.results_o
       ,bgchartid:      m_o.bgchartid
+      ,build_date:     m_o.build_date
     })
   }
   ,deleteMmodel: function (mmodelId) {
