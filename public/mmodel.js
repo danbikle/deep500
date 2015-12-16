@@ -35,7 +35,7 @@ function cb1(err, csv_a) {
   var train_median = d3.median(pctlead_train)
   // I should capture train_median for the UI:
   model_o.train_median = d3.round(train_median,4)
-  var features_o   = cp2ftr(cp_a)
+  var features_o   = cp2ftr(cp_a,featnames_o)
   var labels_a     = cp2label(train_median,cp_a)
   var train_o      = cr_train_o(train_start,train_end,features_o,labels_a)
   // I should collect data for later predictions.
