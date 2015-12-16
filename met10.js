@@ -143,6 +143,7 @@ if (Meteor.isClient) {
       model_o.model_name     = model_name
       model_o.num_yrs        = +num_yrs
       model_o.num_candidates = +num_candidates
+      model_o.train_ratio    = +train_ratio
       model_o.num_folds      = +num_folds
       model_o.num_epochs     = +num_epochs
       model_o.num_ensembles  = +num_ensembles
@@ -150,8 +151,6 @@ if (Meteor.isClient) {
 
       // Clear form
       fields.model_name.value     = ""
-      fields.num_candidates.value = ""
-      fields.num_folds.value      = ""
       fields.num_epochs.value     = ""
       fields.num_ensembles.value  = ""
     }
@@ -221,6 +220,7 @@ Meteor.methods({
       model_name:      m_o.model_name
       ,num_yrs:        m_o.num_yrs
       ,num_candidates: m_o.num_candidates
+      ,train_ratio:    m_o.train_ratio
       ,num_folds:      m_o.num_folds
       ,num_epochs:     m_o.num_epochs
       ,num_ensembles:  m_o.num_ensembles
