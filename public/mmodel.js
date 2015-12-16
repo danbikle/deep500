@@ -35,7 +35,7 @@ function cb1(err, csv_a) {
   var train_median = d3.median(pctlead_train)
   // I should capture train_median for the UI:
   model_o.train_median = d3.round(train_median,4)
-  var features_o   = cp2ftr(cp_a,featnames_o)
+  var features_o   = cp2ftr(cp_a,model_o.featnames_o)
   var labels_a     = cp2label(train_median,cp_a)
   var train_o      = cr_train_o(train_start,train_end,features_o,labels_a)
   // I should collect data for later predictions.
@@ -66,7 +66,7 @@ function cr_mn(train_o) {
   var opts = {} 
   /* what portion of data goes to train, 
   in train/validation fold splits. Here, 0.7 means 70% */
-  opts.train_ratio = model_o.train_ratio
+  opts.train_ratio = model_o.train_ratio / 10.0
   // number of candidates to evaluate in parallel:
   opts.num_candidates = model_o.num_candidates
   // number of folds to evaluate per candidate:
