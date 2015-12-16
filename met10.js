@@ -100,7 +100,7 @@ if (Meteor.isClient) {
         num_yrs = 30
       if(fields.ny35.checked == true)
         num_yrs = 35
-      var num_candidates = 2 //fields.num_candidates.value
+      var num_candidates = 8 
       if(fields.nc01.checked == true)
         num_candidates = 1
       if(fields.nc02.checked == true)
@@ -113,8 +113,7 @@ if (Meteor.isClient) {
         num_candidates = 16
       if(fields.nc32.checked == true)
         num_candidates = 32
-
-      var train_ratio = 70
+      var train_ratio  = 80
       if(fields.tr50.checked == true)
         train_ratio = 50
       if(fields.tr60.checked == true)
@@ -125,18 +124,17 @@ if (Meteor.isClient) {
         train_ratio = 80
       if(fields.tr90.checked == true)
         train_ratio = 90
-
-      var num_folds    = 3 // fields.num_folds.value
+      var num_folds = 8
       if(fields.nf02.checked == true)
-        num_folds = 2
+        num_folds   = 2
       if(fields.nf04.checked == true)
-        num_folds = 4
+        num_folds   = 4
       if(fields.nf08.checked == true)
-        num_folds = 8
+        num_folds   = 8
       if(fields.nf16.checked == true)
-        num_folds = 16
+        num_folds   = 16
       if(fields.nf32.checked == true)
-        num_folds = 32
+        num_folds   = 32
 
       var num_epochs     = fields.num_epochs.value
       var num_ensembles  = fields.num_ensembles.value
