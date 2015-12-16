@@ -135,7 +135,6 @@ if (Meteor.isClient) {
         num_folds   = 16
       if(fields.nf32.checked == true)
         num_folds   = 32
-
       var num_epochs = 2
       if(fields.ne002.checked == true)
         num_epochs   = 2
@@ -170,8 +169,13 @@ if (Meteor.isClient) {
         num_ensembles   = 128
       if(fields.nn256.checked == true)
         num_ensembles   = 256
-
-      model_o = {}
+      // model_o should be global:
+      model_o          = {}
+      model_o.features = {}
+      model_o.features.pctlag1 = fields.pctlag1
+      model_o.features.pctlag2 = fields.pctlag2
+      model_o.features.pctlag4 = fields.pctlag4
+      model_o.features.pctlag8 = fields.pctlag8
       model_o.model_name     = model_name
       model_o.num_yrs        = +num_yrs
       model_o.num_candidates = +num_candidates
