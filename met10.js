@@ -169,6 +169,20 @@ if (Meteor.isClient) {
         num_ensembles   = 128
       if(fields.nn256.checked == true)
         num_ensembles   = 256
+      var neurons_min = 2
+      if(fields.mn2.checked == true)
+        neurons_min = 2
+      if(fields.mn4.checked == true)
+        neurons_min = 4
+      var neurons_max = 16
+      if(fields.mx04.checked == true)
+        neurons_max = 4
+      if(fields.mx08.checked == true)
+        neurons_max = 8
+      if(fields.mx16.checked == true)
+        neurons_max = 16
+      if(fields.mx32.checked == true)
+        neurons_max = 32
       // model_o should be global:
       model_o                     = {}
       model_o.featnames_o         = {}
