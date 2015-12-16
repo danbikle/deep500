@@ -205,7 +205,7 @@ if (Meteor.isClient) {
     ,oos_size:         function(){return this.results_o.oos_size           }
     ,pcsv:             function(){return this.results_o.pcsv               }
     ,build_date:       function(){
-return this.build_date               }
+      return new Date(this.build_date).toString().slice(0,24)              }
     ,bgchart:          function(){
       // I should collect chart data for D3 here.
       var blue_a_o              = {}
