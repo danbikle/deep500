@@ -172,10 +172,10 @@ if (Meteor.isClient) {
       // model_o should be global:
       model_o                     = {}
       model_o.featnames_o         = {}
-      model_o.featnames_o.pctlag1 = fields.pctlag1
-      model_o.featnames_o.pctlag2 = fields.pctlag2
-      model_o.featnames_o.pctlag4 = fields.pctlag4
-      model_o.featnames_o.pctlag8 = fields.pctlag8
+      model_o.featnames_o.pctlag1 = fields.pctlag1.checked
+      model_o.featnames_o.pctlag2 = fields.pctlag2.checked
+      model_o.featnames_o.pctlag4 = fields.pctlag4.checked
+      model_o.featnames_o.pctlag8 = fields.pctlag8.checked
       model_o.model_name     = model_name
       model_o.num_yrs        = +num_yrs
       model_o.num_candidates = +num_candidates
