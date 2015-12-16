@@ -154,7 +154,8 @@ function cr_mn(train_o) {
       var row   = pdate+','+cp+','+prd+"\n"
       pcsv      = pcsv + row
     }
-    results_o.pcsv = pcsv
+    results_o.pcsv        = pcsv
+    results_o.featnames_o = model_o.featnames_o
     return results_o
     'predict_oos done'
   }
