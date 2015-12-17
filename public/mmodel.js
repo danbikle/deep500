@@ -12,11 +12,7 @@ function start_modelbuild(){
   d3.select('body div.container').remove()
   d3.select('#divspinner')
     .html('<div id="a_spinner"><h1>Busy... Learning... (Please Wait)</h1><img src="/spinner.gif"></img></div>')
-
-
-  d3.select('#a_spinner')
-    .append('div')
-    .text('Working on fold: '+foldcntr)
+  d3.select('#a_spinner').append('div')
   d3.csv("/csv/GSPC.csv", cb1)
 }
 
@@ -124,8 +120,9 @@ function cr_mn(train_o) {
     foldcntr++
     stepcntr
     foldcntr
-    d3.select('#a_spinner div')
-      .text('Working on fold: '+foldcntr)
+    var widpct = 100*foldcntr/mmodel_o.num_folds
+    d3.select('#a_spinner div').attr('style','background-color:red;max-width:'+widpct+'%;')
+
   }
   var json_state = 'need json'
   function finishedBatch() {
