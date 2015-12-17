@@ -118,13 +118,10 @@ function cr_mn(train_o) {
   },0)
   function finishedFold() {
     foldcntr++
-    stepcntr
-    foldcntr
     var widpct = 100*foldcntr/model_o.num_folds
     d3.select('#a_spinner div')
-      .attr('style','background-color:red;max-width:'+widpct+'%;')
+      .attr('style','padding:5px;background-color:red;max-width:'+widpct+'%;')
       .text(widpct+' %')
-
   }
   var json_state = 'need json'
   function finishedBatch() {
