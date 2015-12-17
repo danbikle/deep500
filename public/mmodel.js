@@ -117,6 +117,7 @@ function cr_mn(train_o) {
   setInterval(function(){
     magicNet.step()
     stepcntr++
+
 if(stepcntr % 1000 == 0) {
   stepcntr
   foldcntr
@@ -125,7 +126,8 @@ if(stepcntr % 1000 == 0) {
   if(foldcntr > 0)
     widpct = 100*stepcntr/steptotal
 }
-  },0)
+
+},0)
   function finishedFold(){
     foldcntr++
     if (foldcntr==1)
