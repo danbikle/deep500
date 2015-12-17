@@ -119,9 +119,6 @@ function cr_mn(train_o) {
     magicNet.step()
     stepcntr++
     if(stepcntr % 1000 == 0) {
-      stepcntr
-      foldcntr
-      model_o.num_folds
       var widpct = 1.0
       if(foldcntr > 0)
         widpct = 100*stepcntr/steptotal
