@@ -59,16 +59,14 @@ function pctlead1(my_a){
 // This function should convert array into object full of features:
 function cp2ftr(cp_a, featnames_o){
   var features_o     = {}
-  if (featnames_o.pctlag1)
-    features_o.pctlag1 = pctlagn(1,cp_a)
+  // I should hardcode in pctlag1 so I have at least 1 feature
+  features_o.pctlag1 = pctlagn(1,cp_a)
   if (featnames_o.pctlag2)
     features_o.pctlag2 = pctlagn(2,cp_a)
   if (featnames_o.pctlag4)
     features_o.pctlag4 = pctlagn(4,cp_a)
   if (featnames_o.pctlag8)
     features_o.pctlag8 = pctlagn(8,cp_a)
-  if (features_o == {})
-      features_o.pctlag1 = pctlagn(1,cp_a)
   return features_o
 }
 // This function should convert array into array of labels:
