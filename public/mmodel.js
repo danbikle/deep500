@@ -5,13 +5,19 @@ This file should help me build ConvNetJS MagicNet Models.
 
 // I should use predict_o to carry data into predict_oos()
 var predict_o = {}
+var foldcntr  = 0 // This should help me display progress
 
 // This function should start model build
 function start_modelbuild(){
   d3.select('body div.container').remove()
   d3.select('#divspinner')
     .html('<div id="a_spinner"><h1>Busy... Learning... (Please Wait)</h1><img src="/spinner.gif"></img></div>')
-  d3.select('#a_spinner').append('div').html('Put progress bar here.')
+
+// I should probably call data() to bind foldcntr to div here.
+  d3.select('#a_spinner')
+    .append('div')
+    .data(foldcntr)
+    .text(function(d){return d})
   d3.csv("/csv/GSPC.csv", cb1)
 }
 
@@ -110,7 +116,6 @@ function cr_mn(train_o) {
   /* start training MagicNet. 
   Every call trains all candidates in current batch on one example: */
   var stepcntr = 0
-  var foldcntr = 0
   // This might be the place where I later put a granular progress bar:
   setInterval(function(){
     stepcntr++
