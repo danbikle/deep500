@@ -8,6 +8,7 @@ var predict_o = {}
 // These should help me display progress:
 var foldcntr  = 0 
 var stepcntr  = 0
+var steptotal = 0
 
 // This function should start model build
 function start_modelbuild(){
@@ -131,7 +132,7 @@ if(stepcntr % 1000 == 0) {
   function finishedFold(){
     foldcntr++
     if (foldcntr==1)
-      steptotal = stepcntr * num_folds / foldcntr
+      steptotal = stepcntr * model_o.num_folds / foldcntr
 
 /*
     var widpct = 100*foldcntr/model_o.num_folds
