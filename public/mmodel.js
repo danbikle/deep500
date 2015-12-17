@@ -15,7 +15,7 @@ function start_modelbuild(){
   d3.select('body div.container').remove()
   d3.select('#divspinner')
     .html('<div id="a_spinner"><h1>Busy... Learning... (Please Wait)</h1><img src="/spinner.gif"></img></div>')
-  d3.select('#a_spinner').append('div').text('working...')
+  d3.select('#a_spinner').append('div').text('Working, This may take several hours...')
   d3.csv("/csv/GSPC.csv", cb1)
 }
 
@@ -119,9 +119,11 @@ function cr_mn(train_o) {
     magicNet.step()
     stepcntr++
     if(stepcntr % 1000 == 0) {
-      var widpct = 1.0
+      var widpct = 5.0
       if(foldcntr > 0)
-        widpct = 100*stepcntr/steptotal
+        widpct = d3.round(100*stepcntr/steptotal,4)
+      if(widpct < 5.0)
+         widpct = 5.0
       d3.select('#a_spinner div')
         .attr('style','padding:5px;background-color:red;max-width:'+widpct+'%;')
         .text(widpct+' %')
