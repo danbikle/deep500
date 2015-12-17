@@ -13,11 +13,10 @@ function start_modelbuild(){
   d3.select('#divspinner')
     .html('<div id="a_spinner"><h1>Busy... Learning... (Please Wait)</h1><img src="/spinner.gif"></img></div>')
 
-// I should probably call data() to bind foldcntr to div here.
+
   d3.select('#a_spinner')
     .append('div')
-    .data(foldcntr)
-    .text(function(d){return d})
+    .text('Working on fold: '+foldcntr)
   d3.csv("/csv/GSPC.csv", cb1)
 }
 
@@ -125,6 +124,8 @@ function cr_mn(train_o) {
     foldcntr++
     stepcntr
     foldcntr
+    d3.select('#a_spinner div')
+      .text('Working on fold: '+foldcntr)
   }
   var json_state = 'need json'
   function finishedBatch() {
