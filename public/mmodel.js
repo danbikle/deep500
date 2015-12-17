@@ -118,28 +118,23 @@ function cr_mn(train_o) {
   setInterval(function(){
     magicNet.step()
     stepcntr++
-
-if(stepcntr % 1000 == 0) {
-  stepcntr
-  foldcntr
-  model_o.num_folds
-  var widpct = 1.0
-  if(foldcntr > 0)
-    widpct = 100*stepcntr/steptotal
-}
-
-},0)
+    if(stepcntr % 1000 == 0) {
+      stepcntr
+      foldcntr
+      model_o.num_folds
+      var widpct = 1.0
+      if(foldcntr > 0)
+        widpct = 100*stepcntr/steptotal
+      d3.select('#a_spinner div')
+        .attr('style','padding:5px;background-color:red;max-width:'+widpct+'%;')
+        .text(widpct+' %')
+    }
+  },0)
   function finishedFold(){
     foldcntr++
     if (foldcntr==1)
-      steptotal = stepcntr * model_o.num_folds / foldcntr
-
-/*
-    var widpct = 100*foldcntr/model_o.num_folds
-    d3.select('#a_spinner div')
-      .attr('style','padding:5px;background-color:red;max-width:'+widpct+'%;')
-      .text(widpct+' %')
-*/
+      // I should now be able to calculate steptotal
+      steptotal = stepcntr * model_o.num_folds
   }
   var json_state = 'need json'
   function finishedBatch() {
