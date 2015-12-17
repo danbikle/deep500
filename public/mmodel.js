@@ -5,7 +5,9 @@ This file should help me build ConvNetJS MagicNet Models.
 
 // I should use predict_o to carry data into predict_oos()
 var predict_o = {}
-var foldcntr  = 0 // This should help me display progress
+// These should help me display progress:
+var foldcntr  = 0 
+var stepcntr  = 0
 
 // This function should start model build
 function start_modelbuild(){
@@ -110,18 +112,31 @@ function cr_mn(train_o) {
   magicNet.onFinishBatch(finishedBatch)
   /* start training MagicNet. 
   Every call trains all candidates in current batch on one example: */
-  var stepcntr = 0
+
   // This might be the place where I later put a granular progress bar:
   setInterval(function(){
-    stepcntr++
     magicNet.step()
+    stepcntr++
+if(stepcntr % 1000 == 0) {
+  stepcntr
+  foldcntr
+  model_o.num_folds
+  var widpct = 1.0
+  if(foldcntr > 0)
+    widpct = 100*stepcntr/steptotal
+}
   },0)
-  function finishedFold() {
+  function finishedFold(){
     foldcntr++
+    if (foldcntr==1)
+      steptotal = stepcntr * num_folds / foldcntr
+
+/*
     var widpct = 100*foldcntr/model_o.num_folds
     d3.select('#a_spinner div')
       .attr('style','padding:5px;background-color:red;max-width:'+widpct+'%;')
       .text(widpct+' %')
+*/
   }
   var json_state = 'need json'
   function finishedBatch() {
