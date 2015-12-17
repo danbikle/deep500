@@ -121,7 +121,7 @@ function cr_mn(train_o) {
     if(stepcntr % 1000 == 0) {
       var widpct = 5.0
       if(foldcntr > 0)
-        widpct = d3.round(100*stepcntr/steptotal,4)
+        widpct = d3.round(100*stepcntr/steptotal,3)
       if(widpct < 5.0)
          widpct = 5.0
       d3.select('#a_spinner div')
