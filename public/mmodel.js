@@ -151,6 +151,8 @@ function cr_mn(train_o) {
       d3.select('#a_spinner div#pbar')
         .attr('style','padding:5px;background-color:red;max-width:'+widpct+'%;')
         .text(widpct+' %')
+      d3.select('#a_spinner div#hrleft')
+        .text('Hours left: '+d3.round(hrleft,2))
     }
   },0)
   function finishedFold(){
