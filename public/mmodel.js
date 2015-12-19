@@ -10,6 +10,7 @@ var foldcntr  = 0
 var stepcntr  = 0
 var steptotal = 0
 var datenow_s = ''
+var doneby_s  = new Date(10 * 1000 * 3600 + Date.now()).toString()
 
 // This function should start model build
 function start_modelbuild(){
@@ -27,7 +28,7 @@ function start_modelbuild(){
     .text('Calculating time left...')
   // Here I should show start time:
   datenow_s    = new Date(Date.now()).toString()
-  var doneby_s = new Date(10 * 1000 * 3600 + Date.now()).toString()
+//  var doneby_s = new Date(10 * 1000 * 3600 + Date.now()).toString()
   d3.select('#a_spinner')
     .append('div')
     .attr('id','datenow')
@@ -135,7 +136,6 @@ function cr_mn(train_o) {
   /* start training MagicNet. 
   Every call trains all candidates in current batch on one example: */
 
-  // This might be the place where I later put a granular progress bar:
   setInterval(function(){
     magicNet.step()
     stepcntr++
@@ -152,10 +152,11 @@ function cr_mn(train_o) {
         var msecleft = msectot - cdur
         var minleft  = msecleft / 1000.0 / 60.0
         hrleft       = msecleft / 1000.0 / 60.0 / 60.0
-        var doneby_s = new Date(dnow+msecleft).toString()
+        doneby_s = new Date(dnow+msecleft).toString()
       }
       if(widpct < 5.0)
          widpct = 5.0
+      // I should use d3 to display progress and finish time.
       d3.select('#a_spinner div#pbar')
         .attr('style','padding:5px;background-color:red;max-width:'+widpct+'%;')
         .text(widpct+' %')
