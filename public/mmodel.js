@@ -9,6 +9,7 @@ var predict_o = {}
 var foldcntr  = 0 
 var stepcntr  = 0
 var steptotal = 0
+var datenow_s = ''
 
 // This function should start model build
 function start_modelbuild(){
@@ -20,14 +21,16 @@ function start_modelbuild(){
     .append('div')
     .attr('id','pbar')
     .text('Working, This may take several hours...')
-
-  // Here, I should display a time left calculation
-  // not done yet tho.
-  // It should be younger sibling of div#pbar
   d3.select('#a_spinner')
     .append('div')
     .attr('id','hrleft')
     .text('Calculating time left...')
+  // Here I should show current time:
+  datenow_s = new Date(Date.now()).toString()
+  d3.select('#a_spinner')
+    .append('div')
+    .attr('id','datenow')
+    .text(datenow_s)
 
   d3.csv("/csv/GSPC.csv", cb1)
 }
