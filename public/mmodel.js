@@ -53,7 +53,7 @@ function cb1(err, csv_a) {
   var labels_a     = cp2label(train_median,cp_a)
   var train_o      = cr_train_o(train_start,train_end,features_o,labels_a)
   // I should collect data for later predictions.
-'  predict_o.cp_a         = cp_a
+  predict_o.cp_a         = cp_a
   predict_o.train_start  = train_start
   predict_o.train_end    = train_end
   predict_o.train_median = train_median
