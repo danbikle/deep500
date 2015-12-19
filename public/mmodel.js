@@ -15,7 +15,8 @@ function start_modelbuild(){
   d3.select('body div.container').remove()
   d3.select('#divspinner')
     .html('<div id="a_spinner"><h1>Busy... Learning... (Please Wait)</h1><img src="/spinner.gif"></img></div>')
-  d3.select('#a_spinner').append('div').text('Working, This may take several hours...')
+  d3.select('#a_spinner')
+    .html('<div id="pbar">Working, This may take several hours...</div>')
   d3.csv("/csv/GSPC.csv", cb1)
 }
 
@@ -120,6 +121,7 @@ function cr_mn(train_o) {
     stepcntr++
     if(stepcntr % 1000 == 0) {
       var widpct = 5.0
+      var hrleft = 10.0
       if(foldcntr > 0){
         // I should know steptotal now
         widpct = d3.round(100*stepcntr/steptotal,3)
@@ -129,11 +131,12 @@ function cr_mn(train_o) {
         var msectot  = cdur * steptotal / stepcntr
         var msecleft = msectot - cdur
         var minleft  = msecleft / 1000.0 / 60.0
+        hrleft       = msecleft / 1000.0 / 60.0 / 60.0
         minleft
       }
       if(widpct < 5.0)
          widpct = 5.0
-      d3.select('#a_spinner div')
+      d3.select('#a_spinner div#pbar')
         .attr('style','padding:5px;background-color:red;max-width:'+widpct+'%;')
         .text(widpct+' %')
     }
