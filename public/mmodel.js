@@ -120,8 +120,17 @@ function cr_mn(train_o) {
     stepcntr++
     if(stepcntr % 1000 == 0) {
       var widpct = 5.0
-      if(foldcntr > 0)
+      if(foldcntr > 0){
+        // I should know steptotal now
         widpct = d3.round(100*stepcntr/steptotal,3)
+        // I should calculate current duration
+        var dnow     = Date.now()
+        var cdur     = dnow - mn_start
+        var msectot  = cdur * steptotal / stepcntr
+        var msecleft = msectot - cdur
+        var minleft  = msecleft / 1000.0 / 60.0
+        minleft
+      }
       if(widpct < 5.0)
          widpct = 5.0
       d3.select('#a_spinner div')
@@ -134,12 +143,6 @@ function cr_mn(train_o) {
     if (foldcntr==1)
       // I should now be able to calculate steptotal
       steptotal = stepcntr * model_o.num_folds
-    // I should calculate current duration
-    var dnow     = Date.now()
-    var cdur     = dnow - mn_start
-    var msectot  = cdur * steptotal / stepcntr
-    var msecleft = msectot - cdur
-    var minleft  = msecleft / 1000.0 / 60.0
     'finishedFold'
   }
   var json_state = 'need json'
