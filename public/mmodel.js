@@ -25,12 +25,17 @@ function start_modelbuild(){
     .append('div')
     .attr('id','hrleft')
     .text('Calculating time left...')
-  // Here I should show current time:
-  datenow_s = new Date(Date.now()).toString()
+  // Here I should show start time:
+  datenow_s    = new Date(Date.now()).toString()
+  var doneby_s = new Date(10 * 1000 * 3600 + Date.now()).toString()
   d3.select('#a_spinner')
     .append('div')
     .attr('id','datenow')
-    .text(datenow_s)
+    .text('Started: '+datenow_s)
+  d3.select('#a_spinner')
+    .append('div')
+    .attr('id','endtime')
+    .text('Done by: '+doneby_s)
 
   d3.csv("/csv/GSPC.csv", cb1)
 }
