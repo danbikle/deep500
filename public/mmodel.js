@@ -134,6 +134,13 @@ function cr_mn(train_o) {
     if (foldcntr==1)
       // I should now be able to calculate steptotal
       steptotal = stepcntr * model_o.num_folds
+    // I should calculate current duration
+    var dnow     = Date.now()
+    var cdur     = dnow - mn_start
+    var msectot  = cdur * steptotal / stepcntr
+    var msecleft = msectot - cdur
+    var minleft  = msecleft / 1000.0 / 60.0
+    'finishedFold'
   }
   var json_state = 'need json'
   function finishedBatch() {
