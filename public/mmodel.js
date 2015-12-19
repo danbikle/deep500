@@ -34,7 +34,7 @@ function start_modelbuild(){
     .text('Started: '+datenow_s)
   d3.select('#a_spinner')
     .append('div')
-    .attr('id','endtime')
+    .attr('id','doneby')
     .text('Done by: '+doneby_s)
 
   d3.csv("/csv/GSPC.csv", cb1)
@@ -152,7 +152,7 @@ function cr_mn(train_o) {
         var msecleft = msectot - cdur
         var minleft  = msecleft / 1000.0 / 60.0
         hrleft       = msecleft / 1000.0 / 60.0 / 60.0
-        minleft
+        var doneby_s = new Date(dnow+msecleft).toString()
       }
       if(widpct < 5.0)
          widpct = 5.0
@@ -161,6 +161,8 @@ function cr_mn(train_o) {
         .text(widpct+' %')
       d3.select('#a_spinner div#hrleft')
         .text('Hours left: '+d3.round(hrleft,2))
+      d3.select('#a_spinner div#doneby')
+        .text('Done by: '+doneby_s)
     }
   },0)
   function finishedFold(){
