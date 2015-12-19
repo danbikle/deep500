@@ -15,8 +15,16 @@ function start_modelbuild(){
   d3.select('body div.container').remove()
   d3.select('#divspinner')
     .html('<div id="a_spinner"><h1>Busy... Learning... (Please Wait)</h1><img src="/spinner.gif"></img></div>')
+
   d3.select('#a_spinner')
-    .html('<div id="pbar">Working, This may take several hours...</div>')
+    .append('div')
+    .attr('id','pbar')
+    .text('Working, This may take several hours...')
+
+  // Here, I should display a time left calculation
+  // not done yet tho.
+  // It should be younger sibling of div#pbar
+
   d3.csv("/csv/GSPC.csv", cb1)
 }
 
@@ -45,7 +53,7 @@ function cb1(err, csv_a) {
   var labels_a     = cp2label(train_median,cp_a)
   var train_o      = cr_train_o(train_start,train_end,features_o,labels_a)
   // I should collect data for later predictions.
-  predict_o.cp_a         = cp_a
+'  predict_o.cp_a         = cp_a
   predict_o.train_start  = train_start
   predict_o.train_end    = train_end
   predict_o.train_median = train_median
