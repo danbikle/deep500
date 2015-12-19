@@ -28,7 +28,6 @@ function start_modelbuild(){
     .text('Calculating time left...')
   // Here I should show start time:
   datenow_s    = new Date(Date.now()).toString()
-//  var doneby_s = new Date(10 * 1000 * 3600 + Date.now()).toString()
   d3.select('#a_spinner')
     .append('div')
     .attr('id','datenow')
