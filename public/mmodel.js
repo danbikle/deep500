@@ -24,6 +24,10 @@ function start_modelbuild(){
   // Here, I should display a time left calculation
   // not done yet tho.
   // It should be younger sibling of div#pbar
+  d3.select('#a_spinner')
+    .append('div')
+    .attr('id','hrleft')
+    .text('Calculating time left...')
 
   d3.csv("/csv/GSPC.csv", cb1)
 }
