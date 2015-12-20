@@ -2,7 +2,7 @@
 
 This repo contains some demos which I wrote to connect my mind to the ConvNetJS API.
 
-To get started I logged into my Ubuntu virtualbox.
+To get started I logged into my Ubuntu14 virtualbox.
 
 This repo depends on Meteor so I installed it:
 
