@@ -199,9 +199,10 @@ if (Meteor.isClient) {
       model_o.num_ensembles  = +num_ensembles
       model_o.neurons_min    = +neurons_min
       model_o.neurons_max    = +neurons_max
-      start_modelbuild()
       // Clear form
       fields.model_name.value     = ""
+      // I should use model_o to build a model
+      start_modelbuild()
     }
   })
 

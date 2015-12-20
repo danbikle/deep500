@@ -1,4 +1,4 @@
-/* app31.js
+/* deep500.js
 
 This file should help me deal with data into/out-of ConvNetJS.
 */
