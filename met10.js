@@ -224,8 +224,6 @@ if (Meteor.isClient) {
     ,oos_end_date:     function(){return this.results_o.oos_end_date       }
     ,oos_size:         function(){return this.results_o.oos_size           }
     ,pcsv:             function(){return this.results_o.pcsv               }
-//    ,neurons_min:      function(){return this.neurons_min        }
-//    ,neurons_max:      function(){return this.neurons_max        }
     ,build_date:function(){return new Date(this.build_date).toString().slice(0,24)}
     ,featnames: function(){
       var trf_o = this.results_o.featnames_o
