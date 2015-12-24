@@ -178,7 +178,7 @@ if (Meteor.isClient) {
         num_ensembles   = 128
       if(fields.nn256.checked == true)
         num_ensembles   = 256
-      var neurons_min = 2
+      var neurons_min = 4
       if(fields.mn2.checked == true)
         neurons_min = 2
       if(fields.mn4.checked == true)
@@ -192,6 +192,13 @@ if (Meteor.isClient) {
         neurons_max = 16
       if(fields.mx32.checked == true)
         neurons_max = 32
+      var hlayers = 2
+      if(fields.hl2.checked == true)
+        hlayers = 2
+      if(fields.hl3.checked == true)
+        hlayers = 3
+      if(fields.hl4.checked == true)
+        hlayers = 4
       // model_o should be global:
       model_o                     = {}
       model_o.featnames_o         = {}
@@ -208,6 +215,7 @@ if (Meteor.isClient) {
       model_o.num_ensembles  = +num_ensembles
       model_o.neurons_min    = +neurons_min
       model_o.neurons_max    = +neurons_max
+      model_o.hlayers    = +hlayers
       // Clear form
       fields.model_name.value     = ""
       // I should use model_o to build a model
@@ -295,6 +303,7 @@ Meteor.methods({
       ,num_ensembles:  m_o.num_ensembles
       ,neurons_min:    m_o.neurons_min
       ,neurons_max:    m_o.neurons_max
+      ,hlayers:        m_o.hlayers
       ,createdAt:      new Date()
       ,owner:          Meteor.userId()
       ,username:       Meteor.user().username
