@@ -66,7 +66,7 @@ function start_modelbuild(){
 
   d3.select('#a_spinner div table.table_model')
     .append('tr')
-    .html('<td>Features: </td><td>'+featnames.toString()+'</td>'})
+    .html('<td>Features: </td><td>'+featnames.toString()+'</td>')
 
   d3.csv("/csv/GSPC.csv", cb1)
 }
