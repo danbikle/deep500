@@ -44,14 +44,14 @@
       <h2>S&amp;P 500 Predictive Models</h2>
       {{#if currentUser}}
         <form class="new-mmodel">
-          Model Name: <input type="text" name="model_name" />
+          Model Name: <input type="text" name="model_name" value="model_{{mymodelsuffx}}" />
           <br />
           Number of Training Years (25 is good): 
           <input id='ny05' type="radio" name="num_yrs" value="5"  />5
           <input id='ny10' type="radio" name="num_yrs" value="10" />10
           <input id='ny15' type="radio" name="num_yrs" value="15" />15
           <input id='ny20' type="radio" name="num_yrs" value="20" />20
-          <input id='ny25' type="radio" name="num_yrs" value="25" />25
+          <input id='ny25' type="radio" name="num_yrs" value="25" checked='true' />25
           <input id='ny30' type="radio" name="num_yrs" value="30" />30
           <input id='ny35' type="radio" name="num_yrs" value="35" />35
           <br />
@@ -59,13 +59,13 @@
           <input id='tr50' type="radio" name="train_ratio" value="50" />50
           <input id='tr60' type="radio" name="train_ratio" value="60" />60
           <input id='tr70' type="radio" name="train_ratio" value="70" />70
-          <input id='tr80' type="radio" name="train_ratio" value="80" />80
+          <input id='tr80' type="radio" name="train_ratio" value="80" checked='true' />80
           <input id='tr90' type="radio" name="train_ratio" value="90" />90
           <br />
           Number of Folds (8 is good):
           <input id='nf02' type="radio" name="num_folds" value="2" />2
           <input id='nf04' type="radio" name="num_folds" value="4" />4
-          <input id='nf08' type="radio" name="num_folds" value="8" />8
+          <input id='nf08' type="radio" name="num_folds" value="8" checked='true' />8
           <input id='nf16' type="radio" name="num_folds" value="16" />16
           <input id='nf32' type="radio" name="num_folds" value="32" />32
           <br />
@@ -74,14 +74,14 @@
           <input id='ne004' type="radio" name="num_epochs" value="4" />4
           <input id='ne008' type="radio" name="num_epochs" value="8" />8
           <input id='ne016' type="radio" name="num_epochs" value="16" />16
-          <input id='ne032' type="radio" name="num_epochs" value="32" />32
+          <input id='ne032' type="radio" name="num_epochs" value="32" checked='true' />32
           <input id='ne064' type="radio" name="num_epochs" value="64" />64
           <input id='ne128' type="radio" name="num_epochs" value="128" />128
           <input id='ne256' type="radio" name="num_epochs" value="256" />256
           <br />
           Number of Ensembles (4 is good):
           <input id='nn002' type="radio" name="num_ensembles" value="2" />2
-          <input id='nn004' type="radio" name="num_ensembles" value="4" />4
+          <input id='nn004' type="radio" name="num_ensembles" value="4" checked='true' />4
           <input id='nn008' type="radio" name="num_ensembles" value="8" />8
           <input id='nn016' type="radio" name="num_ensembles" value="16" />16
           <input id='nn032' type="radio" name="num_ensembles" value="32" />32
@@ -93,18 +93,18 @@
           <input id='nc01' type="radio" name="num_candidates" value="1" />1
           <input id='nc02' type="radio" name="num_candidates" value="2" />2
           <input id='nc04' type="radio" name="num_candidates" value="4" />4
-          <input id='nc08' type="radio" name="num_candidates" value="8" />8
+          <input id='nc08' type="radio" name="num_candidates" value="8" checked='true' />8
           <input id='nc16' type="radio" name="num_candidates" value="16" />16
           <input id='nc32' type="radio" name="num_candidates" value="32" />32
           <br />
           Minimum Number of Neurons/Layer (4 is good):
           <input id='mn2' type="radio" name="neurons_min" value="2" />2
-          <input id='mn4' type="radio" name="neurons_min" value="4" />4
+          <input id='mn4' type="radio" name="neurons_min" value="4" checked='true' />4
           <br />
           Maximum Number of Neurons/Layer (16 is good):
           <input id='mx04' type="radio" name="neurons_max" value="4" />4
           <input id='mx08' type="radio" name="neurons_max" value="8" />8
-          <input id='mx16' type="radio" name="neurons_max" value="16" />16
+          <input id='mx16' type="radio" name="neurons_max" value="16" checked='true' />16
           <input id='mx32' type="radio" name="neurons_max" value="32" />32
           <br />
           Features:

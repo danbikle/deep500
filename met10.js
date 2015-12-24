@@ -21,6 +21,7 @@ if (Meteor.isClient) {
   bgcharts_a = []
   Session.set('needcharts', true)
   Template.body.helpers({
+    mymodelsuffx: Date.now().toString().slice(0,10),
     needcharts: Session.get('needcharts'), // does not work so use d3 remove()
     mmodels: function(){
       if(Session.get('show_mymodels') == true)
