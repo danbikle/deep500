@@ -92,6 +92,7 @@
       var layer_defs = [];
       layer_defs.push({type:'input', out_sx:1, out_sy:1, out_depth: input_depth});
       var nl = weightedSample([0,1,2,3], [0.2, 0.3, 0.3, 0.2]); // prefer nets with 1,2 hidden layers
+      nl     = 2 // // prefer nets with 2 hidden layers
       for(var q=0;q<nl;q++) {
         var ni = randi(this.neurons_min, this.neurons_max);
         var act = ['tanh','maxout','relu'][randi(0,3)];

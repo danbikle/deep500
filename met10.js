@@ -100,7 +100,7 @@ if (Meteor.isClient) {
         num_yrs = 30
       if(fields.ny35.checked == true)
         num_yrs = 35
-      var num_candidates = 16
+      var num_candidates = 8
       if(fields.nc01.checked == true)
         num_candidates = 1
       if(fields.nc02.checked == true)
@@ -135,7 +135,7 @@ if (Meteor.isClient) {
         num_folds   = 16
       if(fields.nf32.checked == true)
         num_folds   = 32
-      var num_epochs = 2
+      var num_epochs = 32
       if(fields.ne002.checked == true)
         num_epochs   = 2
       if(fields.ne004.checked == true)
@@ -152,7 +152,7 @@ if (Meteor.isClient) {
         num_epochs   = 128
       if(fields.ne256.checked == true)
         num_epochs   = 256
-      var num_ensembles = 8
+      var num_ensembles = 4
       if(fields.nn002.checked == true)
         num_ensembles   = 2
       if(fields.nn004.checked == true)

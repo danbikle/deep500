@@ -36,6 +36,37 @@ function start_modelbuild(){
     .append('div')
     .attr('id','doneby')
     .text('Done by: '+doneby_s)
+  d3.select('#a_spinner')
+    .append('div')
+    .text('Working on this model:')
+
+  // I should show information entered by user while model is building:
+  var data = []
+  for (ky in model_o){
+    if(typeof model_o[ky] == 'string')
+      data.push([ky,model_o[ky]])
+    if(typeof model_o[ky] == 'number')
+      data.push([ky,model_o[ky]])
+  }
+  d3.select('#a_spinner')
+    .append('div')
+    .append('table')
+    .attr('class','table_model')
+    .selectAll('tr.model_prop')
+    .data(data)
+    .enter()
+    .append("tr")
+    .attr('class','model_prop')
+    .html(function(d){return '<td>'+d[0]+': </td><td>'+d[1]+'</td>'})
+
+  featnames = []
+  for (ky in model_o.featnames_o)
+    if(model_o.featnames_o[ky])
+      featnames.push(ky)
+
+  d3.select('#a_spinner div table.table_model')
+    .append('tr')
+    .html('<td>Features: </td><td>'+featnames.toString()+'</td>'})
 
   d3.csv("/csv/GSPC.csv", cb1)
 }
