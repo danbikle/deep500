@@ -21,7 +21,15 @@ if (Meteor.isClient) {
   bgcharts_a = []
   Session.set('needcharts', true)
   Template.body.helpers({
-    mymodelsuffx: Date.now().toString().slice(0,10),
+    mymodelsuffx: function(){
+      var dnow = new Date(Date.now())
+      var yr   = dnow.getFullYear()
+      var mnth = dnow.getMonth()+1
+      var dom  = dnow.getDate()
+      var hod  = dnow.getHours()
+      var moh  = dnow.getMinutes()
+      return yr+'_'+mnth+'_'+dom+'_'+hod+'_'+moh
+    },
     needcharts: Session.get('needcharts'), // does not work so use d3 remove()
     mmodels: function(){
       if(Session.get('show_mymodels') == true)
