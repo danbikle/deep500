@@ -50,6 +50,7 @@
     this.momentum_max = getopt(opt, 'momentum_max', 0.9);
     this.neurons_min = getopt(opt, 'neurons_min', 5);
     this.neurons_max = getopt(opt, 'neurons_max', 30);
+    this.hlayers     = getopt(opt, 'hlayers', 2);
 
     // computed
     this.folds = []; // data fold indices, gets filled by sampleFolds()
@@ -92,7 +93,7 @@
       var layer_defs = [];
       layer_defs.push({type:'input', out_sx:1, out_sy:1, out_depth: input_depth});
       var nl = weightedSample([0,1,2,3], [0.2, 0.3, 0.3, 0.2]); // prefer nets with 1,2 hidden layers
-      nl     = 2 // // prefer nets with 2 hidden layers
+      nl     = this.hlayers // Actually, I prefer this
       for(var q=0;q<nl;q++) {
         var ni = randi(this.neurons_min, this.neurons_max);
         var act = ['tanh','maxout','relu'][randi(0,3)];

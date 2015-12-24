@@ -136,6 +136,8 @@ function cr_mn(train_o) {
   // Configure neurons_min, neurons_max
   opts.neurons_min   = model_o.neurons_min
   opts.neurons_max   = model_o.neurons_max
+  // hlayers too
+  opts.hlayers       = model_o.hlayers
   // I should start work on obsv_v which is a volume of observations
   var fnum = -1
   // I need to know obsv_v size (which is the number of features) before I create it
