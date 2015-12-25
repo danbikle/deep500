@@ -301,6 +301,13 @@ if (Meteor.isClient) {
   }) //Template.mmodel.helpers
 
   Template.mmodel.events({
+    "click .use_thismodel": function () {
+// I should use this._id to get the mnjson from mongo.
+// find({something:this._id},{mnjson:1})
+this._id
+'under construction'
+},
+
     "click .toggle-checked": function () {
       // Set the checked property to the opposite of its current value
       Meteor.call("setChecked", this._id, ! this.checked)
