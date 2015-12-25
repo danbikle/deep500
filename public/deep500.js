@@ -18,7 +18,7 @@ return predictions_a
 // This function should create an array of vols from a year.
 function yr2vols(yr){
 // How to get access to csv_a?
-// I should use d3.csv()
+// I should use d3.csv()?
 yr
 myvols = []
 return myvols
