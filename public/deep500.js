@@ -15,7 +15,9 @@ predictions_a = []
 magicNet.fromJSON(myjson)
 
 // I should use d3.csv() here and place a call to yr2vols(yr) inside cb2.
-d3.csv("/csv/GSPC.csv", cb2(yr))
+var myerr = null
+var csv_a = []
+d3.csv("/csv/GSPC.csv", cb2(myerr,csv_a,yr))
 
 // This might be in the wrong place but have it here for now:
 return predictions_a
