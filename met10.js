@@ -394,7 +394,12 @@ mmodelId
 var mmodel = Mmodels.findOne(mmodelId)
 var myjson = mmodel.mnjson
 // How to create a mn object from json?
-// see karpathy demo 
+// see Karpathy demo :
+// http://www-cs-faculty.stanford.edu/people/karpathy/convnetjs/demo/automatic.html
+var magicNet = new convnetjs.MagicNet();
+magicNet.fromJSON(myjson);
+
+// Now I should generate some vols from some oos observations, predict from them, and then visualize.
 'useThisModel'
 }
 //debug  
