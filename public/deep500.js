@@ -3,16 +3,29 @@
 This file should help me deal with data into/out-of ConvNetJS.
 */
 
-// This function should create a magicNet from JSON and then predict a year of observations
+
+// debug
+// This function should create a magicNet from JSON and then predict a year of observations.
 function predictyr(myjson,yr){
 var magicNet  = new convnetjs.MagicNet()
 yr            = 2015
 predictions_a = []
 magicNet.fromJSON(myjson)
+myvols        = yr2vols(yr)
 return predictions_a
 }
 
-// This function should create green_a from predictions_a and blue_a
+// This function should create an array of vols from a year.
+function yr2vols(yr){
+// How to get access to csv_a?
+// I should use d3.csv()
+yr
+myvols = []
+return myvols
+}
+// debug
+
+// This function should create green_a from predictions_a and blue_a.
 function cr_green_a(predictions_a, blue_a){
   var pl  = predictions_a.length
   var chk = (pl == blue_a.length) // should be true
