@@ -84,6 +84,20 @@ function cb1(err, csv_a) {
   var cp_a          = model_o.cp_a
   // I should define boundries of out-of-sample, train data
   var train_end     = csv_a.length - 253  // 1 yr ago
+
+//debug
+
+model_o.ltyr
+for(dy=csv_a.length-1; dy>0; dy--){
+  var mydy = csv_a[dy]
+  train_end = dy
+  mydy.Date == model_o.ltyr 
+  'I should try to match csv_a[dy] to model_o.ltyr'
+  'endloop'
+}
+
+//debug
+
   var train_size    = model_o.num_yrs * 252
   var train_start   = train_end - train_size
   var pctlead       = pctlead1(cp_a)

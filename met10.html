@@ -112,6 +112,10 @@
           <input id='hl3' type="radio" name="hlayers" value="3" />3
           <input id='hl4' type="radio" name="hlayers" value="4" />4
           <br />
+          Last Training Year:
+          <input id='ltyr2013' type="radio" name="ltyr" value="2013" />2013
+          <input id='ltyr2014' type="radio" name="ltyr" value="2014" checked='true' />2014
+          <br />
           Features:
           <br />
           pctlag1: <input type="checkbox" id="pctlag1" checked="true" />
@@ -151,7 +155,8 @@
       <tr><td>Number of Ensembles: </td>                 <td>{{num_ensembles}}</td></tr>
       <tr><td>Minimum Number of Neurons/Layer: </td>     <td>{{neurons_min}}</td></tr>
       <tr><td>Maximum Number of Neurons/Layer: </td>     <td>{{neurons_max}}</td></tr>
-      <tr><td>Number of Hidden Layers per Candidate </td><td>{{hlayers}} %</td></tr>
+      <tr><td>Number of Hidden Layers per Candidate </td><td>{{hlayers}}</td></tr>
+      <tr><td>Last Training Year </td>                   <td>{{ltyr}}</td></tr>
       <tr><td>Features: </td>                            <td>{{featnames}}</td></tr>
       <tr><td>Class Boundry (Median of Train Data): </td><td>{{train_median}} %</td></tr>
       <tr><td>Build Duration: </td>                      <td>{{build_duration}} Minutes</td></tr>

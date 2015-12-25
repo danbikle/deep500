@@ -199,6 +199,11 @@ if (Meteor.isClient) {
         hlayers = 3
       if(fields.hl4.checked == true)
         hlayers = 4
+      var ltyr = 2014
+      if(fields.ltyr2013.checked == true)
+        ltyr = 2013
+      if(fields.ltyr2014.checked == true)
+        ltyr = 2014
       // model_o should be global:
       model_o                     = {}
       model_o.featnames_o         = {}
@@ -215,7 +220,8 @@ if (Meteor.isClient) {
       model_o.num_ensembles  = +num_ensembles
       model_o.neurons_min    = +neurons_min
       model_o.neurons_max    = +neurons_max
-      model_o.hlayers    = +hlayers
+      model_o.hlayers        = +hlayers
+      model_o.ltyr           = ltyr
       // Clear form
       fields.model_name.value     = ""
       // I should use model_o to build a model
@@ -304,6 +310,7 @@ Meteor.methods({
       ,neurons_min:    m_o.neurons_min
       ,neurons_max:    m_o.neurons_max
       ,hlayers:        m_o.hlayers
+      ,ltyr:           m_o.ltyr
       ,createdAt:      new Date()
       ,owner:          Meteor.userId()
       ,username:       Meteor.user().username
