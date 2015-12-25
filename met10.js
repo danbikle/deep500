@@ -3,7 +3,7 @@ Mmodels = new Mongo.Collection("mmodels")
 if (Meteor.isServer) {
   // This code only runs on the server
   // Only publish mmodels that are public or belong to the current user
-  Meteor.publish("mmodels", function () {
+  Meteor.publish("mmodels", function(){
     return Mmodels.find({
       $or: [
         { private: {$ne: true} },
@@ -302,7 +302,7 @@ if (Meteor.isClient) {
 
   Template.mmodel.events({
 //debug  
-"click .use_thismodel": function () {
+"click .use_thismodel": function(){
 // I should use this._id to get the mnjson from mongo.
 // find({something:this._id},{mnjson:1})
 this._id
@@ -315,14 +315,14 @@ var mypredictions = predictyr(myjson,2015)
 },
 //debug  
 
-    "click .toggle-checked": function () {
+    "click .toggle-checked": function(){
       // Set the checked property to the opposite of its current value
       Meteor.call("setChecked", this._id, ! this.checked)
     },
-    "click .delete": function () {
+    "click .delete": function(){
       Meteor.call("deleteMmodel", this._id)
     },
-    "click .toggle-private": function () {
+    "click .toggle-private": function(){
       Meteor.call("setPrivate", this._id, ! this.private)
     }
   })
