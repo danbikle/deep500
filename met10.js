@@ -301,12 +301,18 @@ if (Meteor.isClient) {
   }) //Template.mmodel.helpers
 
   Template.mmodel.events({
-    "click .use_thismodel": function () {
+//debug  
+
+"click .use_thismodel": function () {
 // I should use this._id to get the mnjson from mongo.
 // find({something:this._id},{mnjson:1})
 this._id
+// Mmodels.find({id: this._id}).count()
+// var mmodel = Mmodels.findOne(mmodelId)
+Meteor.call("useThisModel", this._id)
 'under construction'
 },
+//debug  
 
     "click .toggle-checked": function () {
       // Set the checked property to the opposite of its current value
@@ -377,7 +383,14 @@ Meteor.methods({
     if (mmodel.owner !== Meteor.userId()) {
       throw new Meteor.Error("not-authorized")
     }
-
     Mmodels.update(mmodelId, { $set: { private: setToPrivate } })
   }
+//debug  
+,useThisModel: function (mmodelId){
+// This function should get json I can use to create a new mn and then use that mn to 
+// create some predictions
+// which I should then display.
+'useThisModel'
+}
+//debug  
 })
