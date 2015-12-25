@@ -1,4 +1,5 @@
 Mmodels = new Mongo.Collection("mmodels")
+var useMymodel;
 
 if (Meteor.isServer) {
   // This code only runs on the server
@@ -308,8 +309,8 @@ if (Meteor.isClient) {
 this._id
 // Mmodels.find({id: this._id}).count()
 // var mmodel = Mmodels.findOne(mmodelId)
-var mymodel = Meteor.call("useThisModel", this._id)
-var myjson  = mymodel.mnjson
+Meteor.call("useThisModel", this._id) // This should fill useMymodel
+var myjson  = useMymodel.mnjson
 var mypredictions = predictyr(myjson,2015)
 'under construction'
 },
@@ -388,8 +389,7 @@ Meteor.methods({
   }
 //debug  
 ,useThisModel: function (mmodelId){
-var mmodel = Mmodels.findOne(mmodelId)
-return mmodel
+useMymodel = Mmodels.findOne(mmodelId)
 }
 //debug  
 })
