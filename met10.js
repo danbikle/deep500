@@ -302,14 +302,13 @@ if (Meteor.isClient) {
 
   Template.mmodel.events({
 //debug  
-
 "click .use_thismodel": function () {
 // I should use this._id to get the mnjson from mongo.
 // find({something:this._id},{mnjson:1})
 this._id
 // Mmodels.find({id: this._id}).count()
 // var mmodel = Mmodels.findOne(mmodelId)
-Meteor.call("useThisModel", this._id)
+mymodel = Meteor.call("useThisModel", this._id)
 'under construction'
 },
 //debug  
@@ -387,20 +386,8 @@ Meteor.methods({
   }
 //debug  
 ,useThisModel: function (mmodelId){
-// This function should get json I can use to create a new mn and then use that mn to 
-// create some predictions
-// which I should then display.
-mmodelId
 var mmodel = Mmodels.findOne(mmodelId)
-var myjson = mmodel.mnjson
-// How to create a mn object from json?
-// see Karpathy demo :
-// http://www-cs-faculty.stanford.edu/people/karpathy/convnetjs/demo/automatic.html
-var magicNet = new convnetjs.MagicNet();
-magicNet.fromJSON(myjson);
-
-// Now I should generate some vols from some oos observations, predict from them, and then visualize.
-'useThisModel'
+return mmodel
 }
 //debug  
 })

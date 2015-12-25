@@ -3,6 +3,15 @@
 This file should help me deal with data into/out-of ConvNetJS.
 */
 
+// This function should create a magicNet from JSON and then predict a year of observations
+function predictyr(myjson,yr){
+var magicNet  = new convnetjs.MagicNet()
+yr            = 2015
+predictions_a = []
+magicNet.fromJSON(myjson)
+return predictions_a
+}
+
 // This function should create green_a from predictions_a and blue_a
 function cr_green_a(predictions_a, blue_a){
   var pl  = predictions_a.length
