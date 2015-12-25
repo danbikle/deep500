@@ -309,6 +309,8 @@ this._id
 // Mmodels.find({id: this._id}).count()
 // var mmodel = Mmodels.findOne(mmodelId)
 mymodel = Meteor.call("useThisModel", this._id)
+myjson  = mymodel.mnjson
+mypredictions = predictyr(myjson,2015)
 'under construction'
 },
 //debug  
