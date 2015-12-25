@@ -26,7 +26,7 @@ function cb2(err, csv_a){
   if (err) throw err
   // here I should call yr2vols() now that I have access to csv_a
   csv_a
-  myvols        = yr2vols(yr)
+  myvols = yr2vols(yr,csv_a)
 }
 
 // This function should create an array of vols from a year.
