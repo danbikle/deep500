@@ -15,8 +15,7 @@ magicNet.fromJSON(myjson)
 // I should use d3.csv() here and place a call to yr2vols(yr) inside cb2.
 d3.csv("/csv/GSPC.csv", cb2)
 
-
-myvols        = yr2vols(yr)
+// This might be in the wrong place but have it here for now:
 return predictions_a
 }
 
@@ -24,13 +23,15 @@ return predictions_a
 function cb2(err, csv_a){
   if (err) throw err
   // here I should call yr2vols() now that I have access to csv_a
-
+  csv_a
+  myvols        = yr2vols(yr)
 }
 
 // This function should create an array of vols from a year.
-function yr2vols(yr){
+function yr2vols(yr, csv_a){
 // How to get access to csv_a?
 // I should use d3.csv()?
+csv_a
 yr
 myvols = []
 return myvols
