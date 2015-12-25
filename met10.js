@@ -390,6 +390,11 @@ Meteor.methods({
 // This function should get json I can use to create a new mn and then use that mn to 
 // create some predictions
 // which I should then display.
+mmodelId
+var mmodel = Mmodels.findOne(mmodelId)
+var myjson = mmodel.mnjson
+// How to create a mn object from json?
+// see karpathy demo 
 'useThisModel'
 }
 //debug  
