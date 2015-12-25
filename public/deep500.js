@@ -11,8 +11,20 @@ var magicNet  = new convnetjs.MagicNet()
 yr            = 2015
 predictions_a = []
 magicNet.fromJSON(myjson)
+
+// I should use d3.csv() here and place a call to yr2vols(yr) inside cb2.
+d3.csv("/csv/GSPC.csv", cb2)
+
+
 myvols        = yr2vols(yr)
 return predictions_a
+}
+
+// I should create a callback for d3.csv():
+function cb2(err, csv_a){
+  if (err) throw err
+  // here I should call yr2vols() now that I have access to csv_a
+
 }
 
 // This function should create an array of vols from a year.
