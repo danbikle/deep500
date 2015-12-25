@@ -82,22 +82,18 @@ function cb1(err, csv_a) {
   model_o.ydate_s_a = csv_a.map(function(row){return  row['Date' ]             })
   model_o.cp_a      = csv_a.map(function(row){return +row['Close']             })
   var cp_a          = model_o.cp_a
-  // I should define boundries of out-of-sample, train data
-  var train_end     = csv_a.length - 253  // 1 yr ago
-
-//debug
-
-model_o.ltyr
-for(dy=csv_a.length-1; dy>0; dy--){
-  var mydy = csv_a[dy]
-  train_end = dy
-  mydy.Date == model_o.ltyr 
-  'I should try to match csv_a[dy] to model_o.ltyr'
-  'endloop'
-}
-
-//debug
-
+  // I should define boundries of out-of-sample, train data.
+  var train_end     = csv_a.length - 253  // 1 yr ago, but will get changed.
+  var runloop = true
+  for(dy=csv_a.length-1; runloop; dy--){
+    var mydy = csv_a[dy]
+    train_end = dy
+    'I should try to match csv_a[dy] to model_o.ltyr'
+    if(+(mydy.Date.slice(0,4)) == model_o.ltyr)
+      runloop = false
+    if(dy == 0)
+      runloop = false
+  }
   var train_size    = model_o.num_yrs * 252
   var train_start   = train_end - train_size
   var pctlead       = pctlead1(cp_a)
