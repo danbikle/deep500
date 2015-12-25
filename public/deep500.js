@@ -6,6 +6,8 @@ This file should help me deal with data into/out-of ConvNetJS.
 
 // debug
 // This function should create a magicNet from JSON and then predict a year of observations.
+// This function is called by met10.js:
+// "click .use_thismodel":
 function predictyr(myjson,yr){
 var magicNet  = new convnetjs.MagicNet()
 yr            = 2015
