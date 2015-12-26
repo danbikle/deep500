@@ -14,23 +14,20 @@ function predictyr(mymnjson,yr){
 usethis_o.useyr    = yr
 usethis_o.magicNet = new convnetjs.MagicNet()
 usethis_o.magicNet.fromJSON(mymnjson)
-// I should use d3.csv() here and place a call to yr2vols(yr) inside cb2.
+// I should use d3.csv() here and place a call to yr2predictions(yr) inside cb2.
 d3.csv("/csv/GSPC.csv", cb2)
 
 }
 
 // I should create a callback for d3.csv():
 function cb2(err, csv_a){
-if (err) throw err
-csv_a
-usethis_o.useyr
-var myvols = yr2vols(csv_a)
-usethis_o.magicNet
-
+ if (err) throw err
+ var mypredictions = yr2predictions(csv_a)
+mypredictions
 }
 
-// This function should create an array of vols from a year.
-function yr2vols(csv_a){
+// This function should create an array of predictions from a year.
+function yr2predictions(csv_a){
   // Yahoo gives the data by date descending.
   // I should order it    by date ascending.
   csv_a.reverse()
@@ -41,10 +38,9 @@ function yr2vols(csv_a){
   })
   // I should convert cp_a into features.
   // I should get featnames_ from usethis_o.
-  var features_o = cp2ftr(cp_a,usethis_o.featnames_o)
-cp_a
-var myvols = []
-return myvols
+  var features_o    = cp2ftr(cp_a,usethis_o.featnames_o)
+  var mypredictions = mn_predict( usethis_o.magicNet,features_o)
+  return mypredictions
 
 }
 // debug
