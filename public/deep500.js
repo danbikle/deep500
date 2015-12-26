@@ -31,8 +31,14 @@ usethis_o.magicNet
 
 // This function should create an array of vols from a year.
 function yr2vols(csv_a){
-csv_a
-usethis_o.useyr
+  // Yahoo gives the data by date descending.
+  // I should order it    by date ascending.
+  csv_a.reverse()
+  var cp_a = csv_a.map(function(row){
+    if (+row['Date'].slice(0,4) == usethis_o.useyr)
+      return +row['Close']
+  })
+cp_a
 var myvols = []
 return myvols
 
