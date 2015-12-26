@@ -22,8 +22,8 @@ d3.csv("/csv/GSPC.csv", cb2)
 // I should create a callback for d3.csv():
 function cb2(err, csv_a){
  if (err) throw err
- var mypredictions = yr2predictions(csv_a)
-mypredictions
+ yr2predictions(csv_a)
+
 }
 
 // This function should create an array of predictions from a year.
@@ -38,9 +38,8 @@ function yr2predictions(csv_a){
   })
   // I should convert cp_a into features.
   // I should get featnames_ from usethis_o.
-  var features_o    = cp2ftr(cp_a,usethis_o.featnames_o)
-  var mypredictions = mn_predict( usethis_o.magicNet,features_o)
-  return mypredictions
+  var features_o          = cp2ftr(cp_a,usethis_o.featnames_o)
+  usethis_o.mypredictions = mn_predict( usethis_o.magicNet,features_o)
 
 }
 // debug
