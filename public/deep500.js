@@ -39,6 +39,9 @@ function yr2vols(csv_a){
     if (+row['Date'].slice(0,4) == usethis_o.useyr)
       cp_a.push(+row['Close'])
   })
+  // I should convert cp_a into features.
+  // I should get featnames_ from usethis_o.
+  var features_o = cp2ftr(cp_a,usethis_o.featnames_o)
 cp_a
 var myvols = []
 return myvols
@@ -118,6 +121,7 @@ function cp2label(bndry,cp_a){
   var labels_a = pctlead.map(function(x){if (x<bndry) return 0; else return 1})
   return labels_a
 }
+// This function should help display results of predicting oos data:
 function calc_results(predictions_a,labels_oos_a,pctlead_oos_a){
   // I should fill confusion matrix.
   var truepos = 0; falsepos = 0; trueneg = 0; falseneg = 0;

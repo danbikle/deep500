@@ -307,6 +307,8 @@ if (Meteor.isClient) {
 this._id
 Meteor.call("useThisModel", this._id) // This should fill useMymodel
 var mymnjson      = useMymodel.mnjson
+// I should get featnames_o for yr2vols()
+usethis_o.featnames_o = useMymodel.results_o.featnames_o
 var mypredictions = predictyr(mymnjson,2015)
 },
 //debug  
