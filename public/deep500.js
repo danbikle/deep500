@@ -34,9 +34,10 @@ function yr2vols(csv_a){
   // Yahoo gives the data by date descending.
   // I should order it    by date ascending.
   csv_a.reverse()
-  var cp_a = csv_a.map(function(row){
+  var cp_a = []
+  csv_a.forEach(function(row){
     if (+row['Date'].slice(0,4) == usethis_o.useyr)
-      return +row['Close']
+      cp_a.push(+row['Close'])
   })
 cp_a
 var myvols = []
