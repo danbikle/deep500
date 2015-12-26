@@ -3,19 +3,18 @@
 This file should help me deal with data into/out-of ConvNetJS.
 */
 
-// global:
-useyr = 2015
+// I should use global var to copy data inside d3.csv() callback:
+usethis_o = {}
 
 // debug
 // This function should create a magicNet from JSON and then predict a year of observations.
 // This function is called by met10.js:
 // "click .use_thismodel":
-function predictyr(myjson,yr){
-var magicNet  = new convnetjs.MagicNet()
-yr            = 2015
-useyr         = yr
+function predictyr(mymnjson,yr){
+var magicNet    = new convnetjs.MagicNet()
+usethis_o.useyr = yr
 predictions_a = []
-magicNet.fromJSON(myjson)
+magicNet.fromJSON(mymnjson)
 // I should use d3.csv() here and place a call to yr2vols(yr) inside cb2.
 d3.csv("/csv/GSPC.csv", cb2)
 
@@ -25,7 +24,7 @@ d3.csv("/csv/GSPC.csv", cb2)
 function cb2(err, csv_a){
 if (err) throw err
 csv_a
-useyr
+usethis_o.useyr
 var myvols = yr2vols(csv_a)
 
 }
@@ -33,7 +32,7 @@ var myvols = yr2vols(csv_a)
 // This function should create an array of vols from a year.
 function yr2vols(csv_a){
 csv_a
-useyr
+usethis_o.useyr
 var myvols = []
 return myvols
 

@@ -1,5 +1,5 @@
 Mmodels = new Mongo.Collection("mmodels")
-var useMymodel;
+var useMymodel; // I should use this var to get one mmodel from mongo for user.
 
 if (Meteor.isServer) {
   // This code only runs on the server
@@ -304,15 +304,10 @@ if (Meteor.isClient) {
   Template.mmodel.events({
 //debug  
 "click .use_thismodel": function(){
-// I should use this._id to get the mnjson from mongo.
-// find({something:this._id},{mnjson:1})
 this._id
-// Mmodels.find({id: this._id}).count()
-// var mmodel = Mmodels.findOne(mmodelId)
 Meteor.call("useThisModel", this._id) // This should fill useMymodel
-var myjson  = useMymodel.mnjson
-var mypredictions = predictyr(myjson,2015)
-'under construction'
+var mymnjson      = useMymodel.mnjson
+var mypredictions = predictyr(mymnjson,2015)
 },
 //debug  
 
