@@ -11,10 +11,9 @@ usethis_o = {}
 // This function is called by met10.js:
 // "click .use_thismodel":
 function predictyr(mymnjson,yr){
-var magicNet    = new convnetjs.MagicNet()
-usethis_o.useyr = yr
-predictions_a = []
-magicNet.fromJSON(mymnjson)
+usethis_o.useyr    = yr
+usethis_o.magicNet = new convnetjs.MagicNet()
+usethis_o.magicNet.fromJSON(mymnjson)
 // I should use d3.csv() here and place a call to yr2vols(yr) inside cb2.
 d3.csv("/csv/GSPC.csv", cb2)
 
@@ -26,6 +25,7 @@ if (err) throw err
 csv_a
 usethis_o.useyr
 var myvols = yr2vols(csv_a)
+usethis_o.magicNet
 
 }
 
