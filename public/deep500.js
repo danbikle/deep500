@@ -8,49 +8,40 @@ usethis_o = {}
 
 // debug
 // This function should create a magicNet from JSON and then predict a year of observations.
-// This function is called by met10.js:
-// "click .use_thismodel":
+// This function is called by met10.js function: // "click .use_thismodel"
 function predictyr(mymnjson,yr){
-usethis_o.useyr    = yr
-usethis_o.magicNet = new convnetjs.MagicNet()
-usethis_o.magicNet.fromJSON(mymnjson)
-// I should use d3.csv() here and place a call to yr2predictions(yr) inside cb2.
-d3.csv("/csv/GSPC.csv", cb2)
-
+  usethis_o.useyr    = yr
+  usethis_o.magicNet = new convnetjs.MagicNet()
+  usethis_o.magicNet.fromJSON(mymnjson)
+  // I should use d3.csv() here and place a call to yr2predictions(yr) inside cb2.
+  d3.csv("/csv/GSPC.csv", cb2)
 }
-
 // I should create a callback for d3.csv():
 function cb2(err, csv_a){
   if (err) throw err
   yr2predictions(csv_a)
   // I should display the predictions
   d3.select('body div.container').remove()
-//debug
-var d3data = usethis_o.mypredictions
-d3.select('body').append('div').append('ul').selectAll('li.cb2').data(d3data).enter()
-  .append('li').attr('class','cb2').text(function(d){return d})
-
-// I should create and fill blue_a
-var blue_a = yr2blue(csv_a)
-blue_a
+  var d3data = usethis_o.mypredictions
+// debug: can I see usethis_o.mypredictions here?
+  d3.select('body').append('div').append('ul').selectAll('li.cb2').data(d3data).enter()
+    .append('li').attr('class','cb2').text(function(d){return d})
+// debug
+  // I should create and fill blue_a
+  var blue_a = yr2blue(csv_a)
+  // I should pass blue_a to Rickshaw.
 
 }
-
+// This function should return an array of objects suitable for Rickshaw.
 function yr2blue(csv_a){
   // Here, csv_a should be in date ascending order
   var myblue_a = []
   csv_a.forEach(function(row){
-//debug
-row
-//debug
     if (+row['Date'].slice(0,4) == usethis_o.useyr)
       myblue_a.push({x:Date.parse(row['Date'])/1000, y:(+row['Close'])})
   })
-myblue_a
-return myblue_a
-
+  return myblue_a
 }
-
 // This function should create an array of predictions from a year.
 function yr2predictions(csv_a){
   // Yahoo gives the data by date descending.
