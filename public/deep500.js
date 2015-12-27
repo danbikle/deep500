@@ -29,7 +29,6 @@ function cb2(err, csv_a){
   // I should find min,max for Rickshaw.
   var chartmin = 0.9 * d3.min(blue_a.concat(green_a).map(function(pt){return pt.y}))
   var chartmax = 1.1 * d3.max(blue_a.concat(green_a).map(function(pt){return pt.y}))
-  d3.select('body').append('div').attr('id','cb2graph')
   var cb2graph = new Rickshaw.Graph({
     renderer: 'line'
     ,min: chartmin, max: chartmax
