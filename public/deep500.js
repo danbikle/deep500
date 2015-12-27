@@ -44,6 +44,8 @@ function cb2(err, csv_a){
     ,element: document.getElementById('cb2graph')
     ,series:[{color: 'blue', data: blue_a},{color: 'green', data: green_a}]
   })
+  var xAxis1 = new Rickshaw.Graph.Axis.Time({graph: cb2graph})
+  var yAxis1 = new Rickshaw.Graph.Axis.Y({graph:    cb2graph})
   cb2graph.render()
 }
 // This function should return an array of objects suitable for Rickshaw.
