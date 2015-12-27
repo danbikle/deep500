@@ -313,7 +313,10 @@ if (Meteor.isClient) {
         if(fields[cn].checked)
           usryr = +fields[cn].value
       }
-      predictyr(mymnjson,usryr)
+// debug
+//      predictyr(mymnjson,usryr)
+      predictyr(mymnjson,2015)
+// debug
     }
     ,"click .toggle-checked": function(){
       // Set the checked property to the opposite of its current value
