@@ -32,9 +32,12 @@ function cb2(err, csv_a){
   // I should create and fill blue_a
   var blue_a = yr2blue(csv_a)
   // I should pass blue_a to Rickshaw.
-  d3.select('body').append('div').attr('id','cb2chart')
-
-
+  d3.select('body').append('div').attr('id','cb2graph')
+  var cb2graph = new Rickshaw.Graph({
+    renderer: 'line'
+    ,element: document.getElementById(cb2graph)
+    ,series:[{color: 'blue', data: blue_a}]
+   })
 }
 // This function should return an array of objects suitable for Rickshaw.
 function yr2blue(csv_a){
