@@ -38,6 +38,7 @@ function cb2(err, csv_a){
     ,element: document.getElementById('cb2graph')
     ,series:[{color: 'blue', data: blue_a}]
    })
+  cb2graph.render()
 }
 // This function should return an array of objects suitable for Rickshaw.
 function yr2blue(csv_a){

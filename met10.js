@@ -80,7 +80,6 @@ if (Meteor.isClient) {
           var xAxis1 = new Rickshaw.Graph.Axis.Time({graph: bggraph})
           var yAxis1 = new Rickshaw.Graph.Axis.Y({graph:    bggraph})
           bggraph.render()
-          'graphing now'
         }
       })
       'chartem done'
