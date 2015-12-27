@@ -16,7 +16,7 @@ bash
 Next I ensured that my Ubuntu host had both curl and git:
 
 ```bash
-sudo apt-get curl gitk
+sudo apt-get install curl gitk
 ```
 
 Then I cloned the deep500 repo:
