@@ -35,7 +35,7 @@ function cb2(err, csv_a){
   d3.select('body').append('div').attr('id','cb2graph')
   var cb2graph = new Rickshaw.Graph({
     renderer: 'line'
-    ,element: document.getElementById(cb2graph)
+    ,element: document.getElementById('cb2graph')
     ,series:[{color: 'blue', data: blue_a}]
    })
 }
