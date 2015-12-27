@@ -21,8 +21,15 @@ d3.csv("/csv/GSPC.csv", cb2)
 
 // I should create a callback for d3.csv():
 function cb2(err, csv_a){
- if (err) throw err
- yr2predictions(csv_a)
+  if (err) throw err
+  yr2predictions(csv_a)
+  // I should display the predictions
+  d3.select('body div.container').remove()
+//debug
+var d3data = usethis_o.mypredictions //[1,2,3,4]
+d3.select('body').append('div').append('ul').selectAll('li.cb2').data(d3data).enter()
+  .append('li').attr('class','cb2').text(function(d){return d})
+//debug
 
 }
 
