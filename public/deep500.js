@@ -31,12 +31,14 @@ function cb2(err, csv_a){
 // debug
   // I should create and fill blue_a
   var blue_a = yr2blue(csv_a)
-  // I should pass blue_a to Rickshaw.
+  // I should calculate green data for blue-green chart
+  var green_a = cr_green_a(usethis_o.mypredictions, blue_a)
+  // I should pass blue_a green_a to Rickshaw.
   d3.select('body').append('div').attr('id','cb2graph')
   var cb2graph = new Rickshaw.Graph({
     renderer: 'line'
     ,element: document.getElementById('cb2graph')
-    ,series:[{color: 'blue', data: blue_a}]
+    ,series:[{color: 'blue', data: blue_a},{color: 'green', data: green_a}]
    })
   cb2graph.render()
 }
