@@ -302,6 +302,8 @@ if (Meteor.isClient) {
 
   Template.mmodel.events({
     "click .use_thismodel": function(event){
+      // Prevent default browser form submit
+      event.preventDefault()
       Meteor.call("useThisModel", this._id) // This should fill useMymodel
       usethis_o.useMymodel = useMymodel
       var mymnjson         = useMymodel.mnjson
