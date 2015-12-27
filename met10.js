@@ -301,35 +301,27 @@ if (Meteor.isClient) {
   }) //Template.mmodel.helpers
 
   Template.mmodel.events({
-//debug  
-"click .use_thismodel": function(){
-this._id
-Meteor.call("useThisModel", this._id) // This should fill useMymodel
-var mymnjson      = useMymodel.mnjson
-// I should get featnames_o for yr2vols()
-usethis_o.featnames_o = useMymodel.results_o.featnames_o
-predictyr(mymnjson,2015)
-usethis_o.mypredictions
-"click .use_thismodel"
-},
-//debug  
-
-    "click .toggle-checked": function(){
+    "click .use_thismodel": function(event){
+      Meteor.call("useThisModel", this._id) // This should fill useMymodel
+      usethis_o.useMymodel = useMymodel
+      var mymnjson         = useMymodel.mnjson
+      // For now, hardcode 2015. Eventually allow user to pick via radio buttons:
+      predictyr(mymnjson,2015)
+    }
+    ,"click .toggle-checked": function(){
       // Set the checked property to the opposite of its current value
       Meteor.call("setChecked", this._id, ! this.checked)
-    },
-    "click .delete": function(){
+    }
+    ,"click .delete": function(){
       Meteor.call("deleteMmodel", this._id)
-    },
-    "click .toggle-private": function(){
+    }
+    ,"click .toggle-private": function(){
       Meteor.call("setPrivate", this._id, ! this.private)
     }
   })
-
   Accounts.ui.config({
     passwordSignupFields: "USERNAME_ONLY"
   })
-
 }
 
 Meteor.methods({
@@ -385,9 +377,7 @@ Meteor.methods({
     }
     Mmodels.update(mmodelId, { $set: { private: setToPrivate } })
   }
-//debug  
-,useThisModel: function (mmodelId){
-useMymodel = Mmodels.findOne(mmodelId)
-}
-//debug  
+  ,useThisModel: function (mmodelId){
+    useMymodel = Mmodels.findOne(mmodelId)
+  }
 })

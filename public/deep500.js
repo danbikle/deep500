@@ -6,7 +6,6 @@ This file should help me deal with data into/out-of ConvNetJS.
 // I should use global var to copy data inside d3.csv() callback:
 usethis_o = {}
 
-// debug
 // This function should create a magicNet from JSON and then predict a year of observations.
 // This function is called by met10.js function: // "click .use_thismodel"
 function predictyr(mymnjson,yr){
@@ -21,7 +20,6 @@ function cb2(err, csv_a){
   if (err) throw err
   yr2predictions(csv_a)
   // I should display the predictions
-  d3.select('body div.container').remove()
   var d3data = usethis_o.mypredictions
   // I should create and fill blue_a
   var blue_a = yr2blue(csv_a)
@@ -35,7 +33,7 @@ function cb2(err, csv_a){
   var cb2graph = new Rickshaw.Graph({
     renderer: 'line'
     ,min: chartmin, max: chartmax
-    ,element: document.getElementById('cb2graph')
+    ,element: document.getElementById('usethis_'+usethis_o.useMymodel.bgchartid)
     ,series:[{color: 'blue', data: blue_a},{color: 'green', data: green_a}]
   })
   var xAxis1 = new Rickshaw.Graph.Axis.Time({graph: cb2graph})
@@ -63,13 +61,9 @@ function yr2predictions(csv_a){
       cp_a.push(+row['Close'])
   })
   // I should convert cp_a into features.
-  // I should get featnames_ from usethis_o.
-  var features_o          = cp2ftr(cp_a,usethis_o.featnames_o)
+  var features_o          = cp2ftr(cp_a,usethis_o.useMymodel.results_o.featnames_o)
   usethis_o.mypredictions = mn_predict( usethis_o.magicNet,features_o)
-
 }
-// debug
-
 // This function should create green_a from predictions_a and blue_a.
 function cr_green_a(predictions_a, blue_a){
   var pl  = predictions_a.length
