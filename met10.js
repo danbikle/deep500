@@ -305,18 +305,15 @@ if (Meteor.isClient) {
       Meteor.call("useThisModel", this._id) // This should fill useMymodel
       usethis_o.useMymodel = useMymodel
       var mymnjson         = useMymodel.mnjson
-
-// debug
-// I should get year from radio button in 'utrb_'+useMymodel.bgchartid which I can match via useMymodel.bgchartid?
-
-useMymodel
-event // maybe helpful
-
-// myrb = d3.select...
-
-// debug
-      // For now, hardcode 2015. Eventually allow user to pick via radio buttons:
-      predictyr(mymnjson,2015)
+      // I should get the radio buttons near the click.
+      var fields = event.target.form.children
+      var usryr = 2015 // I like 2015
+      // Maybe user likes different year:
+      for(cn=0; cn<fields.length;cn++){
+        if(fields[cn].checked)
+          usryr = +fields[cn].value
+      }
+      predictyr(mymnjson,usryr)
     }
     ,"click .toggle-checked": function(){
       // Set the checked property to the opposite of its current value
