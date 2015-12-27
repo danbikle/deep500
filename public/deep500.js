@@ -23,12 +23,6 @@ function cb2(err, csv_a){
   // I should display the predictions
   d3.select('body div.container').remove()
   var d3data = usethis_o.mypredictions
-// debug: can I see usethis_o.mypredictions here?
-/*
-  d3.select('body').append('div').append('ul').selectAll('li.cb2').data(d3data).enter()
-    .append('li').attr('class','cb2').text(function(d){return d})
-*/
-// debug
   // I should create and fill blue_a
   var blue_a = yr2blue(csv_a)
   // I should calculate green data for blue-green chart
