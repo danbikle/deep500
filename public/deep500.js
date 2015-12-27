@@ -26,10 +26,34 @@ function cb2(err, csv_a){
   // I should display the predictions
   d3.select('body div.container').remove()
 //debug
-var d3data = usethis_o.mypredictions //[1,2,3,4]
+var d3data = usethis_o.mypredictions
 d3.select('body').append('div').append('ul').selectAll('li.cb2').data(d3data).enter()
   .append('li').attr('class','cb2').text(function(d){return d})
+
+// I should create and fill blue_a
+var blue_a = yr2blue(csv_a)
+blue_a
+
+}
+
+function yr2blue(csv_a){
+  // Yahoo gives the data by date descending.
+  // I should order it    by date ascending.
+  // csv_a.reverse()
+
+// Now, what is order of csv_a?
+// did yr2predictions change order of csv_a here?
+
+  var myblue_a = []
+  csv_a.forEach(function(row){
+    if (+row['Date'].slice(0,4) == usethis_o.useyr)
 //debug
+row
+//debug
+      myblue_a.push({x:Date.parse(row['Date'])/1000, y:(+row['Close'])})
+  })
+myblue_a
+return myblue_a
 
 }
 
