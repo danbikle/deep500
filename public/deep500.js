@@ -37,19 +37,13 @@ blue_a
 }
 
 function yr2blue(csv_a){
-  // Yahoo gives the data by date descending.
-  // I should order it    by date ascending.
-  // csv_a.reverse()
-
-// Now, what is order of csv_a?
-// did yr2predictions change order of csv_a here?
-
+  // Here, csv_a should be in date ascending order
   var myblue_a = []
   csv_a.forEach(function(row){
-    if (+row['Date'].slice(0,4) == usethis_o.useyr)
 //debug
 row
 //debug
+    if (+row['Date'].slice(0,4) == usethis_o.useyr)
       myblue_a.push({x:Date.parse(row['Date'])/1000, y:(+row['Close'])})
   })
 myblue_a
