@@ -29,10 +29,19 @@ function cb2(err, csv_a){
   // I should find min,max for Rickshaw.
   var chartmin = 0.9 * d3.min(blue_a.concat(green_a).map(function(pt){return pt.y}))
   var chartmax = 1.1 * d3.max(blue_a.concat(green_a).map(function(pt){return pt.y}))
+
+//debug
+// I should use Date.now() to create a div-id for Rickshaw
+var mydn = Date.now()
+var utd4rg1 = d3.select('#usethis_'+usethis_o.useMymodel.bgchartid) // .append('hr').append('div').attr('id','utrg'+mydn)
+var utd4rg2 = utd4rg1.append('div').attr('id','utrg'+mydn)
+utd4rg1.append('hr')
+//debug
+
   var cb2graph = new Rickshaw.Graph({
     renderer: 'line'
     ,min: chartmin, max: chartmax
-    ,element: document.getElementById('usethis_'+usethis_o.useMymodel.bgchartid)
+    ,element: document.getElementById('utrg'+mydn)
     ,series:[{color: 'blue', data: blue_a},{color: 'green', data: green_a}]
   })
   var xAxis1 = new Rickshaw.Graph.Axis.Time({graph: cb2graph})
