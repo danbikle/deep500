@@ -200,6 +200,26 @@ if (Meteor.isClient) {
       if(fields.hl4.checked == true)
         hlayers = 4
       var ltyr = 2014
+      if(fields.ltyr1990.checked == true)
+        ltyr = 1990
+      if(fields.ltyr1991.checked == true)
+        ltyr = 1991
+      if(fields.ltyr1992.checked == true)
+        ltyr = 1992
+      if(fields.ltyr1993.checked == true)
+        ltyr = 1993
+      if(fields.ltyr1994.checked == true)
+        ltyr = 1994
+      if(fields.ltyr1995.checked == true)
+        ltyr = 1995
+      if(fields.ltyr1996.checked == true)
+        ltyr = 1996
+      if(fields.ltyr1997.checked == true)
+        ltyr = 1997
+      if(fields.ltyr1998.checked == true)
+        ltyr = 1998
+      if(fields.ltyr1999.checked == true)
+        ltyr = 1999
       if(fields.ltyr2000.checked == true)
         ltyr = 2000
       if(fields.ltyr2001.checked == true)
