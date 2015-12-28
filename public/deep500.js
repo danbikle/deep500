@@ -49,10 +49,14 @@ utd4rg1.append('hr')
   cb2graph.render()
 
 // debug
-// I should add a title
+// I should add a title which shows the year
 myrg = d3.select('#utrg'+mydn)
 mysvg = myrg.select('svg')
-mytext = mysvg.append('text').attr('x','40').attr('y','20').attr('fill','black').text(usethis_o.useyr)
+mytext = mysvg.append('text')
+  .attr('x','60')
+  .attr('y','20')
+  .attr('fill','black')
+  .text(usethis_o.useyr)
 // debug
 
 }
