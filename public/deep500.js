@@ -47,6 +47,14 @@ utd4rg1.append('hr')
   var xAxis1 = new Rickshaw.Graph.Axis.Time({graph: cb2graph})
   var yAxis1 = new Rickshaw.Graph.Axis.Y({graph:    cb2graph})
   cb2graph.render()
+
+// debug
+// I should add a title
+myrg = d3.select('#utrg'+mydn)
+mysvg = myrg.select('svg')
+mytext = mysvg.append('text').attr('x','40').attr('y','20').attr('fill','black').text(usethis_o.useyr)
+// debug
+
 }
 // This function should return an array of objects suitable for Rickshaw.
 function yr2blue(csv_a){
