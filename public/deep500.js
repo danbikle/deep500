@@ -15,7 +15,8 @@ function predictyr(mymnjson,yr){
   // I should use d3.csv() here and place a call to yr2predictions(yr) inside cb2.
   d3.csv("/csv/GSPC.csv", cb2)
 }
-// I should create a callback for d3.csv():
+// I should create a callback for d3.csv()
+// which shows predictions from a model for a specific year.
 function cb2(err, csv_a){
   if (err) throw err
   yr2predictions(csv_a)
@@ -29,15 +30,11 @@ function cb2(err, csv_a){
   // I should find min,max for Rickshaw.
   var chartmin = 0.9 * d3.min(blue_a.concat(green_a).map(function(pt){return pt.y}))
   var chartmax = 1.1 * d3.max(blue_a.concat(green_a).map(function(pt){return pt.y}))
-
-//debug
-// I should use Date.now() to create a div-id for Rickshaw
-var mydn = Date.now()
-var utd4rg1 = d3.select('#usethis_'+usethis_o.useMymodel.bgchartid) // .append('hr').append('div').attr('id','utrg'+mydn)
-var utd4rg2 = utd4rg1.append('div').attr('id','utrg'+mydn)
-utd4rg1.append('hr')
-//debug
-
+  // I should use Date.now() to create a div-id for Rickshaw
+  var mydn = Date.now()
+  var utd4rg1 = d3.select('#usethis_'+usethis_o.useMymodel.bgchartid)
+  var utd4rg2 = utd4rg1.append('div').attr('id','utrg'+mydn)
+  utd4rg1.append('hr')
   var cb2graph = new Rickshaw.Graph({
     renderer: 'line'
     ,min: chartmin, max: chartmax
@@ -47,23 +44,20 @@ utd4rg1.append('hr')
   var xAxis1 = new Rickshaw.Graph.Axis.Time({graph: cb2graph})
   var yAxis1 = new Rickshaw.Graph.Axis.Y({graph:    cb2graph})
   cb2graph.render()
+  // I should add a title which shows the year
+  myrg   = d3.select('#utrg'+mydn)
+  mysvg  = myrg.select('svg')
+  mytext = mysvg.append('text')
+    .attr('x','60')
+    .attr('y','20')
+    .attr('fill','black')
+    .text(usethis_o.useyr)
+} // function cb2(err, csv_a)
 
-// debug
-// I should add a title which shows the year
-myrg = d3.select('#utrg'+mydn)
-mysvg = myrg.select('svg')
-mytext = mysvg.append('text')
-  .attr('x','60')
-  .attr('y','20')
-  .attr('fill','black')
-  .text(usethis_o.useyr)
-// debug
-
-}
 // This function should return an array of objects suitable for Rickshaw.
 function yr2blue(csv_a){
-  // Here, csv_a should be in date ascending order
   var myblue_a = []
+  // Here, csv_a should be in date ascending order
   csv_a.forEach(function(row){
     if (+row['Date'].slice(0,4) == usethis_o.useyr)
       myblue_a.push({x:Date.parse(row['Date'])/1000, y:(+row['Close'])})
@@ -217,36 +211,6 @@ function calc_results(predictions_a,labels_oos_a,pctlead_oos_a){
   results_o.green_a       = green_a
   results_o.predictions_a = predictions_a
   return results_o
-}
-// This function should help me display results_o
-// NOT USED YET
-function vwr(results_o){
-  var cell00 = 'Opinion:';              cell01 = results_o.opinion
-  var cell10 = 'True Positive Count:';  cell11 = results_o.truepos
-  var cell20 = 'True Negative Count:';  cell21 = results_o.trueneg
-  var cell30 = 'False Positive Count:'; cell31 = results_o.falsepos
-  var cell40 = 'False Negative Count:'; cell41 = results_o.falseneg
-  var cell50 = 'Positive Accuracy:';    cell51 = results_o.pos_accuracy
-  var cell60 = 'Negative Accuracy:';    cell61 = results_o.neg_accuracy
-  var cell70 = 'Accuracy:';             cell71 = results_o.accuracy
-  var cell80 = 'Avg Gain of Positive Predictions:'; cell81 = results_o.pos_avg
-  var cell90 = 'Avg Gain of Negative Predictions:'; cell91 = results_o.neg_avg
-  var tr  = '<tr>'
-  var td  = '<td>'
-  var tdc = '</td>'
-  var trc = '</tr>'
-  var row0   = tr+td+cell00+tdc+td+cell01+tdc+trc
-  var row1   = tr+td+cell10+tdc+td+cell11+tdc+trc
-  var row2   = tr+td+cell20+tdc+td+cell21+tdc+trc
-  var row3   = tr+td+cell30+tdc+td+cell31+tdc+trc
-  var row4   = tr+td+cell40+tdc+td+cell41+tdc+trc
-  var row5   = tr+td+cell50+tdc+td+cell51+tdc+trc
-  var row6   = tr+td+cell60+tdc+td+cell61+tdc+trc
-  var row7   = tr+td+cell70+tdc+td+cell71+tdc+trc
-  var row8   = tr+td+cell80+tdc+td+cell81+tdc+trc
-  var row9   = tr+td+cell90+tdc+td+cell91+tdc+trc
-  var rows   = row0+row1+row2+row3+row4+row5+row6+row7+row8+row9
-  d3.select('#myresults .results_o').html(rows)
 }
 // This function should return array full of predictions:
 function mn_predict(mymn, oos_o){
