@@ -85,8 +85,6 @@ function bg_rsgraph(blue_a,green_a){
   return '#usethis_'+usethis_o.useMymodel.bgchartid
 }
 
-// debug
-
 // This function should create a magicNet from JSON and then predict a year of observations.
 // This function is called by met10.js function: // "click .use_thismodel"
 function predictyr(mymnjson,yr){
@@ -107,27 +105,12 @@ function cb2(err, csv_a){
   var blue_a = yr2blue(csv_a)
   // I should calculate green data for blue-green chart
   var green_a = cr_green_a(usethis_o.mypredictions, blue_a)
-  // I should pass blue_a green_a to Rickshaw.
-  // I should find min,max for Rickshaw.
-  var chartmin = 0.9 * d3.min(blue_a.concat(green_a).map(function(pt){return pt.y}))
-  var chartmax = 1.1 * d3.max(blue_a.concat(green_a).map(function(pt){return pt.y}))
-  // I should use Date.now() to create a div-id for Rickshaw
-  var mydn = Date.now()
-  var utd4rg1 = d3.select('#usethis_'+usethis_o.useMymodel.bgchartid)
-  var utd4rg2 = utd4rg1.append('div').attr('id','utrg'+mydn)
-  utd4rg1.append('hr')
-  var cb2graph = new Rickshaw.Graph({
-    renderer: 'line'
-    ,min: chartmin, max: chartmax
-    ,element: document.getElementById('utrg'+mydn)
-    ,series:[{color: 'blue', data: blue_a},{color: 'green', data: green_a}]
-  })
-  var xAxis1 = new Rickshaw.Graph.Axis.Time({graph: cb2graph})
-  var yAxis1 = new Rickshaw.Graph.Axis.Y({graph:    cb2graph})
-  cb2graph.render()
+
+  var myyr_graph = bg_rsgraph(blue_a,green_a)
+
   // I should add a title which shows the year
-  var myrg   = d3.select('#utrg'+mydn)
-  var mysvg  = myrg.select('svg')
+//  var myrg   = d3.select('#utrg'+mydn)
+  var mysvg  = myyr_graph.select('svg')
   var mytext = mysvg.append('text')
     .attr('x','60')
     .attr('y','20')
