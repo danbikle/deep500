@@ -130,21 +130,17 @@ if (Meteor.isClient) {
         if(fields['nn'+x].checked == true)
           num_ensembles = +x
       })
-
       var neurons_min = 4
       if(fields.mn2.checked == true)
         neurons_min = 2
       if(fields.mn4.checked == true)
         neurons_min = 4
       var neurons_max = 16
-      if(fields.mx04.checked == true)
-        neurons_max = 4
-      if(fields.mx08.checked == true)
-        neurons_max = 8
-      if(fields.mx16.checked == true)
-        neurons_max = 16
-      if(fields.mx32.checked == true)
-        neurons_max = 32
+      vn_a = ['04','08','16','32']
+      vn_a.forEach(function(x){
+        if(fields['mx'+x].checked == true)
+          neurons_max = +x
+      })
       var hlayers = 2
       if(fields.hl2.checked == true)
         hlayers = 2
@@ -153,56 +149,11 @@ if (Meteor.isClient) {
       if(fields.hl4.checked == true)
         hlayers = 4
       var ltyr = 2014
-      if(fields.ltyr1990.checked == true)
-        ltyr = 1990
-      if(fields.ltyr1991.checked == true)
-        ltyr = 1991
-      if(fields.ltyr1992.checked == true)
-        ltyr = 1992
-      if(fields.ltyr1993.checked == true)
-        ltyr = 1993
-      if(fields.ltyr1994.checked == true)
-        ltyr = 1994
-      if(fields.ltyr1995.checked == true)
-        ltyr = 1995
-      if(fields.ltyr1996.checked == true)
-        ltyr = 1996
-      if(fields.ltyr1997.checked == true)
-        ltyr = 1997
-      if(fields.ltyr1998.checked == true)
-        ltyr = 1998
-      if(fields.ltyr1999.checked == true)
-        ltyr = 1999
-      if(fields.ltyr2000.checked == true)
-        ltyr = 2000
-      if(fields.ltyr2001.checked == true)
-        ltyr = 2001
-      if(fields.ltyr2002.checked == true)
-        ltyr = 2002
-      if(fields.ltyr2003.checked == true)
-        ltyr = 2003
-      if(fields.ltyr2004.checked == true)
-        ltyr = 2004
-      if(fields.ltyr2005.checked == true)
-        ltyr = 2005
-      if(fields.ltyr2006.checked == true)
-        ltyr = 2006
-      if(fields.ltyr2007.checked == true)
-        ltyr = 2007
-      if(fields.ltyr2008.checked == true)
-        ltyr = 2008
-      if(fields.ltyr2009.checked == true)
-        ltyr = 2009
-      if(fields.ltyr2010.checked == true)
-        ltyr = 2010
-      if(fields.ltyr2011.checked == true)
-        ltyr = 2011
-      if(fields.ltyr2012.checked == true)
-        ltyr = 2012
-      if(fields.ltyr2013.checked == true)
-        ltyr = 2013
-      if(fields.ltyr2014.checked == true)
-        ltyr = 2014
+      vn_a = d3.range(1990,2015)
+      vn_a.forEach(function(x){
+        if(fields['ltyr'+x].checked == true)
+          ltyr = +x
+      })
       // model_o should be global:
       model_o                     = {}
       model_o.featnames_o         = {}
