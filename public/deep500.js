@@ -29,7 +29,12 @@ function predict100(mymnjson){
   var predictions_a = mn_predict( usethis_o.magicNet,features_o)
   // I should create green_a from blue_a and predictions.
   var green_a = cr_green_a(predictions_a, blue_a)
+  bg_rsgraph(blue_a,green_a)
+  'done here'
+  
+}
 
+function bg_rsgraph(blue_a,green_a){
   // I should pass blue_a green_a to Rickshaw.
   // I should find min,max for Rickshaw.
   var chartmin = 0.9 * d3.min(blue_a.concat(green_a).map(function(pt){return pt.y}))
@@ -48,11 +53,7 @@ function predict100(mymnjson){
   var xAxis1 = new Rickshaw.Graph.Axis.Time({graph: cb2graph})
   var yAxis1 = new Rickshaw.Graph.Axis.Y({graph:    cb2graph})
   cb2graph.render()
-
-  'done here'
-  
 }
-
 
 // debug
 
