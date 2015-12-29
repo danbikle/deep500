@@ -71,12 +71,32 @@ function start_modelbuild(){
   d3.csv("/csv/GSPC.csv", cb1)
 }
 
+// debug
+
+function mergem(csv_0, d5_recent_prices_a){
+  csv_0
+  d5_recent_prices_a.reverse()
+  d5_recent_prices_a.forEach(function(arow){
+    arow
+    for(rw=0; rw<csv_0.length; rw++){
+      arow
+      brow = csv_0[rw]
+      brow['Date']
+    }
+  })
+
+}
+
+// debug
+
 // I should create a callback for d3.csv():
-function cb1(err, csv_a) {
+function cb1(err, csv_0) {
   if (err) throw err
   // Yahoo gives the data by date descending.
   // I should order it    by date ascending.
-  csv_a.reverse()
+  csv_0.reverse()
+  // I should merge csv_0 with more recent prices
+  csv_a = mergem(csv_0, d5_recent_prices_a)
   // I should get dates for reporting and charting:
   model_o.ydate_a = csv_a.map(function(row){return Date.parse(row['Date'])/1000})
   model_o.ydate_s_a = csv_a.map(function(row){return  row['Date' ]             })

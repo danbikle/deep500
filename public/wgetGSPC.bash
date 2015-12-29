@@ -22,7 +22,7 @@ python ${D5}/csv/extprice.py
 cat ${TKR}recent.csv ${TKR}2.csv|grep -v Date > ${TKR}3.csv
 cat ${TKR}3.csv                               > ${TKR}2.csv 
 
-echo 'var d5_recent_prices_s = ['   > d5rp.js
+echo 'var d5_recent_prices_a = ['                     > d5rp.js
 head GSPC2.csv|awk -F, "{print $1 $2}"|\
   sed '1,$s/^/["/'|sed '1,$s/,/",/'|sed '1,$s/$/],/' >> d5rp.js
 echo ']'                           >> d5rp.js
@@ -31,7 +31,8 @@ set -x
 edate=`date '+%s'`
 cd $D5
 rm -f d5rp*.js
+# I should bust through the browser cache with a new js file:
 mv csv/d5rp.js d5rp${edate}.js
 sed -i "/d5rp/s/d5rp[0-9]*.js/d5rp${edate}.js/" ../met10.html
-# Now, the browser should not have a cached copy of d5rp${edate}.js
+# Now, the browser should have a clean copy of d5rp${edate}.js which has most recent price.
 exit
