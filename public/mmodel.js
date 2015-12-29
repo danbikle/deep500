@@ -71,30 +71,24 @@ function start_modelbuild(){
   d3.csv("/csv/GSPC.csv", cb1)
 }
 
-// debug
-
+/* This function should merge prices from /csv/GSPC.csv and
+d5rp${edate}.js which should be filled by public/wgetGSPC.bash
+during a cronjob.
+*/
 function mergem(csv_0, d5_recent_prices_a){
   var rprices_a = d5_recent_prices_a
   // I should look for duplicate price and remove it if I see it.
   var dp0 = d5_recent_prices_a[0]
   var dp1 = d5_recent_prices_a[1]
-  if(dp0[0] == dp1[1])
-    rprices_a = d5_recent_prices_a.slice(1,d5_recent_prices_a.length)
-//    rprices_a = d5_recent_prices_a.slice(1,d5_recent_prices_a.length-1)
-  csv_0
+  if(dp0[0] == dp1[0])
+    rprices_a = rprices_a.slice(1,rprices_a.length)
   rprices_a.reverse()
   rprices_a.forEach(function(arow){
-    arow
     // I should add arow to csv_0 if arow has a later date than last csv_0
     if(arow[0] > csv_0[csv_0.length-1]['Date'])
       csv_0[csv_0.length] = {'Date':arow[0],'Close':arow[1]}
-    csv_0[csv_0.length-1]
   })
-
 } //function mergem()
-
-// debug
-
 // I should create a callback for d3.csv():
 function cb1(err, csv_0) {
   if (err) throw err
