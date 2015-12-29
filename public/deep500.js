@@ -42,7 +42,7 @@ function predict100(mymnjson){
   for (p=0; p<oos_size; p++){
     d5_recent_prices_a[p][1] = d3.round(d5_recent_prices_a[p][1],2)
     d5_recent_prices_a[p].push(predictions_a[p])
-    var row = d5_recent_prices_a[p].slice(0,2).toString()+"\n"
+    var row = d5_recent_prices_a[p].slice(0,3).toString()+"\n"
     pcsv    = pcsv + row
   }
 
@@ -56,6 +56,7 @@ function predict100(mymnjson){
   'done here'
   
 }
+// debug
 
 function bg_rsgraph(blue_a,green_a){
   // I should pass blue_a green_a to Rickshaw.
