@@ -33,7 +33,7 @@ function predict100(mymnjson){
   // I should create green_a from blue_a and predictions.
   var green_a = cr_green_a(predictions_a, blue_a)
   // I should generate graph from blue_a,green_a.
-  var graph100locations_s = bg_rsgraph(blue_a,green_a)
+  var graph100locations_s = bg_rsgraph(blue_a,green_a,'Last 100 Predictions')
   // I should see location of parent-div in graph100locations_s
   // I should serve some CSV data.
   var pcsv = "date,price,prediction\n"
@@ -52,17 +52,9 @@ function predict100(mymnjson){
     .append('pre')
     .append('code')
     .text(pcsv)
-  // I should add a title to the graph.
-  var mysvg   = d3.select(graph100locations_s).select('svg')
-  var mytext = mysvg.append('text')
-    .attr('x','60')
-    .attr('y','20')
-    .attr('fill','black')
-    .text('Last 100 Predictions')
 }
 
-
-function bg_rsgraph(blue_a,green_a){
+function bg_rsgraph(blue_a,green_a,title_s){
   // I should pass blue_a green_a to Rickshaw.
   // I should find min,max for Rickshaw.
   var chartmin = 0.9 * d3.min(blue_a.concat(green_a).map(function(pt){return pt.y}))
@@ -81,6 +73,12 @@ function bg_rsgraph(blue_a,green_a){
   var xAxis1 = new Rickshaw.Graph.Axis.Time({graph: cb2graph})
   var yAxis1 = new Rickshaw.Graph.Axis.Y({graph:    cb2graph})
   cb2graph.render()
+  var mysvg  = d3.select('utrg'+mydn).select('svg')
+  var mytext = mysvg.append('text')
+    .attr('x','60')
+    .attr('y','20')
+    .attr('fill','black')
+    .text(title_s)
   // I should return location of this graph
   return '#usethis_'+usethis_o.useMymodel.bgchartid
 }
@@ -105,17 +103,7 @@ function cb2(err, csv_a){
   var blue_a = yr2blue(csv_a)
   // I should calculate green data for blue-green chart
   var green_a = cr_green_a(usethis_o.mypredictions, blue_a)
-
-  var myyr_graph = bg_rsgraph(blue_a,green_a)
-
-  // I should add a title which shows the year
-//  var myrg   = d3.select('#utrg'+mydn)
-  var mysvg  = d3.select(myyr_graph).select('svg')
-  var mytext = mysvg.append('text')
-    .attr('x','60')
-    .attr('y','20')
-    .attr('fill','black')
-    .text(usethis_o.useyr)
+  var myyr_graph = bg_rsgraph(blue_a,green_a, usethis_o.useyr)
 } // function cb2(err, csv_a)
 
 // This function should return an array of objects suitable for Rickshaw.
