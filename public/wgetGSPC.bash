@@ -26,8 +26,19 @@ python ${D5}/csv/extprice.py
 cat ${TKR}recent.csv ${TKR}2.csv|grep -v Date > ${TKR}3.csv
 cat ${TKR}3.csv                               > ${TKR}2.csv 
 
+# I need to delete any dups at the top
+ln1=`sed -n 1p GSPC2.csv|awk -F, '{print $1}'`
+ln2=`sed -n 2p GSPC2.csv|awk -F, '{print $1}'`
+
+if [ $ln1 == $ln2 ]
+then
+  echo I have dups.
+  sed -i 1d GSPC2.csv
+  echo Dup should be gone now.
+fi
+
 echo 'var d5_recent_prices_a = ['                     > d5rp.js
-head GSPC2.csv|awk -F, "{print $1 $2}"|\
+head -101 GSPC2.csv|awk -F, "{print $1 $2}"|\
   sed '1,$s/^/["/'|sed '1,$s/,/",/'|sed '1,$s/$/],/' >> d5rp.js
 echo ']'                           >> d5rp.js
 cat                                   d5rp.js

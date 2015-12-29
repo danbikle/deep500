@@ -6,6 +6,31 @@ This file should help me deal with data into/out-of ConvNetJS.
 // I should use global var to copy data inside d3.csv() callback:
 usethis_o = {}
 
+// debug
+
+// This function should create a magicNet from JSON and then predict last 100 observations.
+// This function is called by met10.js function: // "click .last100button"
+function predict100(mymnjson){
+  mymnjson
+  usethis_o.magicNet = new convnetjs.MagicNet()
+  usethis_o.magicNet.fromJSON(mymnjson)
+  d5_recent_prices_a
+  var cp_a = []
+  d5_recent_prices_a.forEach(function(row){
+    cp_a.push(row[1]
+  )
+  cp_a
+  // I should convert cp_a into features.
+  var features_o          = cp2ftr(cp_a,usethis_o.useMymodel.results_o.featnames_o)
+  usethis_o.mypredictions = mn_predict( usethis_o.magicNet,features_o)
+  var seeum = usethis_o.mypredictions
+  seeum
+  'done here'
+
+}
+
+// debug
+
 // This function should create a magicNet from JSON and then predict a year of observations.
 // This function is called by met10.js function: // "click .use_thismodel"
 function predictyr(mymnjson,yr){

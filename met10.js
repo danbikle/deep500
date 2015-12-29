@@ -55,6 +55,7 @@ if (Meteor.isClient) {
     var show_mymodels_state = Session.get('show_mymodels')
     }
     ,"click #chartem": function(event){
+      // Prevent default browser form submit
       event.preventDefault()
       // I should declare vars to be used by RickShaw:
       var bgchartid, blue_a, green_a
@@ -89,7 +90,6 @@ if (Meteor.isClient) {
       d3.select('#chartem').remove()
     }
     ,"click #button_newmodel": function(event){
-      // Prevent default browser form submit
       event.preventDefault()
       // Get value from form element
       var fields = event.target.form.children
@@ -225,8 +225,15 @@ if (Meteor.isClient) {
   }) //Template.mmodel.helpers
 
   Template.mmodel.events({
-    "click .use_thismodel": function(event){
-      // Prevent default browser form submit
+    "click .last100button": function(event){
+      event
+      event.preventDefault()
+      Meteor.call("useThisModel", this._id) // This should fill useMymodel
+      usethis_o.useMymodel = useMymodel
+      var mymnjson         = useMymodel.mnjson
+      predict100(mymnjson)
+    }
+    ,"click .use_thismodel": function(event){
       event.preventDefault()
       Meteor.call("useThisModel", this._id) // This should fill useMymodel
       usethis_o.useMymodel = useMymodel
