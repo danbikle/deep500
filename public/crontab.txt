@@ -1,0 +1,7 @@
+# public/crontab.txt
+# In California I want to run wgetGSPC.bash at 12:50pm
+# In NY I would run it at 15:50pm
+# Demo:
+# crontab crontab.txt
+50 12 * * Mon-Fri ${HOME}/deep500/public/wgetGSPC.bash > /tmp/wgetGSPC_bash.$$.txt 2>&1
+# end
