@@ -188,6 +188,8 @@ function cp2ftr(cp_a, featnames_o){
     features_o.pctlag4 = pctlagn(4,cp_a)
   if (featnames_o.pctlag8)
     features_o.pctlag8 = pctlagn(8,cp_a)
+  if (featnames_o.pctlag16)
+    features_o.pctlag16 = pctlagn(16,cp_a)
   return features_o
 }
 // This function should convert array into array of labels:
