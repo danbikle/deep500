@@ -24,7 +24,7 @@ cat ${TKR}3.csv                               > ${TKR}2.csv
 
 echo 'var d5_recent_prices_s = ['   > d5rp.js
 head GSPC2.csv|awk -F, "{print $1 $2}"|\
-  sed '1,$s/^/"/'|sed '1,$s/,/",/' >> d5rp.js
+  sed '1,$s/^/["/'|sed '1,$s/,/",/'|sed '1,$s/$/],/' >> d5rp.js
 echo ']'                           >> d5rp.js
 cat                                   d5rp.js
 set -x
