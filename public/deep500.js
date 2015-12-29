@@ -32,7 +32,27 @@ function predict100(mymnjson){
   var predictions_a = mn_predict( usethis_o.magicNet,features_o)
   // I should create green_a from blue_a and predictions.
   var green_a = cr_green_a(predictions_a, blue_a)
-  bg_rsgraph(blue_a,green_a)
+  // I should generate graph from blue_a,green_a.
+  var graph100locations_s = bg_rsgraph(blue_a,green_a)
+  // I should see location of parent-div in graph100locations_s
+  // I should serve some CSV data.
+  var pcsv = "date,price,prediction\n"
+  var csvl = d5_recent_prices_a.length
+  d5_recent_prices_a.length == predictions_a.length // should be true
+  for (p=0; p<oos_size; p++){
+    d5_recent_prices_a[p][1] = d3.round(d5_recent_prices_a[p][1],2)
+    d5_recent_prices_a[p].push(predictions_a[p])
+    var row = d5_recent_prices_a[p].slice(0,2).toString()+"\n"
+    pcsv    = pcsv + row
+  }
+
+  var mycsvel = d3.select(graph100locations_s)
+    .append('div')
+    .attr('class','pcsv')
+    .append('pre')
+    .append('code')
+    .text(pcsv)
+
   'done here'
   
 }
@@ -56,6 +76,8 @@ function bg_rsgraph(blue_a,green_a){
   var xAxis1 = new Rickshaw.Graph.Axis.Time({graph: cb2graph})
   var yAxis1 = new Rickshaw.Graph.Axis.Y({graph:    cb2graph})
   cb2graph.render()
+  // I should return location of this graph
+  return '#utrg'+mydn
 }
 
 // debug
