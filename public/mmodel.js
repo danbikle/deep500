@@ -88,6 +88,7 @@ function mergem(csv_0, d5_recent_prices_a){
     if(arow[0] > csv_0[csv_0.length-1]['Date'])
       csv_0[csv_0.length] = {'Date':arow[0],'Close':arow[1]}
   })
+  return csv_0
 } //function mergem()
 // I should create a callback for d3.csv():
 function cb1(err, csv_0) {
