@@ -31,6 +31,7 @@ set -x
 edate=`date '+%s'`
 cd $D5
 rm -f d5rp*.js
-mv csv/d5rp.js d5rp$edate.js
-# I should use sed or other tool to edit ../met10.html so it links to d5rp$edate.js
+mv csv/d5rp.js d5rp${edate}.js
+sed -i "/d5rp/s/d5rp[0-9]*.js/d5rp${edate}.js/" ../met10.html
+# Now, the browser should not have a cached copy of d5rp${edate}.js
 exit

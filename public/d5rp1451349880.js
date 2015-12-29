@@ -1,4 +1,4 @@
-var d5_recent_prices_a = "
+var d5_recent_prices_s = "
 cdate,cp
 2015-12-28,2056.50
 2015-12-24,2060.98999
