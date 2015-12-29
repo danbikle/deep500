@@ -95,89 +95,42 @@ if (Meteor.isClient) {
       var fields = event.target.form.children
       var model_name     = fields.model_name.value
       var num_yrs = 25
-      if(fields.ny05.checked == true)
-        num_yrs = 5
-      if(fields.ny10.checked == true)
-        num_yrs = 10
-      if(fields.ny15.checked == true)
-        num_yrs = 15
-      if(fields.ny20.checked == true)
-        num_yrs = 20
-      if(fields.ny25.checked == true)
-        num_yrs = 25
-      if(fields.ny30.checked == true)
-        num_yrs = 30
-      if(fields.ny35.checked == true)
-        num_yrs = 35
+      vn_a = ['05','10','15','20','25','30','35']
+      vn_a.forEach(function(x){
+        if(fields['ny'+x].checked == true)
+          num_yrs = +x
+      })
       var num_candidates = 8
-      if(fields.nc01.checked == true)
-        num_candidates = 1
-      if(fields.nc02.checked == true)
-        num_candidates = 2
-      if(fields.nc04.checked == true)
-        num_candidates = 4
-      if(fields.nc08.checked == true)
-        num_candidates = 8
-      if(fields.nc16.checked == true)
-        num_candidates = 16
-      if(fields.nc32.checked == true)
-        num_candidates = 32
+      vn_a = ['01','02','04','08','16','32']
+      vn_a.forEach(function(x){
+        if(fields['nc'+x].checked == true)
+          num_candidates = +x
+      })
       var train_ratio  = 80
-      if(fields.tr50.checked == true)
-        train_ratio = 50
-      if(fields.tr60.checked == true)
-        train_ratio = 60
-      if(fields.tr70.checked == true)
-        train_ratio = 70
-      if(fields.tr80.checked == true)
-        train_ratio = 80
-      if(fields.tr90.checked == true)
-        train_ratio = 90
+      vn_a = ['50','60','70','80','90']
+      vn_a.forEach(function(x){
+        if(fields['tr'+x].checked == true)
+          train_ratio = +x
+      })
       var num_folds = 8
-      if(fields.nf02.checked == true)
-        num_folds   = 2
-      if(fields.nf04.checked == true)
-        num_folds   = 4
-      if(fields.nf08.checked == true)
-        num_folds   = 8
-      if(fields.nf16.checked == true)
-        num_folds   = 16
-      if(fields.nf32.checked == true)
-        num_folds   = 32
+      vn_a = ['02','04','08','16','32']
+      vn_a.forEach(function(x){
+        if(fields['nf'+x].checked == true)
+          num_folds = +x
+      })
       var num_epochs = 32
-      if(fields.ne002.checked == true)
-        num_epochs   = 2
-      if(fields.ne004.checked == true)
-        num_epochs   = 4
-      if(fields.ne008.checked == true)
-        num_epochs   = 8
-      if(fields.ne016.checked == true)
-        num_epochs   = 16
-      if(fields.ne032.checked == true)
-        num_epochs   = 32
-      if(fields.ne064.checked == true)
-        num_epochs   = 64
-      if(fields.ne128.checked == true)
-        num_epochs   = 128
-      if(fields.ne256.checked == true)
-        num_epochs   = 256
+      vn_a = ['002','004','008','016','032','064','128','256']
+      vn_a.forEach(function(x){
+        if(fields['ne'+x].checked == true)
+          num_epochs = +x
+      })
       var num_ensembles = 4
-      if(fields.nn002.checked == true)
-        num_ensembles   = 2
-      if(fields.nn004.checked == true)
-        num_ensembles   = 4
-      if(fields.nn008.checked == true)
-        num_ensembles   = 8
-      if(fields.nn016.checked == true)
-        num_ensembles   = 16
-      if(fields.nn032.checked == true)
-        num_ensembles   = 32
-      if(fields.nn064.checked == true)
-        num_ensembles   = 64
-      if(fields.nn128.checked == true)
-        num_ensembles   = 128
-      if(fields.nn256.checked == true)
-        num_ensembles   = 256
+      vn_a = ['002','004','008','016','032','064','128','256']
+      vn_a.forEach(function(x){
+        if(fields['nn'+x].checked == true)
+          num_ensembles = +x
+      })
+
       var neurons_min = 4
       if(fields.mn2.checked == true)
         neurons_min = 2
