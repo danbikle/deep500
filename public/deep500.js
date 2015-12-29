@@ -45,18 +45,22 @@ function predict100(mymnjson){
     var row = d5_recent_prices_a[p].slice(0,3).toString()+"\n"
     pcsv    = pcsv + row
   }
-
-  var mycsvel = d3.select(graph100locations_s)
+  d3.select(graph100locations_s).append('div').text('Last 100 Predictions:')
+  d3.select(graph100locations_s)
     .append('div')
     .attr('class','pcsv')
     .append('pre')
     .append('code')
     .text(pcsv)
-
-  'done here'
-  
+  // I should add a title to the graph.
+  var mysvg   = d3.select(graph100locations_s).select('svg')
+  var mytext = mysvg.append('text')
+    .attr('x','60')
+    .attr('y','20')
+    .attr('fill','black')
+    .text('Last 100 Predictions')
 }
-// debug
+
 
 function bg_rsgraph(blue_a,green_a){
   // I should pass blue_a green_a to Rickshaw.
@@ -78,7 +82,7 @@ function bg_rsgraph(blue_a,green_a){
   var yAxis1 = new Rickshaw.Graph.Axis.Y({graph:    cb2graph})
   cb2graph.render()
   // I should return location of this graph
-  return '#utrg'+mydn
+  return '#usethis_'+usethis_o.useMymodel.bgchartid
 }
 
 // debug
@@ -122,9 +126,9 @@ function cb2(err, csv_a){
   var yAxis1 = new Rickshaw.Graph.Axis.Y({graph:    cb2graph})
   cb2graph.render()
   // I should add a title which shows the year
-  myrg   = d3.select('#utrg'+mydn)
-  mysvg  = myrg.select('svg')
-  mytext = mysvg.append('text')
+  var myrg   = d3.select('#utrg'+mydn)
+  var mysvg  = myrg.select('svg')
+  var mytext = mysvg.append('text')
     .attr('x','60')
     .attr('y','20')
     .attr('fill','black')
