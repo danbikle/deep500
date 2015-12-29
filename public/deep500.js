@@ -15,18 +15,22 @@ function predict100(mymnjson){
   usethis_o.magicNet = new convnetjs.MagicNet()
   usethis_o.magicNet.fromJSON(mymnjson)
   d5_recent_prices_a
-  var cp_a = []
+  // I should fill cp_a so I can use it to create features.
+  var cp_a   = []
+  var blue_a = []
+  // I should create blue_a while I have the loop available.
   d5_recent_prices_a.forEach(function(row){
     cp_a.push(row[1])
+    blue_a.push({x:Date.parse(row[0])/1000, y:(row[1])})
   })
-
-  cp_a
   // I should convert cp_a into features.
-  var features_o          = cp2ftr(cp_a,usethis_o.useMymodel.results_o.featnames_o)
-  usethis_o.mypredictions = mn_predict( usethis_o.magicNet,features_o)
-  var seeum = usethis_o.mypredictions
-  seeum
+  var features_o    = cp2ftr(cp_a,usethis_o.useMymodel.results_o.featnames_o)
+  var predictions_a = mn_predict( usethis_o.magicNet,features_o)
+  // I should create green_a from blue_a and predictions.
+  var green_a = cr_green_a(predictions_a, blue_a)
+
   'done here'
+  
 }
 
 
