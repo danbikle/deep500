@@ -6,8 +6,6 @@ This file should help me deal with data into/out-of ConvNetJS.
 // I should use global var to copy data inside d3.csv() callback:
 usethis_o = {}
 
-// debug
-
 // This function should create a magicNet from JSON and then predict last 100 observations.
 // This function is called by met10.js function: // "click .last100button"
 function predict100(mymnjson){
@@ -53,7 +51,6 @@ function predict100(mymnjson){
     .append('code')
     .text(pcsv)
 }
-
 function bg_rsgraph(blue_a,green_a,title_s){
   // I should pass blue_a green_a to Rickshaw.
   // I should find min,max for Rickshaw.
@@ -73,16 +70,15 @@ function bg_rsgraph(blue_a,green_a,title_s){
   var xAxis1 = new Rickshaw.Graph.Axis.Time({graph: cb2graph})
   var yAxis1 = new Rickshaw.Graph.Axis.Y({graph:    cb2graph})
   cb2graph.render()
-  var mysvg  = d3.select('utrg'+mydn).select('svg')
-  var mytext = mysvg.append('text')
+  var mysvg  = d3.select('#utrg'+mydn).select('svg')
+  mysvg.append('text')
     .attr('x','60')
     .attr('y','20')
     .attr('fill','black')
-    .text(title_s)
+    .text(title_s.toString())
   // I should return location of this graph
   return '#usethis_'+usethis_o.useMymodel.bgchartid
 }
-
 // This function should create a magicNet from JSON and then predict a year of observations.
 // This function is called by met10.js function: // "click .use_thismodel"
 function predictyr(mymnjson,yr){
@@ -105,7 +101,6 @@ function cb2(err, csv_a){
   var green_a = cr_green_a(usethis_o.mypredictions, blue_a)
   var myyr_graph = bg_rsgraph(blue_a,green_a, usethis_o.useyr)
 } // function cb2(err, csv_a)
-
 // This function should return an array of objects suitable for Rickshaw.
 function yr2blue(csv_a){
   var myblue_a = []
@@ -134,7 +129,6 @@ function yr2predictions(csv_a){
 function cr_green_a(predictions_a, blue_a){
   var pl  = predictions_a.length
   var chk = (pl == blue_a.length) // should be true
-
   // I should start with an initial value for green_a
   var green_a = []
   green_a[0]  = blue_a[0]
