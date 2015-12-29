@@ -17,8 +17,9 @@ function predict100(mymnjson){
   d5_recent_prices_a
   var cp_a = []
   d5_recent_prices_a.forEach(function(row){
-    cp_a.push(row[1]
-  )
+    cp_a.push(row[1])
+  })
+
   cp_a
   // I should convert cp_a into features.
   var features_o          = cp2ftr(cp_a,usethis_o.useMymodel.results_o.featnames_o)
@@ -26,8 +27,8 @@ function predict100(mymnjson){
   var seeum = usethis_o.mypredictions
   seeum
   'done here'
-
 }
+
 
 // debug
 
@@ -269,3 +270,4 @@ function cr_oos_o(oos_start,oos_end,features_o){
   }
   return oos_o
 }
+
