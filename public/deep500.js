@@ -14,7 +14,8 @@ function predict100(mymnjson){
   mymnjson
   usethis_o.magicNet = new convnetjs.MagicNet()
   usethis_o.magicNet.fromJSON(mymnjson)
-  d5_recent_prices_a
+  // I should sort prices by ascending date
+  d5_recent_prices_a.reverse()
   // I should fill cp_a so I can use it to create features.
   var cp_a   = []
   var blue_a = []
@@ -28,6 +29,25 @@ function predict100(mymnjson){
   var predictions_a = mn_predict( usethis_o.magicNet,features_o)
   // I should create green_a from blue_a and predictions.
   var green_a = cr_green_a(predictions_a, blue_a)
+
+  // I should pass blue_a green_a to Rickshaw.
+  // I should find min,max for Rickshaw.
+  var chartmin = 0.9 * d3.min(blue_a.concat(green_a).map(function(pt){return pt.y}))
+  var chartmax = 1.1 * d3.max(blue_a.concat(green_a).map(function(pt){return pt.y}))
+  // I should use Date.now() to create a div-id for Rickshaw
+  var mydn = Date.now()
+  var utd4rg1 = d3.select('#usethis_'+usethis_o.useMymodel.bgchartid)
+  var utd4rg2 = utd4rg1.append('div').attr('id','utrg'+mydn)
+  utd4rg1.append('hr')
+  var cb2graph = new Rickshaw.Graph({
+    renderer: 'line'
+    ,min: chartmin, max: chartmax
+    ,element: document.getElementById('utrg'+mydn)
+    ,series:[{color: 'blue', data: blue_a},{color: 'green', data: green_a}]
+  })
+  var xAxis1 = new Rickshaw.Graph.Axis.Time({graph: cb2graph})
+  var yAxis1 = new Rickshaw.Graph.Axis.Y({graph:    cb2graph})
+  cb2graph.render()
 
   'done here'
   
