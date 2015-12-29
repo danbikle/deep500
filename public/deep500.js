@@ -15,7 +15,10 @@ function predict100(mymnjson){
   usethis_o.magicNet = new convnetjs.MagicNet()
   usethis_o.magicNet.fromJSON(mymnjson)
   // I should sort prices by ascending date
-  d5_recent_prices_a.reverse()
+  var day0 = d5_recent_prices_a[0][0]
+  var day1 = d5_recent_prices_a[1][0]
+  if(day0 > day1)
+    d5_recent_prices_a.reverse()
   // I should fill cp_a so I can use it to create features.
   var cp_a   = []
   var blue_a = []
