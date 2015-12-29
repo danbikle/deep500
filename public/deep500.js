@@ -110,7 +110,7 @@ function cb2(err, csv_a){
 
   // I should add a title which shows the year
 //  var myrg   = d3.select('#utrg'+mydn)
-  var mysvg  = myyr_graph.select('svg')
+  var mysvg  = select(myyr_graph).select('svg')
   var mytext = mysvg.append('text')
     .attr('x','60')
     .attr('y','20')
