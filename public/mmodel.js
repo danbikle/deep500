@@ -63,10 +63,11 @@ function start_modelbuild(){
   for (ky in model_o.featnames_o)
     if(model_o.featnames_o[ky])
       featnames.push(ky)
-
+  var feats_s = ''
+  featnames.forEach(function(ft){feats_s = feats_s + '<li>'+ft+'</li>'})
   d3.select('#a_spinner div table.table_model')
     .append('tr')
-    .html('<td>Features: </td><td>'+featnames.toString()+'</td>')
+    .html('<td>Features: </td><td><ul>'+feats_s+'</ul></td>')
 
   d3.csv("/csv/GSPC.csv", cb1)
 }
