@@ -6,6 +6,27 @@ This file should help me deal with data into/out-of ConvNetJS.
 // I should use global var to copy data inside d3.csv() callback:
 usethis_o = {}
 
+// This function should return 'moving-mean' of last n-elements of each element in in_a.
+function mvgmn(in_a,n){
+  var out_a = []
+  for(j=in_a.length;j>0;j--){
+    var slice_start = j-n
+    if(slice_start < 0)
+       slice_start = 0
+    var myslice=in_a.slice(slice_start,j)
+    out_a.push(d3.mean(myslice))
+  }
+  out_a.length == in_a.length //should be true
+  return out_a.reverse()
+}
+
+// This function should return cp / 'moving-mean' of last n-elements of each element in in_a.
+function cpo_mvgmn(in_a,n){
+  var out_a = mvgmn(in_a,n).map(function(x,j){return in_a[j]/x})
+  out_a.length == in_a.length //should be true
+  return out_a
+}
+
 // This function should create a magicNet from JSON and then predict last 100 observations.
 // This function is called by met10.js function: // "click .last100button"
 function predict100(mymnjson){
