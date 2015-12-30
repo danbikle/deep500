@@ -162,6 +162,9 @@ if (Meteor.isClient) {
       model_o.featnames_o.pctlag4 = fields.pctlag4.checked
       model_o.featnames_o.pctlag8 = fields.pctlag8.checked
       model_o.featnames_o.pctlag16 = fields.pctlag16.checked
+      model_o.featnames_o.cpo4mvgAvg  = fields.cpo4mvgAvg.checked
+      model_o.featnames_o.cpo8mvgAvg  = fields.cpo8mvgAvg.checked
+      model_o.featnames_o.cpo16mvgAvg = fields.cpo16mvgAvg.checked
       model_o.model_name     = model_name
       model_o.num_yrs        = +num_yrs
       model_o.num_candidates = +num_candidates
