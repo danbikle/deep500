@@ -83,7 +83,14 @@ cp2ftr = (cp_a, featnames_o)->
     features_o.pctlag8 = pctlagn(8,cp_a)
   if featnames_o.pctlag16
     features_o.pctlag16 = pctlagn(16,cp_a)
+  if featnames_o.cpo4mvgAvg
+    features_o.cpo4mvgAvg = cpo_mvgmn(cp_a,4)
+
   return features_o
+
+# This function should return cp / 'moving-mean' of last n-elements of each element in in_a.
+cpo_mvgmn = ()->
+  return 'somthing'
 
 # This function should return array which lags my_a by n.
 lagn = (n,my_a)->
