@@ -50,14 +50,14 @@ cb1 = (in_a)->
   if in_a[0].split(',')[0] is 'Date' # This is what I expect.
     csv_s_a = in_a[1..]
   # I should check again
-  csv_a = csv_s_a.map (row)->row.split(',')
-  d1    = csv_a[1][0]
-  d2    = csv_a[2][0]
+  csv_a_a = csv_s_a.map (row)->row.split(',')
+  d1      = csv_a_a[1][0]
+  d2      = csv_a_a[2][0]
   if (d1 > d2) # date1 > date2?
-    csv_a.reverse()
+    csv_a_a.reverse()
   # I should get both dates and prices out of csv_s_a
-  ydate_s_a = csv_a.map (row)->row[0]
-  cp_a      = csv_a.map (row)->row[4]
+  ydate_s_a = csv_a_a.map (row)->row[0]
+  cp_a      = csv_a_a.map (row)->row[4]
 
   # I should define boundries of out-of-sample, train data.
   train_end   = cp_a.length - 253  # 1 yr ago
@@ -68,7 +68,6 @@ cb1 = (in_a)->
   pctlead_a   = pctlead1(cp_a)
 # end cb1()
 
-
 # This function should return array which leads my_a by 1.
 lead1 = (my_a)->
   return my_a[1..].concat my_a[-1..]
@@ -77,9 +76,8 @@ lead1 = (my_a)->
 pctlead1 = (my_a)->
   pctlead_a = []
   lead_a    = lead1(my_a)
-  `for (i=0;i<my_a.length;i++){
-    pctlead_a.push(100.0*(lead_a[i]-my_a[i])/my_a[i])
-  }`
+  `for (i=0;i<my_a.length;i++)
+    pctlead_a.push(100.0*(lead_a[i]-my_a[i])/my_a[i])`
   return pctlead_a
 
 # end
