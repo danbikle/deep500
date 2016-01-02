@@ -71,7 +71,7 @@ cb1 = (in_a)->
 
 # This function should return array which leads my_a by 1.
 lead1 = (my_a)->
-  return my_a.slice(1).concat my_a[my_a.length-1]
+  return my_a[1..].concat my_a[-1..]
 
 # This function should transform array into array of pctleads.
 pctlead1 = (my_a)->
