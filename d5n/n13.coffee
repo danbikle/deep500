@@ -68,6 +68,9 @@ cb1 = (in_a)->
   clog features_o.pctlag16.length
   clog features_o.cpo4mvgAvg.length
   clog features_o.cpo4mvgAvg[16123]
+  # I should test mvgmn()
+  x_a = cp_a[16123..16144]
+  clog x_a
 
 # end cb1()
 
