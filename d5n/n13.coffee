@@ -64,13 +64,9 @@ cb1 = (in_a)->
     'cpo8mvgAvg':  true
     'cpo16mvgAvg': true
   features_o = cp2ftr(cp_a,featnames_o)
-  labels_a   = pctlead1(cp_a).map
-  (x)->
-    if x<train_median_n
-      return 0
-    else
-      return 1
+  labels_a   = pctlead1(cp_a).map(`function(x){if(x<train_median_n) return 0; else return 1}`)
   clog labels_a.length
+  clog labels_a[16123..16155]
 
 # end cb1()
 
