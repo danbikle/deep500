@@ -65,17 +65,15 @@ cb1 = (in_a)->
   train_size  = num_yrs * 252
   train_start = train_end - train_size
   # I should work with the data now that I know train_start,end
-  pctlead_a   = pctlead1(cp_a)
-# end cb1()
+  pctlead_a       = pctlead1(cp_a)
+  pctlead_train_a = pctlead_a[train_start...train_end]
 
-# This function should return array which leads my_a by 1.
-lead1 = (my_a)->
-  return my_a[1..].concat my_a[-1..]
+# end cb1()
 
 # This function should transform array into array of pctleads.
 pctlead1 = (my_a)->
+  lead_a    = my_a[1..].concat my_a[-1..]
   pctlead_a = []
-  lead_a    = lead1(my_a)
   `for (i=0;i<my_a.length;i++)
     pctlead_a.push(100.0*(lead_a[i]-my_a[i])/my_a[i])`
   return pctlead_a
