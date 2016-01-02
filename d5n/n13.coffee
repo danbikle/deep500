@@ -66,7 +66,8 @@ cb1 = (in_a)->
     'cpo16mvgAvg': true
   features_o = cp2ftr(cp_a,featnames_o)
   clog features_o.pctlag16.length
-  clog features_o.pctlag2.length
+  clog features_o.cpo4mvgAvg.length
+  clog features_o.cpo4mvgAvg[16123]
 
 # end cb1()
 
