@@ -31,4 +31,16 @@ mymedian = (in_a) ->
 clog mymedian([4,3,2,1]) # should == 2.5
 clog mymedian([4,3,2,1,5]) # should == 3
 
+# This function should calculate the mean of an array of numbers.
+mymean = (in_a) ->
+  mysum = 0
+  in_a.forEach (x)->
+    mysum += x
+  return mysum / in_a.length
+
+clog mymean([0]) # should == 0
+clog mymean([0,2]) # should == 1
+clog mymean([4,3,2,1,5]) # should == 3
+
+
 # end
