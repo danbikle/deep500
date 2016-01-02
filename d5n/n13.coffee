@@ -64,9 +64,9 @@ cb1 = (in_a)->
     'cpo4mvgAvg':  true
     'cpo8mvgAvg':  true
     'cpo16mvgAvg': true
-  features_o      = cp2ftr(cp_a,featnames_o)
-  clog features_o
-  clog lagn(1,[0,1,2,3,4])
+  features_o = cp2ftr(cp_a,featnames_o)
+  clog features_o.pctlag1.length
+
 # end cb1()
 
 # This function should convert array into object full of features:
@@ -79,15 +79,19 @@ cp2ftr = (cp_a, featnames_o)->
 # This function should return array which lags my_a by n.
 lagn = (n,my_a)->
   # I should get first n members:
-  front_a = my_a.slice(0,n)
+  front_a = my_a[0...n]
   # I should remove last n members:
-  back_a = my_a.slice(0,my_a.length-n) 
+  back_a = my_a[0...my_a.length-n]
   lagn_a = front_a.concat(back_a)
   return lagn_a
 
 # This function should return array full of percentages built from lagn_a:
-pctlagn = (n,cp_a)->
-  return ['hello']
+pctlagn     = (n,in_a)->
+  lagn_a    = lagn(n,in_a)
+  pctlagn_a = []
+  `for (i=0; i<in_a.length;i++)
+     pctlagn_a.push(100.0*(in_a[i]-lagn_a[i])/lagn_a[i])`
+  return pctlagn_a
 
 # This function should calculate the median of an array of numbers.
 mymedian = (in_a)->
