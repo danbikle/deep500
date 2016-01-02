@@ -10,20 +10,6 @@ convnetjs = require("./convnetjs.js")
 clog = (in_x)->
   console.log in_x
 
-# This function should calculate the median of an array of numbers.
-mymedian = (in_a)->
-  my_a     = in_a.sort()
-  mylen    = my_a.length
-  if(mylen %2 == 0)
-    # If mylen is even I should pick two in the middle and average them
-    mymiddle1 = mylen / 2
-    mymiddle2 = mymiddle1 - 1
-    mymiddle  = (my_a[mymiddle1] + my_a[mymiddle2] )/2
-  else
-    # If mylen is odd I should pick the elem in the middle.
-    mymiddle = my_a[((mylen / 2) - 0.5)]
-  return mymiddle
-
 # This function should calculate the mean of an array of numbers.
 mymean = (in_a)->
   mysum = 0
@@ -64,11 +50,27 @@ cb1 = (in_a)->
   num_yrs     = 5 # 25
   train_size  = num_yrs * 252
   train_start = train_end - train_size
-  # I should work with the data now that I know train_start,end
+  # I should work with the data now that I know train_start,end.
   pctlead_a       = pctlead1(cp_a)
   pctlead_train_a = pctlead_a[train_start...train_end]
+  # Now that I know pctlead_train, I can calculate train_median.
+  train_median_n  = mymedian(pctlead_train_a)
 
 # end cb1()
+
+# This function should calculate the median of an array of numbers.
+mymedian = (in_a)->
+  my_a   = in_a.sort()
+  mylen  = my_a.length
+  if(mylen %2 == 0)
+    # If mylen is even I should pick two in the middle and average them
+    mymiddle1 = mylen / 2
+    mymiddle2 = mymiddle1 - 1
+    mymiddle  = (my_a[mymiddle1] + my_a[mymiddle2] )/2
+  else
+    # If mylen is odd I should pick the elem in the middle.
+    mymiddle = my_a[((mylen / 2) - 0.5)]
+  return mymiddle
 
 # This function should transform array into array of pctleads.
 pctlead1 = (my_a)->
