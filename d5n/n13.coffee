@@ -76,6 +76,15 @@ cp2ftr = (cp_a, featnames_o)->
   features_o.pctlag1 = pctlagn(1,cp_a)
   return features_o
 
+# This function should return array which lags my_a by n.
+function lagn(n,my_a) {
+  # I should get first n members:
+  front_a = my_a.slice(0,n)
+  # I should remove last n members:
+  back_a = my_a.slice(0,my_a.length-n) 
+  lagn_a = front_a.concat(back_a)
+  return lagn_a
+
 # This function should return array full of percentages built from lagn_a:
 pctlagn = (n,cp_a)->
   return ['hello']
