@@ -66,7 +66,7 @@ cb1 = (in_a)->
     'cpo16mvgAvg': true
   features_o      = cp2ftr(cp_a,featnames_o)
   clog features_o
-
+  clog lagn(1,[0,1,2,3,4])
 # end cb1()
 
 # This function should convert array into object full of features:
@@ -77,7 +77,7 @@ cp2ftr = (cp_a, featnames_o)->
   return features_o
 
 # This function should return array which lags my_a by n.
-function lagn(n,my_a) {
+lagn = (n,my_a)->
   # I should get first n members:
   front_a = my_a.slice(0,n)
   # I should remove last n members:
