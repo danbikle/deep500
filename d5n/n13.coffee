@@ -64,14 +64,20 @@ cb1 = (in_a)->
     'cpo8mvgAvg':  true
     'cpo16mvgAvg': true
   features_o = cp2ftr(cp_a,featnames_o)
-  labels_a   = pctlead1(cp_a).map(`function(x){if(x<train_median_n) return 0; else return 1}`)
-  clog labels_a.length
-  clog labels_a[16123..16155]
-
+  labels_a   = pctlead1(cp_a).map `function(x){if(x<train_median_n) return 0; else return 1}`
+  # I should get out-of-sample data ready:
+  oos_o      = cr_oos_o(oos_start,oos_end,features_o)
 # end cb1()
 
-cp2label = ()->
-  return 1
+# This function should return a subset of data from features_o:
+cr_oos_o = (oos_start,oos_end,features_o)->
+  oos_o = {}
+  `for (ky in features_o){
+    oos_o[ky] = features_o[ky].slice(oos_start,oos_end)
+  }`
+  return oos_o
+
+
 
 # This function should convert array into object full of features:
 cp2ftr = (cp_a, featnames_o)->
