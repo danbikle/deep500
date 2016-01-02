@@ -34,7 +34,7 @@ mymean = (in_a)->
 # I should read a csv file into global.myarray
 
 rl = require('readline').createInterface(
-  input: require('fs').createReadStream('small.csv'))
+  input: require('fs').createReadStream('../public/csv/GSPC.csv'))
 global.myarray = []
 rl.on 'line', (line)->
   global.myarray.push line
@@ -45,7 +45,19 @@ rl.on 'close', ->
   return
 
 # This function should accept an array and transform it into a model.
-cb1 = (mya)->
-  clog mya.slice(0,4)
-
+cb1 = (in_a)->
+  # Yahoo data is in wrong order. I should check and reverse if nec.
+  if in_a[0].split(',')[0] is 'Date' # This is what I expect.
+    csv_s_a = in_a.slice(1,in_a.length)
+  # I should check again
+  csv_a = csv_s_a.map((row)->row.split(','))
+  d1 = csv_a[1][0]
+  d2 = csv_a[2][0]
+  if (d1 > d2) # date1 > date2?
+    csv_a.reverse()
+  # I should get both dates and prices out of csv_s_a
+  ydate_s_a = csv_a.map((row)->row[0])
+  cp_a      = csv_a.map((row)->row[4])
+  clog ydate_s_a[16123]
+  clog cp_a[16123]
 # end
