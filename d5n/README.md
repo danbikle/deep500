@@ -1,12 +1,12 @@
 # d5n
 
-The files in this folder are used to help me mix ConvNetJS, Node.js, CoffeeScript, and deep500.
+The files in this folder are used to help me mix ConvNetJS, Node.js, CoffeeScript, and Deep500.
 
 If you have questions, e-me: bikle101@gmail.com
 
 If you want to run this software, I suggest that you setup a dev-env which is like mine.
 
-I do development on Ubuntu 14 which can be run as a guest OS on a Mac using VirtualBox, VMware, or parallels.
+I do development on Ubuntu 14 which can be run as a guest OS on a Mac using VirtualBox, VMware, or Parallels.
 
 You can get a copy of Ubuntu 14 here:
 
