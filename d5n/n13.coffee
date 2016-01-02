@@ -77,7 +77,7 @@ cp2ftr = (cp_a, featnames_o)->
   return features_o
 
 # This function should return array full of percentages built from lagn_a:
-pctlagn(n,cp_a)->
+pctlagn = (n,cp_a)->
   return ['hello']
 
 # This function should calculate the median of an array of numbers.
