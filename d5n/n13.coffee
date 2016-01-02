@@ -88,9 +88,23 @@ cp2ftr = (cp_a, featnames_o)->
 
   return features_o
 
+
+# This function should return 'moving-mean' of last n-elements of each element in in_a.
+mvgmn = (in_a,n)->
+  out_a = []
+  `for(j=in_a.length;j>0;j--){
+    var slice_start = j-n
+    if(slice_start < 0)
+       slice_start = 0
+    var myslice=in_a.slice(slice_start,j)
+    out_a.push(mymean(myslice))
+  }`
+  return out_a.reverse()
+
 # This function should return cp / 'moving-mean' of last n-elements of each element in in_a.
-cpo_mvgmn = ()->
-  return 'somthing'
+cpo_mvgmn = (in_a,n)->
+  out_a = mvgmn(in_a,n).map((x,j)-> return in_a[j]/x)
+  return out_a
 
 # This function should return array which lags my_a by n.
 lagn = (n,my_a)->
