@@ -55,8 +55,26 @@ cb1 = (in_a)->
   pctlead_train_a = pctlead_a[train_start...train_end]
   # Now that I know pctlead_train, I can calculate train_median.
   train_median_n  = mymedian(pctlead_train_a)
+  featnames_o     =
+    'pctlag1':     true
+    'pctlag2':     true
+    'pctlag4':     true
+    'pctlag8':     true
+    'pctlag16':    true
+    'cpo4mvgAvg':  true
+    'cpo8mvgAvg':  true
+    'cpo16mvgAvg': true
+  features_o      = cp2ftr(cp_a,featnames_o)
+  clog features_o
 
 # end cb1()
+
+# This function should convert array into object full of features:
+cp2ftr = (cp_a, featnames_o)->
+  features_o     = {}
+  # I should hardcode in pctlag1 so I have at least 1 feature
+  features_o.pctlag1 = 'pctlagn(1,cp_a)'
+  return features_o
 
 # This function should calculate the median of an array of numbers.
 mymedian = (in_a)->
