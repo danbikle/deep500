@@ -73,8 +73,12 @@ cb1 = (in_a)->
 cp2ftr = (cp_a, featnames_o)->
   features_o     = {}
   # I should hardcode in pctlag1 so I have at least 1 feature
-  features_o.pctlag1 = 'pctlagn(1,cp_a)'
+  features_o.pctlag1 = pctlagn(1,cp_a)
   return features_o
+
+# This function should return array full of percentages built from lagn_a:
+pctlagn(n,cp_a)->
+  return ['hello']
 
 # This function should calculate the median of an array of numbers.
 mymedian = (in_a)->
