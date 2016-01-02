@@ -18,7 +18,6 @@ mymean = (in_a)->
   return mysum / in_a.length
 
 # I should read a csv file into global.myarray
-
 rl = require('readline').createInterface(
   input: require('fs').createReadStream('../public/csv/GSPC.csv'))
 global.myarray = []
@@ -42,8 +41,8 @@ cb1 = (in_a)->
   if (d1 > d2) # date1 > date2?
     csv_a_a.reverse()
   # I should get both dates and prices out of csv_s_a
-  ydate_s_a = csv_a_a.map (row)->row[0]
-  cp_a      = csv_a_a.map (row)->row[4]
+  ydate_s_a = csv_a_a.map (row_s)->  row_s[0]
+  cp_a      = csv_a_a.map (row_s)-> +row_s[4]
 
   # I should define boundries of out-of-sample, train data.
   train_end   = cp_a.length - 253  # 1 yr ago
@@ -65,12 +64,7 @@ cb1 = (in_a)->
     'cpo8mvgAvg':  true
     'cpo16mvgAvg': true
   features_o = cp2ftr(cp_a,featnames_o)
-  clog features_o.pctlag16.length
-  clog features_o.cpo4mvgAvg.length
-  clog features_o.cpo4mvgAvg[16123]
-  # I should test mvgmn()
-  x_a = cp_a[16123..16144]
-  clog x_a
+
 
 # end cb1()
 
@@ -89,9 +83,11 @@ cp2ftr = (cp_a, featnames_o)->
     features_o.pctlag16 = pctlagn(16,cp_a)
   if featnames_o.cpo4mvgAvg
     features_o.cpo4mvgAvg = cpo_mvgmn(cp_a,4)
-
+  if featnames_o.cpo8mvgAvg
+    features_o.cpo8mvgAvg = cpo_mvgmn(cp_a,8)
+  if featnames_o.cpo16mvgAvg
+    features_o.cpo16mvgAvg = cpo_mvgmn(cp_a,16)
   return features_o
-
 
 # This function should return 'moving-mean' of last n-elements of each element in in_a.
 mvgmn = (in_a,n)->
