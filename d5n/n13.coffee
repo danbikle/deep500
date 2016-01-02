@@ -65,7 +65,7 @@ cb1 = (in_a)->
     'cpo8mvgAvg':  true
     'cpo16mvgAvg': true
   features_o = cp2ftr(cp_a,featnames_o)
-  clog features_o.pctlag1.length
+  clog features_o.pctlag16.length
   clog features_o.pctlag2.length
 
 # end cb1()
@@ -75,8 +75,14 @@ cp2ftr = (cp_a, featnames_o)->
   features_o     = {}
   # I should hardcode in pctlag1 so I have at least 1 feature
   features_o.pctlag1 = pctlagn(1,cp_a)
-  if (featnames_o.pctlag2)
+  if featnames_o.pctlag2
     features_o.pctlag2 = pctlagn(2,cp_a)
+  if featnames_o.pctlag4
+    features_o.pctlag4 = pctlagn(4,cp_a)
+  if featnames_o.pctlag8
+    features_o.pctlag8 = pctlagn(8,cp_a)
+  if featnames_o.pctlag16
+    features_o.pctlag16 = pctlagn(16,cp_a)
   return features_o
 
 # This function should return array which lags my_a by n.
