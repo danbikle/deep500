@@ -64,9 +64,12 @@ cb1 = (in_a)->
     'cpo8mvgAvg':  true
     'cpo16mvgAvg': true
   features_o = cp2ftr(cp_a,featnames_o)
-
+  labels_a   = pctlead1(cp_a).map((x)->if (x<train_median_n) return 0; else return 1)
+  clog labels_a.length
 
 # end cb1()
+
+cp2label = ()->
 
 # This function should convert array into object full of features:
 cp2ftr = (cp_a, featnames_o)->
