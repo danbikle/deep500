@@ -48,7 +48,7 @@ rl.on 'close', ->
 cb1 = (in_a)->
   # Yahoo data is in wrong order. I should check and reverse if nec.
   if in_a[0].split(',')[0] is 'Date' # This is what I expect.
-    csv_s_a = in_a.slice(1,in_a.length)
+    csv_s_a = in_a[1..]
   # I should check again
   csv_a = csv_s_a.map (row)->row.split(',')
   d1    = csv_a[1][0]
