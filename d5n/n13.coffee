@@ -187,7 +187,7 @@ predict_oos = (predict_o)->
   train_start    = predict_o.train_start
   train_median_n = predict_o.train_median_n
   # I should ensure train data and out-of-sample data do not mix:
-  oos_start  = train_end +   1
+  oos_start  = train_end + 1
   oos_end    = cp_a.length
   oos_size   = oos_end - oos_start
   features_o = cp2ftr(cp_a,featnames_o)
