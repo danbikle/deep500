@@ -223,7 +223,7 @@ calc_results = (predictions_a,labels_oos_a,pctlead_oos_a)->
   chk = ((truepos+trueneg+falsepos+falseneg) == oos_size)
   pos_accuracy = 100.0 * truepos / (truepos + falsepos)
   neg_accuracy = 100.0 * trueneg / (trueneg + falseneg)
-      accuracy = 100.0 * (truepos + trueneg) / oos_size
+  accuracy = 100.0 * (truepos + trueneg) / oos_size
   # I should study pctlead dependence on predictions_a
   posg_a = []; negg_a = [];
   `
