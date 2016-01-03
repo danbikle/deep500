@@ -251,21 +251,6 @@ function calc_results(predictions_a,labels_oos_a,pctlead_oos_a){
     results_o.opinion    = 'good'
   else
     results_o.opinion    = 'bad';
-  // I should start work on chart data
-  var ydate_a   = model_o.ydate_a
-  var oos_end   = ydate_a.length
-  var oos_start = oos_end - oos_size
-  var ydate_oos_a  = ydate_a.slice(oos_start,oos_end)
-  var cp_oos_a     = model_o.cp_a.slice(oos_start,oos_end)
-  // RickShaw should use blue_a later to create chart
-  results_o.blue_a = []
-  for(dy=0; dy<oos_size; dy++){
-    results_o.blue_a.push({x:ydate_oos_a[dy], y:cp_oos_a[dy]})
-  }
-  // I should calculate green data for blue-green chart
-  var green_a = cr_green_a(predictions_a, results_o.blue_a)
-  results_o.green_a       = green_a
-  results_o.predictions_a = predictions_a
   return results_o
 }`
 
