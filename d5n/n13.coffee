@@ -134,7 +134,7 @@ cr_mn = (train_o)->
   mystep = ()->
     magicNet.step()
     step_i++
-    if step_i % 1000 == 0
+    if step_i % 2000 == 0
       clog 'I finished another 1000 steps, be patient.'
       widpct = 5.0
       hrleft = 10.0
@@ -158,7 +158,6 @@ cr_mn = (train_o)->
   setInterval(mystep,0)
   return 'cr_mn() done'
 
-
 # This function should be called when magicNet finishes a fold.
 finishedFold = ()->
   foldcntr_i++
@@ -167,9 +166,6 @@ finishedFold = ()->
     clog 'I took this many steps: '+step_i
     # I should be able to calculate steptotal
     steptotal_i = step_i * mnopts_o.num_folds
-  # debug
-  # process.exit(0)
-  # debug
 
 # This function should be called when magicNet finishes a batch.
 finishedBatch = ()->
@@ -195,9 +191,8 @@ cr_train_o = (train_start,train_end,features_o,labels_a)->
 # This function should return a subset of data from features_o:
 cr_oos_o = (oos_start,oos_end,features_o)->
   oos_o = {}
-  `for (ky in features_o){
-    oos_o[ky] = features_o[ky].slice(oos_start,oos_end)
-  }`
+  for ky,val of features_o
+    oos_o[ky] = val[oos_start...oos_end]
   return oos_o
 
 # This function should convert array into object full of features:
