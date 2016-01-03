@@ -7,6 +7,7 @@
 # I should use step_i, foldcntr_i to watch progress of magicNet:
 step_i     = 0
 foldcntr_i = 0
+steptotal_i = 0
 # I should use mnopts_o to alter behavior of magicNet and carry num_folds to finishedFold()
 mnopts_o = {} 
 
@@ -131,6 +132,11 @@ cr_mn = (train_o)->
     step_i++
     if step_i % 1000 == 0
       clog 'I finished another 1000 steps, be patient.'
+      widpct = 5.0
+      hrleft = 10.0
+      if(foldcntr > 0){
+        # I should know steptotal now
+        widpct = 100*step_i/steptotal_i
 
   clog 'I am working, be patient.'
   # Start training magicNet. During every step() call, all candidates train on one example.
@@ -141,11 +147,11 @@ cr_mn = (train_o)->
 # This function should be called when magicNet finishes a fold.
 finishedFold = ()->
   foldcntr_i++
-  if foldcntr_i == 1
-    # I should be able to calculate steptotal
-    steptotal = step_i * mnopts_o.num_folds
   clog 'I finished a fold'
-  clog 'I took this many steps: '+step_i
+  if foldcntr_i == 1
+    clog 'I took this many steps: '+step_i
+    # I should be able to calculate steptotal
+    steptotal_i = step_i * mnopts_o.num_folds
   # debug
   process.exit(0)
   # debug
