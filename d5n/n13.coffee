@@ -81,17 +81,17 @@ cr_mn = (train_o)->
   # in train/validation fold splits. Here, 0.7 means 70% 
   mnopts_o.train_ratio = 0.7
   # number of candidates to evaluate in parallel:
-  mnopts_o.num_candidates = 8
+  mnopts_o.num_candidates = 4
   # number of folds to evaluate per candidate:
-  mnopts_o.num_folds = 8
+  mnopts_o.num_folds = 2
   # number of epochs to make through data per fold
   mnopts_o.num_epochs = 4
   # How many nets to average in the end for prediction? 
   # likely higher is better but slower:
-  mnopts_o.ensemble_size = 4
+  mnopts_o.ensemble_size = 2
   # Configure neurons_min, neurons_max
   mnopts_o.neurons_min   = 2
-  mnopts_o.neurons_max   = 8
+  mnopts_o.neurons_max   = 4
   # hlayers too
   mnopts_o.hlayers       = 2
   # I should start work on obsv_v which is a volume of observations
@@ -170,6 +170,9 @@ finishedFold = ()->
 # This function should be called when magicNet finishes a batch.
 finishedBatch = ()->
   clog 'I finished a batch'
+  # I should use json to help remember this model
+  mnjson    = magicNet.toJSON()
+  results_o = predict_oos(predict_o)
   process.exit(0)
 
 # This function should create training data from features, labels:
