@@ -195,26 +195,14 @@ predict_oos = (predict_o)->
 
   # I should get out-of-sample data ready:
   oos_o         = cr_oos_o(oos_start,oos_end,features_o)
-  predictions_a = mn_predict(predict_o.mymn, oos_o)
+  predictions_a = mn_predict(magicNet, oos_o)
   labels_oos_a  = labels_a[oos_start...oos_end]
   pctlead_a     = pctlead1(cp_a)
   pctlead_oos_a = pctlead_a[oos_start...oos_end]
   results_o     = calc_results(predictions_a,labels_oos_a,pctlead_oos_a)
-  results_o.train_start_date = ydate_s_a[train_start]
-  results_o.train_end_date   = ydate_s_a[train_end]
-  results_o.oos_start_date   = ydate_s_a[oos_start]
-  results_o.oos_end_date     = ydate_s_a[oos_end-1]
-  results_o.oos_size         = oos_size
-  pcsv = "date,price,prediction\n"
-  `for (p=0; p<oos_size;p++){
-    var pdate = ydate_s_a[oos_start+p]
-    var cp    = cp_a[oos_start+p]
-    var prd   = predictions_a[p]
-    var row   = pdate+','+cp+','+prd+"\n"
-    pcsv      = pcsv + row
-  }`
-  results_o.pcsv        = pcsv
-  results_o.featnames_o = featnames_o
+  clog  results_o.accuracy
+  # debug
+  process.exit(1)
   return results_o
 
 `
@@ -247,18 +235,18 @@ function calc_results(predictions_a,labels_oos_a,pctlead_oos_a){
       negg_a.push(pctlead_oos_a[i])
   }
   chk = ((posg_a.length + negg_a.length) == oos_size) // should be true
-  var pos_avg  = d3.mean(posg_a)
-  var neg_avg  = d3.mean(negg_a)
+  var pos_avg  = mymean(posg_a)
+  var neg_avg  = mymean(negg_a)
   var results_o          = {}
   results_o.truepos      = truepos
   results_o.falsepos     = falsepos
   results_o.trueneg      = trueneg
   results_o.falseneg     = falseneg
-  results_o.pos_accuracy = d3.round(pos_accuracy,1)
-  results_o.neg_accuracy = d3.round(neg_accuracy,1)
-  results_o.accuracy     = d3.round(accuracy    ,3)
-  results_o.pos_avg      = d3.round(pos_avg     ,3)
-  results_o.neg_avg      = d3.round(neg_avg     ,3)
+  results_o.pos_accuracy = myround(pos_accuracy)
+  results_o.neg_accuracy = myround(neg_accuracy)
+  results_o.accuracy     = myround(accuracy    )
+  results_o.pos_avg      = myround(pos_avg     )
+  results_o.neg_avg      = myround(neg_avg     )
   if (pos_avg > neg_avg)
     results_o.opinion    = 'good'
   else
