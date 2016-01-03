@@ -134,7 +134,7 @@ cr_mn = (train_o)->
       clog 'I finished another 1000 steps, be patient.'
       widpct = 5.0
       hrleft = 10.0
-      if(foldcntr > 0){
+      if(foldcntr > 0)
         # I should know steptotal now
         widpct = 100*step_i/steptotal_i
 
