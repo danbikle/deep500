@@ -192,7 +192,6 @@ predict_oos = (predict_o)->
   oos_size   = oos_end - oos_start
   features_o = cp2ftr(cp_a,featnames_o)
   labels_a   = pctlead1(cp_a).map `function(x){if(x<train_median_n) return 0; else return 1}`
-
   # I should get out-of-sample data ready:
   oos_o         = cr_oos_o(oos_start,oos_end,features_o)
   predictions_a = mn_predict(magicNet, oos_o)
@@ -201,8 +200,6 @@ predict_oos = (predict_o)->
   pctlead_oos_a = pctlead_a[oos_start...oos_end]
   results_o     = calc_results(predictions_a,labels_oos_a,pctlead_oos_a)
   clog  results_o.accuracy
-  # debug
-  process.exit(1)
   return results_o
 
 # This function should help display results of predicting oos data:
@@ -228,7 +225,7 @@ calc_results = (predictions_a,labels_oos_a,pctlead_oos_a)->
   neg_accuracy = 100.0 * trueneg / (trueneg + falseneg)
       accuracy = 100.0 * (truepos + trueneg) / oos_size
   # I should study pctlead dependence on predictions_a
-  var posg_a = []; negg_a = [];
+  posg_a = []; negg_a = [];
   `
   for (i=0;i<oos_size;i++){
     if (predictions_a[i] == 1)
