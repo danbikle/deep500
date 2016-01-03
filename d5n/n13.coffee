@@ -124,8 +124,11 @@ cr_mn = (train_o)->
   magicNet.onFinishBatch(finishedBatch)
   # This function allows me to count steps as magicNet runs.
   mystep = ()->
-    step_i++
     magicNet.step()
+    step_i++
+    if step_i % 1000 == 0
+      clog 'I finished another 1000 steps, be patient.'
+
   clog 'I am working, be patient.'
   # Start training magicNet. During every step() call, all candidates train on one example.
   setInterval(mystep,0)
