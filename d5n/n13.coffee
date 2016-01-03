@@ -177,6 +177,10 @@ finishedBatch = ()->
   results_o = predict_oos(predict_o)
   process.exit(0)
 
+# This function should predict and report on some out-of-sample data.
+predict_oos = (predict_o)->
+  return 'all done'
+
 # This function should create training data from features, labels:
 cr_train_o = (train_start,train_end,features_o,labels_a)->
   train_o = {}
