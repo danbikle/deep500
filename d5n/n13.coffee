@@ -134,7 +134,7 @@ cr_mn = (train_o)->
   magicNet.onFinishBatch(finishedBatch)
   return 'cr_mn() done'
 
-
+# This function should be called when magicNet finishes a batch.
 finishedBatch = ()->
   msg = 'finishedBatch done'
   clog   msg
