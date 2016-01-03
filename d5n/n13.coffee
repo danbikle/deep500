@@ -62,7 +62,7 @@ cb1 = (in_a)->
 
   # I should define boundries of out-of-sample, train data.
   train_end   = cp_a.length - 253  # 1 yr ago
-  num_yrs     = 5 # 25
+  num_yrs     = 15 # 25
   train_size  = num_yrs * 252
   train_start = train_end - train_size
   # I should work with the data now that I know train_start,end.
