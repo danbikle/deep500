@@ -13,6 +13,9 @@ steptotal_i = 0
 # I should use mnopts_o to alter behavior of magicNet and carry num_folds to finishedFold()
 mnopts_o = {} 
 
+convnetjs = require("./convnetjs.js")
+magicNet  = new convnetjs.MagicNet()
+
 # I should read a csv file into global.myarray
 rl = require('readline').createInterface(
   input: require('fs').createReadStream('../public/csv/GSPC.csv'))
@@ -102,7 +105,6 @@ cr_mn = (train_o)->
   # I know its size now.
   # I should create train_data which eventually should be array of vols I feed to MN:
   train_data = []
-  convnetjs = require("./convnetjs.js")
   # I should reuse syntax I wrote for mmodel.js which copies values from a 2D array,
   # into an array of Vol-objects.
   fillv = `function(){
