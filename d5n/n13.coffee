@@ -92,7 +92,7 @@ cr_mn = (train_o)->
   # number of epochs to make through data per fold
   opts.num_epochs = 16
   # How many nets to average in the end for prediction? 
-  # likely higher = better but slower:
+  # likely higher is better but slower:
   opts.ensemble_size = 4
   # Configure neurons_min, neurons_max
   opts.neurons_min   = 4
@@ -102,36 +102,31 @@ cr_mn = (train_o)->
   # I should start work on obsv_v which is a volume of observations
   fnum = -1
   # I need to know obsv_v size (which is the number of features) before I create it
-  for ky_s,val_a in train_o
+  for ky_s,val_a of train_o
     fnum +=1
   # I know its size now.
   # I should create train_data which eventually should be array of vols I feed to MN:
   train_data = []
   convnetjs = require("./convnetjs.js")
-  `for(i =0;i<train_o[ky].length;i++){
-    var widx   = 0
-    var obsv_v = new convnetjs.Vol(1,1,fnum)
-    # I should match a vol to a feature
-    for (ky in train_o) {
-      if (ky != 'label') {
-        obsv_v.w[widx] = train_o[ky][i]
-        widx += 1
+  # I should reuse syntax I wrote for mmodel.js which copies values from a 2D array,
+  # into an array of Vol-objects.
+  fillv = `function(){
+    for(i =0;i<train_o[ky_s].length;i++){
+      var widx   = 0
+      var obsv_v = new convnetjs.Vol(1,1,fnum)
+      // I should match a vol to a feature
+      for (ky in train_o) {
+        if (ky != 'label') {
+          obsv_v.w[widx] = train_o[ky][i]
+          widx += 1
+        }
       }
+      train_data.push(obsv_v)
     }
-    train_data.push(obsv_v)
+    return train_data
   }`
 
-  #magicNet = new convnetjs.MagicNet(train_data, train_o.label, opts)
-  #mn_start = Date.now()
-
-  # On finish of fold I should update the UI to show progress
-  #debug  magicNet.onFinishFold(finishedFold)
-  # On finish, I should call finishedBatch()
-  #debug  magicNet.onFinishBatch(finishedBatch)
-  # Start training MagicNet. 
-  # Every call trains all candidates in current batch on one example:
-
-  return 'done'
+  return 'cr_mn() done'
 
 # This function should create training data from features, labels:
 cr_train_o = (train_start,train_end,features_o,labels_a)->
