@@ -184,16 +184,16 @@ finishedBatch = ()->
 # This function should report on the results of testing the model on out-of-sample data.
 rpt_on = (results_o)->
   rpt = "
-    True Positive Count:  #{results_o.truepos}
-    True Negative Count:  #{results_o.trueneg}
-    False Positive Count: #{results_o.falsepos}
-    False Negative Count: #{results_o.falseneg}
-    Positive Accuracy:    #{results_o.pos_accuracy} %
-    Negative Accuracy:    #{results_o.neg_accuracy} %
-    Accuracy:             #{results_o.accuracy} %
-    Positive Average:     #{results_o.pos_avg} %
-    Negative Average:     #{results_o.neg_avg} %
-    My Opinion of Results: #{results_o.opinion}
+    True Positive Count:  #{results_o.truepos}        \n
+    True Negative Count:  #{results_o.trueneg}        \n
+    False Positive Count: #{results_o.falsepos}       \n
+    False Negative Count: #{results_o.falseneg}       \n
+    Positive Accuracy:    #{results_o.pos_accuracy} % \n
+    Negative Accuracy:    #{results_o.neg_accuracy} % \n
+    Accuracy:             #{results_o.accuracy} %     \n
+    Positive Average:     #{results_o.pos_avg} %      \n
+    Negative Average:     #{results_o.neg_avg} %      \n
+    My Opinion of Results: #{results_o.opinion}       \n
   "
   clog rpt
 
