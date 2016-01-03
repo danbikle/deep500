@@ -177,7 +177,40 @@ finishedBatch = ()->
 
 # This function should predict and report on some out-of-sample data.
 predict_oos = (predict_o)->
-  return 'all done'
+  cp_a         = predict_o.cp_a
+  train_end    = predict_o.train_end
+  train_start  = predict_o.train_start
+  train_median = predict_o.train_median
+  # I should ensure train data and out-of-sample data do not mix:
+  oos_start    = train_end +   1
+  oos_end      = cp_a.length
+  oos_size     = oos_end - oos_start
+  features_o   = cp2ftr(cp_a,featnames_o)
+  labels_a     = cp2label(train_median,cp_a)
+  # I should get out-of-sample data ready:
+  oos_o         = cr_oos_o(oos_start,oos_end,features_o)
+  predictions_a = mn_predict(predict_o.mymn, oos_o)
+  labels_oos_a  = labels_a[oos_start...oos_end]
+  pctlead_a     = pctlead1(cp_a)
+  pctlead_oos_a = pctlead_a[oos_start...oos_end]
+  results_o     = calc_results(predictions_a,labels_oos_a,pctlead_oos_a)
+  results_o.train_start_date = ydate_s_a[train_start]
+  results_o.train_end_date   = ydate_s_a[train_end]
+  results_o.oos_start_date   = ydate_s_a[oos_start]
+  results_o.oos_end_date     = ydate_s_a[oos_end-1]
+  results_o.oos_size         = oos_size
+  pcsv = "date,price,prediction\n"
+  for (p=0; p<oos_size;p++){
+    var pdate = ydate_s_a[oos_start+p]
+    var cp    = cp_a[oos_start+p]
+    var prd   = predictions_a[p]
+    var row   = pdate+','+cp+','+prd+"\n"
+    pcsv      = pcsv + row
+  }
+  results_o.pcsv        = pcsv
+  results_o.featnames_o = featnames_o
+  return results_o
+
 
 # This function should create training data from features, labels:
 cr_train_o = (train_start,train_end,features_o,labels_a)->
