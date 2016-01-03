@@ -125,7 +125,12 @@ cr_mn = (train_o)->
     }
     return train_data
   }`
-
+  # I should run the above JS syntax:
+  fillv()
+  clog train_data.length
+  clog train_o.label.length
+  clog opts
+  'magicNet = new convnetjs.MagicNet(train_data, train_o.label, opts)'
   return 'cr_mn() done'
 
 # This function should create training data from features, labels:
