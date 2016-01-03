@@ -19,6 +19,17 @@ magicNet  = new convnetjs.MagicNet()
 # I should use predict_o to help me report on magicNet accuracy
 predict_o = {}  
 
+# I should use this to specify which features I want:
+featnames_o     =
+  'pctlag1':     true
+  'pctlag2':     true
+  'pctlag4':     true
+  'pctlag8':     true
+  'pctlag16':    true
+  'cpo4mvgAvg':  true
+  'cpo8mvgAvg':  true
+  'cpo16mvgAvg': true
+
 # I should read a csv file into global.myarray
 rl = require('readline').createInterface(
   input: require('fs').createReadStream('../public/csv/GSPC.csv'))
@@ -56,15 +67,6 @@ cb1 = (in_a)->
   pctlead_train_a = pctlead_a[train_start...train_end]
   # Now that I know pctlead_train, I can calculate train_median.
   train_median_n  = mymedian(pctlead_train_a)
-  featnames_o     =
-    'pctlag1':     true
-    'pctlag2':     true
-    'pctlag4':     true
-    'pctlag8':     true
-    'pctlag16':    true
-    'cpo4mvgAvg':  true
-    'cpo8mvgAvg':  true
-    'cpo16mvgAvg': true
   features_o = cp2ftr(cp_a,featnames_o)
   labels_a   = pctlead1(cp_a).map `function(x){if(x<train_median_n) return 0; else return 1}`
   train_o    = cr_train_o(train_start,train_end,features_o,labels_a)
