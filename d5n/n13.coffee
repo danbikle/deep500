@@ -13,8 +13,11 @@ steptotal_i = 0
 # I should use mnopts_o to alter behavior of magicNet and carry num_folds to finishedFold()
 mnopts_o = {} 
 
+# The two lines below help me use the MagicNet API.
 convnetjs = require("./convnetjs.js")
 magicNet  = new convnetjs.MagicNet()
+# I should use predict_o to help me report on magicNet accuracy
+predict_o = {}  
 
 # I should read a csv file into global.myarray
 rl = require('readline').createInterface(
@@ -66,7 +69,6 @@ cb1 = (in_a)->
   labels_a   = pctlead1(cp_a).map `function(x){if(x<train_median_n) return 0; else return 1}`
   train_o    = cr_train_o(train_start,train_end,features_o,labels_a)
   # I should collect data for later predictions.
-  predict_o              = {}  
   predict_o.cp_a         = cp_a
   predict_o.train_start  = train_start
   predict_o.train_end    = train_end
