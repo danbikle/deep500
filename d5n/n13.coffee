@@ -141,11 +141,13 @@ cr_mn = (train_o)->
         cdur     = dnow - mn_start
         msectot  = cdur * steptotal_i / step_i
         msecleft = msectot - cdur
-        minleft  = msecleft / 1000.0 / 60.0
-        hrleft   = msecleft / 1000.0 / 60.0 / 60.0
+        secleft  = msecleft / 1000.0
+        minleft  = secleft  / 60.0
+        hrleft   = secleft  / 60.0 / 60.0
         doneby_s = new Date(dnow+msecleft).toString()
         # I should report progress:
-        clog 'Hours left: '+hrleft
+        clog 'Seconds left: '+secleft
+        clog 'Hours left (secleft/3600): '+hrleft
         clog 'Done by: '+doneby_s
   clog 'I am working, be patient.'
   # Start training magicNet. During every step() call, all candidates train on one example.
