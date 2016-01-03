@@ -185,7 +185,7 @@ predict_oos = (predict_o)->
   cp_a         = predict_o.cp_a
   train_end    = predict_o.train_end
   train_start  = predict_o.train_start
-  train_median = predict_o.train_median
+  train_median_n = predict_o.train_median_n
   # I should ensure train data and out-of-sample data do not mix:
   oos_start  = train_end +   1
   oos_end    = cp_a.length
