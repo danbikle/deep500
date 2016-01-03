@@ -5,8 +5,8 @@
 # coffee n13.coffee
 
 # I should use step_i, foldcntr_i to watch progress of magicNet:
-step_i     = 0
-foldcntr_i = 0
+step_i      = 0
+foldcntr_i  = 0
 steptotal_i = 0
 # I should use mnopts_o to alter behavior of magicNet and carry num_folds to finishedFold()
 mnopts_o = {} 
@@ -134,7 +134,7 @@ cr_mn = (train_o)->
       clog 'I finished another 1000 steps, be patient.'
       widpct = 5.0
       hrleft = 10.0
-      if(foldcntr > 0)
+      if(foldcntr_i > 0)
         # I should know steptotal now
         widpct = 100*step_i/steptotal_i
 
