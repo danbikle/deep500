@@ -74,10 +74,10 @@ cb1 = (in_a)->
   labels_a   = pctlead1(cp_a).map `function(x){if(x<train_median_n) return 0; else return 1}`
   train_o    = cr_train_o(train_start,train_end,features_o,labels_a)
   # I should collect data for later predictions.
-  predict_o.cp_a         = cp_a
-  predict_o.train_start  = train_start
-  predict_o.train_end    = train_end
-  predict_o.train_median = train_median_n
+  predict_o.cp_a           = cp_a
+  predict_o.train_start    = train_start
+  predict_o.train_end      = train_end
+  predict_o.train_median_n = train_median_n
   # I should use train_o to create and train a new magicNet.
   cr_mn(train_o)
 
@@ -182,9 +182,9 @@ finishedBatch = ()->
 
 # This function should predict and report on some out-of-sample data.
 predict_oos = (predict_o)->
-  cp_a         = predict_o.cp_a
-  train_end    = predict_o.train_end
-  train_start  = predict_o.train_start
+  cp_a           = predict_o.cp_a
+  train_end      = predict_o.train_end
+  train_start    = predict_o.train_start
   train_median_n = predict_o.train_median_n
   # I should ensure train data and out-of-sample data do not mix:
   oos_start  = train_end +   1
