@@ -131,12 +131,21 @@ cr_mn = (train_o)->
   magicNet = new convnetjs.MagicNet(train_data, train_o.label, opts)
   mn_start = Date.now()
   clog mn_start
+  magicNet.onFinishFold(finishedFold)
   magicNet.onFinishBatch(finishedBatch)
   return 'cr_mn() done'
 
+mystep = ()->magicNet.step()
+# Start training magicNet. Every step() call all candidates train on one example.
+setInterval(mystep,0)
+
+# This function should be called when magicNet finishes a fold.
+finishedFold = ()->
+  clog 'I finished a fold'
+
 # This function should be called when magicNet finishes a batch.
 finishedBatch = ()->
-  msg = 'finishedBatch done'
+  msg = 'I finished a batch'
   clog   msg
   clog Date.now()
   return msg
