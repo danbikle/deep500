@@ -205,12 +205,12 @@ predict_oos = (predict_o)->
   process.exit(1)
   return results_o
 
-`
-// This function should help display results of predicting oos data:
-function calc_results(predictions_a,labels_oos_a,pctlead_oos_a){
-  // I should fill confusion matrix.
-  var truepos = 0; falsepos = 0; trueneg = 0; falseneg = 0;
-  var oos_size = predictions_a.length
+# This function should help display results of predicting oos data:
+calc_results = (predictions_a,labels_oos_a,pctlead_oos_a)->
+  # I should fill confusion matrix.
+  truepos = 0; falsepos = 0; trueneg = 0; falseneg = 0;
+  oos_size = predictions_a.length
+  `
   for (i=0;i<oos_size;i++){
     if ((predictions_a[i] == 1 ) && (labels_oos_a[i] == 1))
       truepos += 1;
@@ -221,23 +221,26 @@ function calc_results(predictions_a,labels_oos_a,pctlead_oos_a){
     if ((predictions_a[i] == -1) && (labels_oos_a[i] == 1))
       falseneg += 1;
   }
-  // should be true:
+  `
+  # should be true:
   chk = ((truepos+trueneg+falsepos+falseneg) == oos_size)
-  var pos_accuracy = 100.0 * truepos / (truepos + falsepos)
-  var neg_accuracy = 100.0 * trueneg / (trueneg + falseneg)
-  var     accuracy = 100.0 * (truepos + trueneg) / oos_size
-  // I should study pctlead dependence on predictions_a
+  pos_accuracy = 100.0 * truepos / (truepos + falsepos)
+  neg_accuracy = 100.0 * trueneg / (trueneg + falseneg)
+      accuracy = 100.0 * (truepos + trueneg) / oos_size
+  # I should study pctlead dependence on predictions_a
   var posg_a = []; negg_a = [];
+  `
   for (i=0;i<oos_size;i++){
     if (predictions_a[i] == 1)
       posg_a.push(pctlead_oos_a[i])
     else
       negg_a.push(pctlead_oos_a[i])
   }
-  chk = ((posg_a.length + negg_a.length) == oos_size) // should be true
-  var pos_avg  = mymean(posg_a)
-  var neg_avg  = mymean(negg_a)
-  var results_o          = {}
+  `
+  chk = ((posg_a.length + negg_a.length) == oos_size) # should be true
+  pos_avg  = mymean(posg_a)
+  neg_avg  = mymean(negg_a)
+  results_o          = {}
   results_o.truepos      = truepos
   results_o.falsepos     = falsepos
   results_o.trueneg      = trueneg
@@ -252,7 +255,6 @@ function calc_results(predictions_a,labels_oos_a,pctlead_oos_a){
   else
     results_o.opinion    = 'bad';
   return results_o
-}`
 
 # This function should return array full of predictions:
 mn_predict = (mymn, oos_o)->
