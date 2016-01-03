@@ -212,6 +212,70 @@ predict_oos = (predict_o)->
   results_o.featnames_o = featnames_o
   return results_o
 
+`
+// This function should help display results of predicting oos data:
+function calc_results(predictions_a,labels_oos_a,pctlead_oos_a){
+  // I should fill confusion matrix.
+  var truepos = 0; falsepos = 0; trueneg = 0; falseneg = 0;
+  var oos_size = predictions_a.length
+  for (i=0;i<oos_size;i++){
+    if ((predictions_a[i] == 1 ) && (labels_oos_a[i] == 1))
+      truepos += 1;
+    if ((predictions_a[i] == 1 ) && (labels_oos_a[i] == 0))
+      falsepos += 1;
+    if ((predictions_a[i] == -1) && (labels_oos_a[i] == 0))
+      trueneg += 1;
+    if ((predictions_a[i] == -1) && (labels_oos_a[i] == 1))
+      falseneg += 1;
+  }
+  // should be true:
+  chk = ((truepos+trueneg+falsepos+falseneg) == oos_size)
+  var pos_accuracy = 100.0 * truepos / (truepos + falsepos)
+  var neg_accuracy = 100.0 * trueneg / (trueneg + falseneg)
+  var     accuracy = 100.0 * (truepos + trueneg) / oos_size
+  // I should study pctlead dependence on predictions_a
+  var posg_a = []; negg_a = [];
+  for (i=0;i<oos_size;i++){
+    if (predictions_a[i] == 1)
+      posg_a.push(pctlead_oos_a[i])
+    else
+      negg_a.push(pctlead_oos_a[i])
+  }
+  chk = ((posg_a.length + negg_a.length) == oos_size) // should be true
+  var pos_avg  = d3.mean(posg_a)
+  var neg_avg  = d3.mean(negg_a)
+  var results_o          = {}
+  results_o.truepos      = truepos
+  results_o.falsepos     = falsepos
+  results_o.trueneg      = trueneg
+  results_o.falseneg     = falseneg
+  results_o.pos_accuracy = d3.round(pos_accuracy,1)
+  results_o.neg_accuracy = d3.round(neg_accuracy,1)
+  results_o.accuracy     = d3.round(accuracy    ,3)
+  results_o.pos_avg      = d3.round(pos_avg     ,3)
+  results_o.neg_avg      = d3.round(neg_avg     ,3)
+  if (pos_avg > neg_avg)
+    results_o.opinion    = 'good'
+  else
+    results_o.opinion    = 'bad';
+  // I should start work on chart data
+  var ydate_a   = model_o.ydate_a
+  var oos_end   = ydate_a.length
+  var oos_start = oos_end - oos_size
+  var ydate_oos_a  = ydate_a.slice(oos_start,oos_end)
+  var cp_oos_a     = model_o.cp_a.slice(oos_start,oos_end)
+  // RickShaw should use blue_a later to create chart
+  results_o.blue_a = []
+  for(dy=0; dy<oos_size; dy++){
+    results_o.blue_a.push({x:ydate_oos_a[dy], y:cp_oos_a[dy]})
+  }
+  // I should calculate green data for blue-green chart
+  var green_a = cr_green_a(predictions_a, results_o.blue_a)
+  results_o.green_a       = green_a
+  results_o.predictions_a = predictions_a
+  return results_o
+}`
+
 # This function should return array full of predictions:
 mn_predict = (mymn, oos_o)->
   # I should start work on obsv_v which is a volume of observations
