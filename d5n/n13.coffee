@@ -4,10 +4,12 @@
 # Demo:
 # coffee n13.coffee
 
-# I should use step_i to watch progress of magicNet:
-step_i = 0
+# I should use step_i, foldcntr_i to watch progress of magicNet:
+step_i     = 0
+foldcntr_i = 0
 # I should use mnopts_o to alter behavior of magicNet and carry num_folds to finishedFold()
 mnopts_o = {} 
+
 
 # I should read a csv file into global.myarray
 rl = require('readline').createInterface(
@@ -138,8 +140,8 @@ cr_mn = (train_o)->
 
 # This function should be called when magicNet finishes a fold.
 finishedFold = ()->
-  foldcntr++
-  if foldcntr == 1
+  foldcntr_i++
+  if foldcntr_i == 1
     # I should be able to calculate steptotal
     steptotal = step_i * mnopts_o.num_folds
   clog 'I finished a fold'
