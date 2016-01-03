@@ -4,13 +4,14 @@
 # Demo:
 # coffee n13.coffee
 
+# I should know when I start:
+mn_start    = Date.now()
 # I should use step_i, foldcntr_i to watch progress of magicNet:
 step_i      = 0
 foldcntr_i  = 0
 steptotal_i = 0
 # I should use mnopts_o to alter behavior of magicNet and carry num_folds to finishedFold()
 mnopts_o = {} 
-
 
 # I should read a csv file into global.myarray
 rl = require('readline').createInterface(
@@ -123,7 +124,6 @@ cr_mn = (train_o)->
   fillv()
   # I should create a magicNet; I have all that I need:
   magicNet = new convnetjs.MagicNet(train_data, train_o.label, mnopts_o)
-  mn_start = Date.now()
   magicNet.onFinishFold(finishedFold)
   magicNet.onFinishBatch(finishedBatch)
   # This function allows me to count steps as magicNet runs.
@@ -137,6 +137,8 @@ cr_mn = (train_o)->
       if(foldcntr_i > 0)
         # I should know steptotal now
         widpct = 100*step_i/steptotal_i
+        dnow     = Date.now()
+        cdur     = dnow - mn_start
 
   clog 'I am working, be patient.'
   # Start training magicNet. During every step() call, all candidates train on one example.
