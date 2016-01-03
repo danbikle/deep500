@@ -66,27 +66,17 @@ cb1 = (in_a)->
   features_o = cp2ftr(cp_a,featnames_o)
   labels_a   = pctlead1(cp_a).map `function(x){if(x<train_median_n) return 0; else return 1}`
   train_o    = cr_train_o(train_start,train_end,features_o,labels_a)
-  clog train_o
 
 # end cb1()
 
 # This function should create training data from features, labels:
 cr_train_o = (train_start,train_end,features_o,labels_a)->
-
   train_o = {}
-  # I should get inside features_o and slice each feature
-  `for (ky in features_o) {
-    train_o[ky] = features_o[ky].slice(train_start,train_end)
-  }`
-
-  # debug
-  return [train_start, train_end, features_o.pctlag1[train_end],labels_a[train_end]]
-  # debug
-
+  for ky_s,val_a of features_o
+    train_o[ky_s] = val_a[train_start...train_end]
   # To train, I should get label too:
   train_o.label = labels_a[train_start...train_end]
   return train_o
-
 
 # This function should return a subset of data from features_o:
 cr_oos_o = (oos_start,oos_end,features_o)->
