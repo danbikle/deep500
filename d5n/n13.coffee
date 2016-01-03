@@ -316,4 +316,7 @@ mymean = (in_a)->
     mysum += x
   return mysum / in_a.length
 
+# This function should round to 3 decimal points.
+myround = (in_n)-> return (Math.round 1000*in_n)/1000
+
 # end
