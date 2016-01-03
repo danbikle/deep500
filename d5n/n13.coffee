@@ -133,11 +133,10 @@ cr_mn = (train_o)->
   clog mn_start
   magicNet.onFinishFold(finishedFold)
   magicNet.onFinishBatch(finishedBatch)
+  mystep = ()->magicNet.step()
+  # Start training magicNet. During every step() call, all candidates train on one example.
+  setInterval(mystep,0)
   return 'cr_mn() done'
-
-mystep = ()->magicNet.step()
-# Start training magicNet. Every step() call all candidates train on one example.
-setInterval(mystep,0)
 
 # This function should be called when magicNet finishes a fold.
 finishedFold = ()->
