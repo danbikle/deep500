@@ -139,7 +139,7 @@ cr_mn = (train_o)->
     magicNet.step()
     step_i++
     if step_i % 2000 == 0
-      clog 'I finished another 1000 steps, be patient.'
+      clog 'I finished another 2000 steps, be patient.'
       widpct = 5.0
       hrleft = 10.0
       if(foldcntr_i > 0)
