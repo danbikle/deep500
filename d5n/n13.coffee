@@ -80,8 +80,7 @@ cb1 = (in_a)->
   predict_o.train_median_n = train_median_n
   # I should use train_o to create and train a new magicNet.
   cr_mn(train_o)
-
-# end cb1()
+  # end cb1()
 
 # This function should use train_o to create and train a new magicNet.
 cr_mn = (train_o)->
@@ -91,19 +90,19 @@ cr_mn = (train_o)->
   # in train/validation fold splits. Here, 0.7 means 70% 
   mnopts_o.train_ratio = 0.7
   # number of candidates to evaluate in parallel:
-  mnopts_o.num_candidates = 4
+  mnopts_o.num_candidates = 8
   # number of folds to evaluate per candidate:
-  mnopts_o.num_folds = 2
+  mnopts_o.num_folds = 8
   # number of epochs to make through data per fold
-  mnopts_o.num_epochs = 4
+  mnopts_o.num_epochs = 16
   # How many nets to average in the end for prediction? 
   # likely higher is better but slower:
-  mnopts_o.ensemble_size = 2
+  mnopts_o.ensemble_size = 4
   # Configure neurons_min, neurons_max
-  mnopts_o.neurons_min   = 2
-  mnopts_o.neurons_max   = 4
+  mnopts_o.neurons_min   = 4
+  mnopts_o.neurons_max   = 16
   # hlayers too
-  mnopts_o.hlayers       = 2
+  mnopts_o.hlayers       = 4
   # I should start work on obsv_v which is a volume of observations
   fnum = -1
   # I need to know obsv_v size (which is the number of features) before I create it
