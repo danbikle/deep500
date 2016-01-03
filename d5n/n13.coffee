@@ -139,11 +139,12 @@ cr_mn = (train_o)->
         widpct   = 100*step_i/steptotal_i
         dnow     = Date.now()
         cdur     = dnow - mn_start
-        msectot  = cdur * steptotal / stepcntr
+        msectot  = cdur * steptotal_i / step_i
         msecleft = msectot - cdur
         minleft  = msecleft / 1000.0 / 60.0
         hrleft   = msecleft / 1000.0 / 60.0 / 60.0
         doneby_s = new Date(dnow+msecleft).toString()
+        # I should report progress:
         clog 'Hours left: '+hrleft
         clog 'Done by: '+doneby_s
   clog 'I am working, be patient.'
