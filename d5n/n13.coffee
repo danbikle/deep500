@@ -4,18 +4,8 @@
 # Demo:
 # coffee n13.coffee
 
-
-
-# This function wraps console.log() inside of clog().
-clog = (in_x)->
-  console.log in_x
-
-# This function should calculate the mean of an array of numbers.
-mymean = (in_a)->
-  mysum = 0
-  in_a.forEach (x)->
-    mysum += x
-  return mysum / in_a.length
+# I use step_i to watch progress of magicNet:
+step_i = 0
 
 # I should read a csv file into global.myarray
 rl = require('readline').createInterface(
@@ -130,24 +120,30 @@ cr_mn = (train_o)->
   # I should create a magicNet; I have all that I need:
   magicNet = new convnetjs.MagicNet(train_data, train_o.label, opts)
   mn_start = Date.now()
-  clog mn_start
   magicNet.onFinishFold(finishedFold)
   magicNet.onFinishBatch(finishedBatch)
-  mystep = ()->magicNet.step()
+  # This function allows me to count steps as magicNet runs.
+  mystep = ()->
+    step_i++
+    magicNet.step()
+  clog 'I am working, be patient.'
   # Start training magicNet. During every step() call, all candidates train on one example.
   setInterval(mystep,0)
   return 'cr_mn() done'
 
+
 # This function should be called when magicNet finishes a fold.
 finishedFold = ()->
   clog 'I finished a fold'
+  clog 'I took this many steps: '+step_i
+  # debug
+  process.exit(0)
+  # debug
 
 # This function should be called when magicNet finishes a batch.
 finishedBatch = ()->
-  msg = 'I finished a batch'
-  clog   msg
-  clog Date.now()
-  return msg
+  clog 'I finished a batch'
+  process.exit(0)
 
 # This function should create training data from features, labels:
 cr_train_o = (train_start,train_end,features_o,labels_a)->
@@ -242,5 +238,16 @@ pctlead1 = (my_a)->
   `for (i=0;i<my_a.length;i++)
     pctlead_a.push(100.0*(lead_a[i]-my_a[i])/my_a[i])`
   return pctlead_a
+
+# This function wraps console.log() inside of clog().
+clog = (in_x)->
+  console.log in_x
+
+# This function should calculate the mean of an array of numbers.
+mymean = (in_a)->
+  mysum = 0
+  in_a.forEach (x)->
+    mysum += x
+  return mysum / in_a.length
 
 # end
