@@ -127,11 +127,19 @@ cr_mn = (train_o)->
   }`
   # I should run the above JS syntax:
   fillv()
-  clog train_data.length
-  clog train_o.label.length
-  clog opts
-  'magicNet = new convnetjs.MagicNet(train_data, train_o.label, opts)'
+  # I should create a magicNet; I have all that I need:
+  magicNet = new convnetjs.MagicNet(train_data, train_o.label, opts)
+  mn_start = Date.now()
+  clog mn_start
+  magicNet.onFinishBatch(finishedBatch)
   return 'cr_mn() done'
+
+
+finishedBatch = ()->
+  msg = 'finishedBatch done'
+  clog   msg
+  clog Date.now()
+  return msg
 
 # This function should create training data from features, labels:
 cr_train_o = (train_start,train_end,features_o,labels_a)->
