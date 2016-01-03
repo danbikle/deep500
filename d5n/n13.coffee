@@ -4,8 +4,10 @@
 # Demo:
 # coffee n13.coffee
 
-# I use step_i to watch progress of magicNet:
+# I should use step_i to watch progress of magicNet:
 step_i = 0
+# I should use mnopts_o to alter behavior of magicNet and carry num_folds to finishedFold()
+mnopts_o = {} 
 
 # I should read a csv file into global.myarray
 rl = require('readline').createInterface(
@@ -70,25 +72,24 @@ cb1 = (in_a)->
 # This function should use train_o to create and train a new magicNet.
 cr_mn = (train_o)->
   # The MagicNet class performs fully-automatic prediction on your data.
-  # options struct:
-  opts = {} 
+
   # what portion of data goes to train, 
   # in train/validation fold splits. Here, 0.7 means 70% 
-  opts.train_ratio = 0.7
+  mnopts_o.train_ratio = 0.7
   # number of candidates to evaluate in parallel:
-  opts.num_candidates = 8
+  mnopts_o.num_candidates = 8
   # number of folds to evaluate per candidate:
-  opts.num_folds = 8
+  mnopts_o.num_folds = 8
   # number of epochs to make through data per fold
-  opts.num_epochs = 4
+  mnopts_o.num_epochs = 4
   # How many nets to average in the end for prediction? 
   # likely higher is better but slower:
-  opts.ensemble_size = 4
+  mnopts_o.ensemble_size = 4
   # Configure neurons_min, neurons_max
-  opts.neurons_min   = 2
-  opts.neurons_max   = 8
+  mnopts_o.neurons_min   = 2
+  mnopts_o.neurons_max   = 8
   # hlayers too
-  opts.hlayers       = 2
+  mnopts_o.hlayers       = 2
   # I should start work on obsv_v which is a volume of observations
   fnum = -1
   # I need to know obsv_v size (which is the number of features) before I create it
@@ -118,7 +119,7 @@ cr_mn = (train_o)->
   # I should run the above JS syntax:
   fillv()
   # I should create a magicNet; I have all that I need:
-  magicNet = new convnetjs.MagicNet(train_data, train_o.label, opts)
+  magicNet = new convnetjs.MagicNet(train_data, train_o.label, mnopts_o)
   mn_start = Date.now()
   magicNet.onFinishFold(finishedFold)
   magicNet.onFinishBatch(finishedBatch)
@@ -137,6 +138,10 @@ cr_mn = (train_o)->
 
 # This function should be called when magicNet finishes a fold.
 finishedFold = ()->
+  foldcntr++
+  if foldcntr == 1
+    # I should be able to calculate steptotal
+    steptotal = step_i * mnopts_o.num_folds
   clog 'I finished a fold'
   clog 'I took this many steps: '+step_i
   # debug
