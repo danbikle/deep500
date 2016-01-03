@@ -30,6 +30,9 @@ featnames_o     =
   'cpo8mvgAvg':  true
   'cpo16mvgAvg': true
 
+# I should declare this here to give it wider scope
+train_median_n  = 0.05
+
 # I should read a csv file into global.myarray
 rl = require('readline').createInterface(
   input: require('fs').createReadStream('../public/csv/GSPC.csv'))
@@ -152,8 +155,8 @@ cr_mn = (train_o)->
         hrleft   = secleft  / 60.0 / 60.0
         doneby_s = new Date(dnow+msecleft).toString()
         # I should report progress:
-        clog 'Seconds left: '+secleft
-        clog 'Hours left (secleft/3600): '+hrleft
+        clog 'Seconds left: '+myround(secleft)
+        clog 'Hours left (secleft/3600): '+myround(hrleft)
         clog 'Done by: '+doneby_s
   clog 'I am working, be patient.'
   # Start training magicNet. During every step() call, all candidates train on one example.
