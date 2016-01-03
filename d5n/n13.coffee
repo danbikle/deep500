@@ -178,7 +178,12 @@ finishedBatch = ()->
   # I should use json to help remember this model
   mnjson    = magicNet.toJSON()
   results_o = predict_oos(predict_o)
+  rpt_on(results_o)
   process.exit(0)
+
+# This function should report on the results of testing the model on out-of-sample data
+rpt_on = (results_o)->
+  clog results_o.accuracy
 
 # This function should predict and report on some out-of-sample data.
 predict_oos = (predict_o)->
@@ -199,7 +204,6 @@ predict_oos = (predict_o)->
   pctlead_a     = pctlead1(cp_a)
   pctlead_oos_a = pctlead_a[oos_start...oos_end]
   results_o     = calc_results(predictions_a,labels_oos_a,pctlead_oos_a)
-  clog  results_o.accuracy
   return results_o
 
 # This function should help display results of predicting oos data:
