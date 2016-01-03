@@ -90,15 +90,15 @@ cr_mn = (train_o)->
   # number of folds to evaluate per candidate:
   opts.num_folds = 8
   # number of epochs to make through data per fold
-  opts.num_epochs = 16
+  opts.num_epochs = 4
   # How many nets to average in the end for prediction? 
   # likely higher is better but slower:
   opts.ensemble_size = 4
   # Configure neurons_min, neurons_max
-  opts.neurons_min   = 4
-  opts.neurons_max   = 16
+  opts.neurons_min   = 2
+  opts.neurons_max   = 8
   # hlayers too
-  opts.hlayers       = 4
+  opts.hlayers       = 2
   # I should start work on obsv_v which is a volume of observations
   fnum = -1
   # I need to know obsv_v size (which is the number of features) before I create it
