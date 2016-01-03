@@ -181,9 +181,12 @@ finishedBatch = ()->
   rpt_on(results_o)
   process.exit(0)
 
-# This function should report on the results of testing the model on out-of-sample data
+# This function should report on the results of testing the model on out-of-sample data.
 rpt_on = (results_o)->
-  clog results_o.accuracy
+  rpt = "
+    accuracy: #{results_o.accuracy}
+  "
+  clog rpt
 
 # This function should predict and report on some out-of-sample data.
 predict_oos = (predict_o)->
@@ -214,13 +217,13 @@ calc_results = (predictions_a,labels_oos_a,pctlead_oos_a)->
   `
   for (i=0;i<oos_size;i++){
     if ((predictions_a[i] == 1 ) && (labels_oos_a[i] == 1))
-      truepos += 1;
+      truepos++
     if ((predictions_a[i] == 1 ) && (labels_oos_a[i] == 0))
-      falsepos += 1;
+      falsepos++
     if ((predictions_a[i] == -1) && (labels_oos_a[i] == 0))
-      trueneg += 1;
+      trueneg++
     if ((predictions_a[i] == -1) && (labels_oos_a[i] == 1))
-      falseneg += 1;
+      falseneg++
   }
   `
   # should be true:
