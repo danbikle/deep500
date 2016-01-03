@@ -136,10 +136,16 @@ cr_mn = (train_o)->
       hrleft = 10.0
       if(foldcntr_i > 0)
         # I should know steptotal now
-        widpct = 100*step_i/steptotal_i
+        widpct   = 100*step_i/steptotal_i
         dnow     = Date.now()
         cdur     = dnow - mn_start
-
+        msectot  = cdur * steptotal / stepcntr
+        msecleft = msectot - cdur
+        minleft  = msecleft / 1000.0 / 60.0
+        hrleft   = msecleft / 1000.0 / 60.0 / 60.0
+        doneby_s = new Date(dnow+msecleft).toString()
+        clog 'Hours left: '+hrleft
+        clog 'Done by: '+doneby_s
   clog 'I am working, be patient.'
   # Start training magicNet. During every step() call, all candidates train on one example.
   setInterval(mystep,0)
@@ -155,7 +161,7 @@ finishedFold = ()->
     # I should be able to calculate steptotal
     steptotal_i = step_i * mnopts_o.num_folds
   # debug
-  process.exit(0)
+  # process.exit(0)
   # debug
 
 # This function should be called when magicNet finishes a batch.
