@@ -1,1 +1,0 @@
-curlGSPC.bash
